@@ -60,3 +60,10 @@
   display: block;
   /* position: absolute; */
 }
+
+@media only screen and (max-width: 375px) {
+  .puff-puff-logo {
+    visibility: hidden;
+    position: absolute;
+  }
+}

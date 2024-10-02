@@ -54,7 +54,7 @@ function App() {
                                         [scrollY],
                                         [0, height],
                                         [
-                                            500 + index * 100,
+                                            height / 2 + index * 100,
                                             height - index * 10,
                                         ],
                                         "clamp"

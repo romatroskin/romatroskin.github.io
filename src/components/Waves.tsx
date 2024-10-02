@@ -32,8 +32,8 @@ class Wave extends React.Component<WaveProps, { path: string }> {
     static defaultProps = {
         points: 3,
         speed: 0.1,
-        amplitude: 10,
-        height: 50,
+        amplitude: 20,
+        height: 80,
         paused: false,
         svgId: "wave",
         svgPathId: "wave-path",
