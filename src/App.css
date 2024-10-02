@@ -1,0 +1,66 @@
+#root {
+  max-width: 1280px;
+  text-align: center;
+}
+
+.logo {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  padding: 1.5em 0;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* @keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+} */
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  height: 10rem;
+  width: 25%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.parallax {
+  margin-right: 15%;
+}
+
+.sticky {
+  margin-left: 15%;
+  background-color: #ff6d6d;
+}
+
+.blue {
+  background-color: #5b65ad;
+  color: white;
+}
+
+.purple {
+  background-color: #9d65d0;
+}

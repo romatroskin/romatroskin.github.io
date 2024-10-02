@@ -1,0 +1,346 @@
+#root {
+  max-width: 1280px;
+  text-align: center;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+storybook-root,
+body {
+  color-scheme: dark;
+
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  margin: 0;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7rem;
+  font-weight: 400;
+
+  min-width: 320px;
+
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: var(--accent-color);
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+/* a[href]:not([class]) {
+  color: var(--accent-color);
+  text-decoration: underline;
+} */
+
+/* :empty {
+  display: none;
+} */
+
+br+br {
+  display: none;
+}
+
+img {
+  display: block;
+  font-family: sans-serif;
+  font-weight: 300;
+  height: auto;
+  line-height: 2;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+img::before {
+  content: "We're sorry, the image below is broken :(";
+  display: block;
+  margin-bottom: 10px;
+}
+
+img::after {
+  content: "\f1c5"" "attr(alt);
+  display: block;
+  font-size: 12px;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+.no-svg .icon-only::after {
+  content: attr(aria-label);
+}
+
+.l-box {
+  padding: 1em;
+}
+
+.l-box-lrg {
+  padding: 2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.is-center {
+  text-align: center;
+}
+
+
+.splash-container {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  position: relative;
+}
+
+.splash {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* This is the main heading that appears on the blue section */
+.splash-head {
+  font-size: 1.5em;
+  font-weight: 100;
+  line-height: 1em;
+  color: white;
+  border: 3px solid white;
+  padding: 0.5em 0.5em;
+  border-radius: 5px;
+}
+
+/* This is the subheading that appears on the blue section */
+.splash-subhead {
+  color: white;
+  font-size: 1em;
+  line-height: 2em;
+  letter-spacing: 0.05em;
+  padding: 0.5em 0.5em;
+  opacity: 0.8;
+}
+
+.content-wrapper {
+  /* These styles are required for the "scroll-over" effect */
+  position: absolute;
+  top: 87%;
+  width: 100%;
+  min-height: 12%;
+  z-index: -1;
+  /* background: white; */
+
+}
+
+/* We want to give the content area some more padding */
+.content {
+  padding: 1em 1em 3em;
+}
+
+/* This is the class used for the main content headers (<h2>) */
+.content-head {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
+}
+
+/* This is a modifier class used when the content-head is inside a ribbon */
+.content-head-ribbon {
+  color: white;
+}
+
+/* This is the class used for the content sub-headers (<h3>) */
+.content-subhead {
+  color: #1f8dd6;
+}
+
+.content-subhead i {
+  margin-right: 7px;
+}
+
+/* This is the class used for the dark-background areas. */
+.ribbon {
+  /* background: #2d3e50; */
+  color: #aaa;
+}
+
+/* This is the class used for the footer */
+.footer {
+  background: #111;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+p {
+  font-size: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  color: var(--primary-text-color);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: var(--accent-color);
+}
+
+button:disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+/* button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+button:focus:not(:focus-visible) {
+  outline: none
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  box-shadow: none;
+  outline: 2px dotted -webkit-focus-ring-color;
+  outline-offset: .05em;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* color: #213547; */
+    --primary-bg-color: rgba(255, 255, 255, 0.0);
+    --secondary-bg-color: #222222;
+    --secondary-text-color: #f9f9f9;
+    --primary-text-color: #333333;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@media (min-width: 48em) {
+
+  /* We increase the body font size */
+  body {
+    font-size: 16px;
+  }
+
+  /* We can align the menu header to the left, but float the
+  menu items to the right. */
+  .home-menu {
+    text-align: left;
+  }
+
+  .home-menu ul {
+    float: right;
+  }
+
+  /* We increase the height of the splash-container */
+  /* .splash-container {
+  height: 500px;
+} */
+
+  /* We decrease the width of the .splash, since we have more width
+  to work with */
+  .splash {
+    bottom: 5%;
+    width: 50%;
+    height: 25%;
+  }
+
+  .splash-head {
+    font-size: 250%;
+  }
+
+
+  /* We remove the border-separator assigned to .l-box-lrg */
+  .l-box-lrg {
+    border: none;
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+  .splash-subhead {
+    font-size: 70%;
+  }
+}
+
+@media (min-width: 78em) {
+
+  /* We increase the header font size even more */
+  .splash-head {
+    font-size: 300%;
+  }
+}
