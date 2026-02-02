@@ -1,6 +1,5 @@
 import React from "react";
 import Perlin from "../components/Perlin";
-import { random } from "lodash";
 import styles from "./waves.module.css";
 import { Interpolation } from "@react-spring/web";
 
@@ -43,7 +42,7 @@ class Wave extends React.Component<WaveProps, { path: string }> {
         this.state = { path: "" };
         this._elapsed = 0;
         this._step = 0;
-        this._noise = new Perlin(random(true));
+        this._noise = new Perlin(Math.random());
         this.container = React.createRef();
     }
 
