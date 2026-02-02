@@ -214,6 +214,35 @@ textarea {
   }
 }
 
+/* About container styles */
+.about-container {
+  padding: 2em 1em;
+  /* Padding for main content */
+  max-width: 800px;
+  /* Max width for readability */
+  margin: auto;
+  /* Center align */
+}
+
+/* About section styles */
+.about-title {
+  font-size: 2em;
+  /* Title size */
+  margin-bottom: 0.5em;
+  /* Space below title */
+  color: white;
+}
+
+.about-description {
+  font-size: 1.1em;
+  /* Description size */
+  line-height: 1.6em;
+  /* Line height for readability */
+  margin-bottom: 1em;
+  /* Space between paragraphs */
+  color: white;
+}
+
 .content-wrapper {
   /* These styles are required for the "scroll-over" effect */
   position: absolute;
