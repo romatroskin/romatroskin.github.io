@@ -13,7 +13,6 @@ const Quotes = () => {
             .then((res) => res.json())
             .then((data) => {
                 const dataQuotes = data.quotes;
-                console.log(dataQuotes);
                 const randomNum = Math.floor(Math.random() * dataQuotes.length);
                 const randomQuote = dataQuotes[randomNum];
 

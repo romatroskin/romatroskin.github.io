@@ -45,8 +45,6 @@ class Wave extends React.Component<WaveProps, { path: string }> {
         this._step = 0;
         this._noise = new Perlin(random(true));
         this.container = React.createRef();
-
-        console.log("Wave", { props });
     }
 
     componentDidMount() {
