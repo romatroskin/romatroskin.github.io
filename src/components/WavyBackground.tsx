@@ -5,16 +5,16 @@ import React, { memo } from "react";
 
 const AnimatedWave = animated(Wave);
 
-type BaseSVGProps = Pick<
+type BaseSVGProps = Omit<
     React.SVGProps<SVGPathElement>,
-    Exclude<keyof React.SVGProps<SVGPathElement>, "fill" | "style">
+    "fill" | "style" | "height" | "speed" | "amplitude" | "points" | "paused"
 >;
 
 interface WavyBackgroundPropTypes extends BaseSVGProps {
     options: WavesPropTypes;
     fill?: Interpolation<number, string>;
-    style: {
-        transform?: Interpolation<number, string> & React.CSSProperties;
+    style?: {
+        transform?: Interpolation<number, string>;
     };
 }
 
@@ -75,14 +75,13 @@ interface WavyBackgroundPropTypes extends BaseSVGProps {
 
 const WavyBackground = memo(
     React.forwardRef<Wave, WavyBackgroundPropTypes>(
-        ({ options, style, ...props }, ref) => (
-            // @ts-expect-error nice to have =p
+        ({ options, style, fill, ...props }, ref) => (
             <AnimatedWave
-                {...options}
+                {...(options as any)}
+                fill={fill}
+                style={style as any}
                 {...props}
-                style={{ ...style }}
-                // filter="url(#glitch)"
-                ref={ref}
+                ref={ref as React.Ref<Wave>}
             />
         )
     )
