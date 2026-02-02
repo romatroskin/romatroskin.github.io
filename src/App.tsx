@@ -1,14 +1,17 @@
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { config, to, useScroll, useTrail } from "@react-spring/web";
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
 import WavyBackground from "./components/WavyBackground";
-import { random } from "lodash";
 import { useWindowSize } from "usehooks-ts";
 
 import "./App.css";
 import Header from "./components/Header/Header";
 
 const numWaves = 5;
+
+function randomRange(min: number, max: number): number {
+    return Math.random() * (max - min) + min;
+}
 
 function App() {
     const parallaxRef = useRef<IParallax>(null);
@@ -22,6 +25,14 @@ function App() {
         to: { opacity: 0.7, transform: "scale(1)" },
         config: config.wobbly,
     });
+
+    const waveNoiseOffsets = useMemo(() => {
+        return Array.from({ length: numWaves }, () => ({
+            amplitude: randomRange(-20, 20),
+            speed: randomRange(-0.005, 0.005),
+            points: randomRange(-1, 1),
+        }));
+    }, []); // Empty deps - compute once on mount
 
     const alignCenter = { display: "flex", alignItems: "center" };
 
@@ -42,9 +53,11 @@ function App() {
             >
                 <div>
                     {waveConfigs.map((_, index) => {
-                        const amplitudeNoise = random(-20, 20); // Add amplitude noise
-                        const speedNoise = random(-0.005, 0.005); // Add speed noise
-                        const pointsNoise = random(-1, 1); // Add points noise
+                        const {
+                            amplitude: amplitudeNoise,
+                            speed: speedNoise,
+                            points: pointsNoise,
+                        } = waveNoiseOffsets[index];
 
                         return (
                             <WavyBackground
@@ -96,14 +109,14 @@ function App() {
                         );
                     })}
                 </div>
-                <Parallax pages={1} ref={parallaxRef}>
+                <Parallax pages={2} ref={parallaxRef}>
                     <ParallaxLayer
                         offset={0}
                         speed={0.5}
                         style={{ ...alignCenter, justifyContent: "center" }}
                     >
                         <div className="splash-container">
-                            <div className="splash">
+                            <section className="splash">
                                 <a href="#" target="_blank" rel="noreferrer">
                                     <img
                                         src="https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg"
@@ -126,7 +139,7 @@ function App() {
                                     exceptional mobile applications using the
                                     latest Flutter technologies.
                                 </p>
-                            </div>
+                            </section>
                         </div>
                         {/* <div>
                             <a href="https://puffpuff.dev" target="_blank">
@@ -151,7 +164,37 @@ function App() {
                         offset={1}
                         speed={0.5}
                         style={{ ...alignCenter, justifyContent: "center" }}
-                    ></ParallaxLayer>
+                    >
+                        <div className="about-container">
+                            <section className="about-section">
+                                <h2 className="about-title">About Us</h2>
+                                <p className="about-description">
+                                    At Puff Puff Dev, we are dedicated to
+                                    crafting exceptional mobile applications
+                                    that bring your ideas to life. With a team
+                                    of experienced developers and designers, we
+                                    leverage the latest technologies, primarily
+                                    focusing on Flutter and Dart, to deliver
+                                    seamless user experiences and innovative
+                                    solutions.
+                                </p>
+                                <p className="about-description">
+                                    Our mission is to transform your dreams into
+                                    reality through creative coding, attention
+                                    to detail, and a commitment to quality.
+                                    Whether you're a startup looking to build
+                                    your first app or an established business
+                                    seeking to enhance your digital presence, we
+                                    are here to help you every step of the way.
+                                </p>
+                                <p className="about-description">
+                                    Join us on this exciting journey as we
+                                    explore the endless possibilities of mobile
+                                    development together!
+                                </p>
+                            </section>
+                        </div>
+                    </ParallaxLayer>
                 </Parallax>
             </div>
         </>
