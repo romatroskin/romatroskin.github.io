@@ -128,7 +128,6 @@ function App() {
                                     Where Code Meets Creativity,
                                     <br /> Dreams Take Shape.
                                 </h1>
-                                {/* <Quotes /> */}
                                 <p className="splash-subhead">
                                     Welcome to the Craft Applications Workshop
                                     <br /> Are you seeking to bring your mobile
@@ -141,24 +140,6 @@ function App() {
                                 </p>
                             </section>
                         </div>
-                        {/* <div>
-                            <a href="https://puffpuff.dev" target="_blank">
-                                <img
-                                    src={viteLogo}
-                                    // className="logo"
-                                    className="logo react"
-                                    alt="Vite logo"
-                                />
-                            </a>
-                        </div>
-                        <h1>Puff Puff Dev</h1>
-                        <div className="card">
-                            <button
-                                onClick={() => setCount((count) => count + 1)}
-                            >
-                                count is {count}
-                            </button>
-                        </div> */}
                     </ParallaxLayer>
                     <ParallaxLayer
                         offset={1}
