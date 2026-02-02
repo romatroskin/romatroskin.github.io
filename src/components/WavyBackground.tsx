@@ -5,17 +5,13 @@ import React, { memo } from "react";
 
 const AnimatedWave = animated(Wave);
 
-type BaseSVGProps = Omit<
-    React.SVGProps<SVGPathElement>,
-    "fill" | "style" | "height" | "speed" | "amplitude" | "points" | "paused"
->;
-
-interface WavyBackgroundPropTypes extends BaseSVGProps {
+interface WavyBackgroundPropTypes {
     options: WavesPropTypes;
     fill?: Interpolation<number, string>;
     style?: {
         transform?: Interpolation<number, string>;
     };
+    id?: string;
 }
 
 // const StaticDefs = () => (
@@ -75,15 +71,19 @@ interface WavyBackgroundPropTypes extends BaseSVGProps {
 
 const WavyBackground = memo(
     React.forwardRef<Wave, WavyBackgroundPropTypes>(
-        ({ options, style, fill, ...props }, ref) => (
-            <AnimatedWave
-                {...(options as any)}
-                fill={fill}
-                style={style as any}
-                {...props}
-                ref={ref as React.Ref<Wave>}
-            />
-        )
+        ({ options, style, fill, id }, ref) => {
+            // Type assertion needed: react-spring's AnimatedProps creates complex intersection types
+            // that conflict with SVG's native 'points' attribute vs Wave's custom 'points' prop
+            const animatedProps = {
+                ...options,
+                fill,
+                style,
+                id,
+                ref: ref as React.Ref<Wave>,
+            } as React.ComponentProps<typeof AnimatedWave>;
+
+            return <AnimatedWave {...animatedProps} />;
+        }
     )
 );
 
