@@ -1,0 +1,59 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: 0.5rem;
+  background: transparent;
+  transition: transform 400ms ease;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url('https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/dp_white.svg') no-repeat center center;
+  background-size: contain;
+  display: block;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  /* Individual nav item styling */
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: #535bf2;
+  background: none;
+}
+
+.navLinkActive {
+  color: #535bf2;
+}
+
+@media only screen and (max-width: 375px) {
+  .logo {
+    display: none;
+  }
+}
