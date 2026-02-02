@@ -1,0 +1,141 @@
+# Roadmap: Puff Puff Dev Portfolio v1
+
+## Overview
+
+Transform the existing Puff Puff Dev portfolio site from a visually impressive but fragile prototype into a production-ready, accessible, and performant single-page portfolio. The journey progresses from stabilizing the foundation (critical bugs, testing infrastructure) through architecture modernization (class to hooks), user-facing features (navigation, accessibility), visual polish (CSS organization, theming), performance optimization (Core Web Vitals), and finally comprehensive testing coverage with error handling.
+
+## Phases
+
+**Phase Numbering:**
+- Integer phases (1, 2, 3): Planned milestone work
+- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+
+Decimal phases appear between their surrounding integers in numeric order.
+
+- [ ] **Phase 1: Foundation & Cleanup** - Critical bug fixes, testing setup, dependency cleanup
+- [ ] **Phase 2: Component Architecture** - Wave class-to-functional refactor with custom hooks
+- [ ] **Phase 3: Navigation & Core A11Y** - Scroll navigation, mobile menu, keyboard accessibility
+- [ ] **Phase 4: CSS & Visual Design** - CSS modules, color contrast, responsive typography, theming
+- [ ] **Phase 5: Performance & Animation** - Perlin caching, Core Web Vitals, lazy loading
+- [ ] **Phase 6: Testing & Error Handling** - Error boundaries, accessibility tests, coverage
+
+## Phase Details
+
+### Phase 1: Foundation & Cleanup
+**Goal**: Establish testing infrastructure and fix critical bugs that actively break user experience
+**Depends on**: Nothing (first phase)
+**Requirements**: REQ-CQ-002, REQ-CQ-003, REQ-CQ-004, REQ-CQ-005, REQ-CQ-006, REQ-TST-001, REQ-TST-002, REQ-PERF-002, REQ-PERF-003
+**Success Criteria** (what must be TRUE):
+  1. Running `npm test` executes Vitest and passes with at least one test
+  2. Perlin noise algorithm has unit test coverage proving deterministic output
+  3. Wave animations render without glitching or stuttering (random values stable)
+  4. No console.log statements appear in browser dev tools on production build
+  5. Bundle does not include lodash (verified via bundle analysis)
+**Plans**: TBD
+
+Plans:
+- [ ] 01-01: Testing infrastructure (Vitest + React Testing Library setup)
+- [ ] 01-02: Critical bug fixes (random values, console.log, TypeScript errors)
+- [ ] 01-03: Dependency cleanup (lodash removal, package consolidation)
+
+### Phase 2: Component Architecture
+**Goal**: Migrate Wave class component to functional component with hooks for testability and react-spring integration
+**Depends on**: Phase 1
+**Requirements**: REQ-CQ-001, REQ-TST-003, REQ-TST-004
+**Success Criteria** (what must be TRUE):
+  1. Wave component renders identically to before (visual parity verified)
+  2. Wave component is functional with hooks (no class syntax)
+  3. Animation continues smoothly during scroll interactions
+  4. Component smoke tests pass for App, Header, WavyBackground
+**Plans**: TBD
+
+Plans:
+- [ ] 02-01: Custom hooks extraction (usePerlinNoise, useAnimationFrame)
+- [ ] 02-02: Wave functional component migration with tests
+
+### Phase 3: Navigation & Core A11Y
+**Goal**: Users can navigate the site via scroll, keyboard, and mobile menu with proper accessibility support
+**Depends on**: Phase 2
+**Requirements**: REQ-NAV-001, REQ-NAV-002, REQ-NAV-003, REQ-NAV-004, REQ-A11Y-001, REQ-A11Y-002, REQ-A11Y-004, REQ-A11Y-005, REQ-A11Y-006, REQ-A11Y-007, REQ-A11Y-008, REQ-A11Y-010
+**Success Criteria** (what must be TRUE):
+  1. Clicking nav links smooth-scrolls to corresponding section
+  2. Current section is visually highlighted in navigation as user scrolls
+  3. Mobile users can open hamburger menu, select section, menu closes
+  4. User can Tab through all interactive elements with visible focus indicators
+  5. Screen reader announces navigation landmarks and section headings correctly
+  6. Skip-to-content link is first focusable element and jumps to main content
+**Plans**: TBD
+
+Plans:
+- [ ] 03-01: Scroll navigation implementation (smooth scroll, active state)
+- [ ] 03-02: Mobile menu (hamburger, slide-out drawer)
+- [ ] 03-03: Keyboard navigation and ARIA (focus indicators, landmarks, skip link)
+
+### Phase 4: CSS & Visual Design
+**Goal**: Organized CSS architecture with proper theming, contrast compliance, and responsive design
+**Depends on**: Phase 3
+**Requirements**: REQ-CQ-008, REQ-A11Y-003, REQ-RD-001, REQ-RD-002, REQ-RD-004, REQ-VP-001, REQ-VP-002, REQ-VP-003, REQ-VP-004, REQ-VP-005
+**Success Criteria** (what must be TRUE):
+  1. All text passes WCAG 4.5:1 contrast ratio (verifiable via axe or Lighthouse)
+  2. Typography scales appropriately from 320px to desktop widths
+  3. All tap targets are minimum 44x44px on touch devices
+  4. User can toggle between dark and light modes (persisted preference)
+  5. Content reflows at 320px without horizontal scrollbar
+**Plans**: TBD
+
+Plans:
+- [ ] 04-01: CSS Modules migration and theme system
+- [ ] 04-02: Responsive design (typography, tap targets, reflow)
+- [ ] 04-03: Visual polish (loading states, transitions, micro-interactions)
+
+### Phase 5: Performance & Animation
+**Goal**: Achieve Core Web Vitals compliance with optimized animations across devices
+**Depends on**: Phase 4
+**Requirements**: REQ-RD-003, REQ-RD-005, REQ-A11Y-009, REQ-PERF-001, REQ-PERF-004, REQ-PERF-005, REQ-PERF-006, REQ-PERF-007, REQ-PERF-008
+**Success Criteria** (what must be TRUE):
+  1. Lighthouse performance score is 90+ on mobile
+  2. LCP (Largest Contentful Paint) under 2.5 seconds
+  3. INP (Interaction to Next Paint) under 200ms
+  4. CLS (Cumulative Layout Shift) under 0.1
+  5. Users with prefers-reduced-motion see static/minimal animations
+  6. Wave animations run smoothly on mid-tier mobile devices (no frame drops)
+**Plans**: TBD
+
+Plans:
+- [ ] 05-01: Perlin caching and animation optimization
+- [ ] 05-02: Core Web Vitals optimization (LCP, INP, CLS)
+- [ ] 05-03: Reduced motion support and responsive animation parameters
+
+### Phase 6: Testing & Error Handling
+**Goal**: Comprehensive test coverage and graceful error handling for production resilience
+**Depends on**: Phase 5
+**Requirements**: REQ-CQ-007, REQ-TST-005
+**Success Criteria** (what must be TRUE):
+  1. Error in wave animation shows fallback UI instead of white screen
+  2. vitest-axe accessibility tests pass for all major components
+  3. Application recovers gracefully from network failures or missing assets
+**Plans**: TBD
+
+Plans:
+- [ ] 06-01: Error boundaries and fallback UI
+- [ ] 06-02: Accessibility test suite with vitest-axe
+
+## Progress
+
+**Execution Order:**
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Foundation & Cleanup | 0/3 | Not started | - |
+| 2. Component Architecture | 0/2 | Not started | - |
+| 3. Navigation & Core A11Y | 0/3 | Not started | - |
+| 4. CSS & Visual Design | 0/3 | Not started | - |
+| 5. Performance & Animation | 0/3 | Not started | - |
+| 6. Testing & Error Handling | 0/2 | Not started | - |
+
+---
+
+*Created: 2026-02-03*
+*Total Requirements: 45 mapped across 6 phases*
+*Coverage: 100% (no orphaned requirements)*
