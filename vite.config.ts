@@ -1,10 +1,18 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // @ts-expect-error - vite version mismatch between project and vitest bundled version
-  plugins: [react()],
+  plugins: [
+    react(),
+    visualizer({
+      filename: './dist/stats.html',
+      open: false,
+      gzipSize: true,
+      brotliSize: true
+    }) as any // Type assertion for vite/vitest version mismatch
+  ],
   // base: '/romatroskin.github.io',
   test: {
     globals: true,
