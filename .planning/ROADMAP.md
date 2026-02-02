@@ -31,12 +31,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Wave animations render without glitching or stuttering (random values stable)
   4. No console.log statements appear in browser dev tools on production build
   5. Bundle does not include lodash (verified via bundle analysis)
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 01-01: Testing infrastructure (Vitest + React Testing Library setup)
-- [ ] 01-02: Critical bug fixes (random values, console.log, TypeScript errors)
-- [ ] 01-03: Dependency cleanup (lodash removal, package consolidation)
+
+- [ ] 01-01-PLAN.md — Testing infrastructure (Vitest + React Testing Library + Perlin tests)
+- [ ] 01-02-PLAN.md — Critical bug fixes (useMemo stabilization, console.log removal, TypeScript fixes)
+- [ ] 01-03-PLAN.md — Dependency cleanup (lodash/PureCSS removal, CSS Modules for Header, bundle verification)
 
 ### Phase 2: Component Architecture
 **Goal**: Migrate Wave class component to functional component with hooks for testability and react-spring integration
