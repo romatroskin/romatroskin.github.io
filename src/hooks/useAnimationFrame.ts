@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect } from 'react';
 
 interface UseAnimationFrameOptions {
   fps?: number;
@@ -23,34 +23,35 @@ export function useAnimationFrame(
   const previousTimeRef = useRef<number>();
   const totalElapsedRef = useRef<number>(0);
   const callbackRef = useRef(callback);
+  const pausedRef = useRef(paused);
+  const fpsRef = useRef(fps);
 
-  // Keep callback ref up to date without triggering effect re-runs
+  // Keep refs up to date without triggering effect re-runs
   callbackRef.current = callback;
+  pausedRef.current = paused;
+  fpsRef.current = fps;
 
-  const animate = useCallback(
-    (timestamp: number) => {
+  useEffect(() => {
+    const animate = (timestamp: number) => {
       if (previousTimeRef.current === undefined) {
         previousTimeRef.current = timestamp;
       }
 
       const elapsed = timestamp - previousTimeRef.current;
-      const frameInterval = 1000 / fps;
+      const frameInterval = 1000 / fpsRef.current;
 
-      if (!paused && elapsed >= frameInterval) {
+      if (!pausedRef.current && elapsed >= frameInterval) {
         totalElapsedRef.current += elapsed;
         previousTimeRef.current = timestamp;
         callbackRef.current(totalElapsedRef.current);
-      } else if (paused) {
+      } else if (pausedRef.current) {
         // When paused, update previousTime to prevent time jump on resume
         previousTimeRef.current = timestamp;
       }
 
       frameIdRef.current = requestAnimationFrame(animate);
-    },
-    [fps, paused]
-  );
+    };
 
-  useEffect(() => {
     frameIdRef.current = requestAnimationFrame(animate);
 
     return () => {
@@ -58,5 +59,5 @@ export function useAnimationFrame(
         cancelAnimationFrame(frameIdRef.current);
       }
     };
-  }, [animate]);
+  }, []); // Empty deps - refs handle all updates
 }
