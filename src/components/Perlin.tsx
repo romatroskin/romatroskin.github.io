@@ -59,6 +59,10 @@ class Perlin {
     F3 = 1 / 3;
     G3 = 1 / 6;
 
+    // Perlin noise memoization cache
+    private noiseCache = new Map<string, number>();
+    private readonly CACHE_SIZE_LIMIT = 1000;
+
     constructor(seed = 0) {
         if (seed > 0 && seed < 1) {
             // Scale the seed out
@@ -299,6 +303,34 @@ class Perlin {
 
         // Interpolate the four results
         return this.lerp(this.lerp(n00, n10, u), this.lerp(n01, n11, u), this.fade(y));
+    }
+
+    // Cached version of perlin2 for performance optimization
+    cachedPerlin2(x: number, y: number): number {
+        // Round to 2 decimal places for cache key (reduces key space, increases hit rate)
+        const key = `${x.toFixed(2)},${y.toFixed(2)}`;
+
+        const cached = this.noiseCache.get(key);
+        if (cached !== undefined) {
+            return cached;
+        }
+
+        const value = this.perlin2(x, y);
+        this.noiseCache.set(key, value);
+
+        // Limit cache size to prevent memory bloat
+        if (this.noiseCache.size > this.CACHE_SIZE_LIMIT) {
+            // Delete oldest entry (first key in iteration order)
+            const firstKey = this.noiseCache.keys().next().value;
+            if (firstKey) this.noiseCache.delete(firstKey);
+        }
+
+        return value;
+    }
+
+    // Clear noise cache (useful when seed changes or for testing)
+    clearNoiseCache(): void {
+        this.noiseCache.clear();
     }
 
     perlin3(x: number, y: number, z: number): number {
