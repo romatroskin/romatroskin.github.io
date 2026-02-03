@@ -62,13 +62,37 @@ Visitors experience a polished, professional site that demonstrates technical cr
 
 ### Active
 
-(None — fresh requirements needed for v1.1 milestone)
+**v1.1 — Optimization & Polish**
+
+SEO:
+- [ ] Meta tags (title, description, keywords)
+- [ ] Open Graph images for social sharing
+- [ ] Structured data (JSON-LD schema)
+- [ ] Sitemap generation
+- [ ] robots.txt configuration
+
+Architecture:
+- [ ] Directory reorganization (components/, hooks/, utils/)
+- [ ] Code splitting optimization
+- [ ] Dependency cleanup (remove unused, update outdated)
+
+Performance:
+- [ ] Lighthouse 100 across all categories
+
+Content:
+- [ ] Portfolio/Case studies section
+- [ ] Contact section (static, no backend form)
+- [ ] Copy polish and refinements
+
+Design:
+- [ ] Visual refinements (spacing, typography)
+- [ ] Design polish and consistency
 
 ### Out of Scope
 
 - Multi-page routing with React Router — single-page scroll is sufficient for portfolio
 - Backend/CMS integration — static content is appropriate for this use case
-- Contact form with email integration — defer to future milestone
+- Contact form with email backend — v1.1 adds static contact section, form integration deferred
 - Blog/content section — not needed for initial launch
 - Quote rotation feature — removed rather than fixed
 - Advanced animations beyond waves — current parallax sufficient
@@ -126,4 +150,4 @@ Visitors experience a polished, professional site that demonstrates technical cr
 | React.lazy for below-fold only | Hero is LCP - must load immediately | ✓ Good - no LCP regression |
 
 ---
-*Last updated: 2026-02-03 after v1.0 milestone*
+*Last updated: 2026-02-03 after v1.1 milestone started*
