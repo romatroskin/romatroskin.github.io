@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & Cleanup** - Critical bug fixes, testing setup, dependency cleanup
 - [x] **Phase 2: Component Architecture** - Wave class-to-functional refactor with custom hooks
-- [ ] **Phase 3: Navigation & Core A11Y** - Scroll navigation, mobile menu, keyboard accessibility
+- [x] **Phase 3: Navigation & Core A11Y** - Scroll navigation, mobile menu, keyboard accessibility
 - [ ] **Phase 4: CSS & Visual Design** - CSS modules, color contrast, responsive typography, theming
 - [ ] **Phase 5: Performance & Animation** - Perlin caching, Core Web Vitals, lazy loading
 - [ ] **Phase 6: Testing & Error Handling** - Error boundaries, accessibility tests, coverage
@@ -71,10 +71,10 @@ Plans:
 **Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 03-01-PLAN.md - Dependencies, useScrollSpy hook, semantic landmarks (Wave 1)
-- [ ] 03-02-PLAN.md - SkipLink component, focus indicators (Wave 1)
-- [ ] 03-03-PLAN.md - Mobile menu with focus trap and body scroll lock (Wave 2)
-- [ ] 03-04-PLAN.md - Integration and visual verification checkpoint (Wave 3)
+- [x] 03-01-PLAN.md - Dependencies, useScrollSpy hook, semantic landmarks (Wave 1)
+- [x] 03-02-PLAN.md - SkipLink component, focus indicators (Wave 1)
+- [x] 03-03-PLAN.md - Mobile menu with focus trap and body scroll lock (Wave 2)
+- [x] 03-04-PLAN.md - Integration and visual verification checkpoint (Wave 3)
 
 ### Phase 4: CSS & Visual Design
 **Goal**: Organized CSS architecture with proper theming, contrast compliance, and responsive design
@@ -134,7 +134,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-02-03 |
 | 2. Component Architecture | 4/4 | Complete | 2026-02-03 |
-| 3. Navigation & Core A11Y | 0/4 | Not started | - |
+| 3. Navigation & Core A11Y | 4/4 | Complete | 2026-02-03 |
 | 4. CSS & Visual Design | 0/3 | Not started | - |
 | 5. Performance & Animation | 0/3 | Not started | - |
 | 6. Testing & Error Handling | 0/2 | Not started | - |

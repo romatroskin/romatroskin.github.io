@@ -21,25 +21,25 @@
 
 | ID | Requirement | Priority | Phase | Status |
 |----|-------------|----------|-------|--------|
-| REQ-NAV-001 | Implement smooth scroll-to-section navigation | High | 3 | Pending |
-| REQ-NAV-002 | Add active state highlighting for current section | Medium | 3 | Pending |
-| REQ-NAV-003 | Create mobile hamburger menu with slide-out drawer | High | 3 | Pending |
-| REQ-NAV-004 | Add scroll progress indicator | Low | 3 | Pending |
+| REQ-NAV-001 | Implement smooth scroll-to-section navigation | High | 3 | Complete |
+| REQ-NAV-002 | Add active state highlighting for current section | Medium | 3 | Complete |
+| REQ-NAV-003 | Create mobile hamburger menu with slide-out drawer | High | 3 | Complete |
+| REQ-NAV-004 | Add scroll progress indicator | Low | 3 | Deferred |
 
 ## Accessibility (WCAG 2.1 AA)
 
 | ID | Requirement | Priority | Phase | Status |
 |----|-------------|----------|-------|--------|
-| REQ-A11Y-001 | Add ARIA labels to navigation and interactive elements | High | 3 | Pending |
-| REQ-A11Y-002 | Implement keyboard navigation (Tab order, Enter/Space) | High | 3 | Pending |
+| REQ-A11Y-001 | Add ARIA labels to navigation and interactive elements | High | 3 | Complete |
+| REQ-A11Y-002 | Implement keyboard navigation (Tab order, Enter/Space) | High | 3 | Complete |
 | REQ-A11Y-003 | Ensure color contrast ratio >= 4.5:1 for text | High | 4 | Pending |
-| REQ-A11Y-004 | Add skip-to-content link | Medium | 3 | Pending |
-| REQ-A11Y-005 | Add visible focus indicators on all interactive elements | High | 3 | Pending |
-| REQ-A11Y-006 | Implement proper semantic HTML landmarks (nav, main, section) | High | 3 | Pending |
-| REQ-A11Y-007 | Add alt text for logo and any images | Medium | 3 | Pending |
-| REQ-A11Y-008 | Ensure proper heading hierarchy (h1 -> h2 -> h3) | Medium | 3 | Pending |
+| REQ-A11Y-004 | Add skip-to-content link | Medium | 3 | Complete |
+| REQ-A11Y-005 | Add visible focus indicators on all interactive elements | High | 3 | Complete |
+| REQ-A11Y-006 | Implement proper semantic HTML landmarks (nav, main, section) | High | 3 | Complete |
+| REQ-A11Y-007 | Add alt text for logo and any images | Medium | 3 | Complete |
+| REQ-A11Y-008 | Ensure proper heading hierarchy (h1 -> h2 -> h3) | Medium | 3 | Complete |
 | REQ-A11Y-009 | Add reduced motion support (@media prefers-reduced-motion) | Medium | 5 | Pending |
-| REQ-A11Y-010 | Add html lang attribute if missing | Low | 3 | Pending |
+| REQ-A11Y-010 | Add html lang attribute if missing | Low | 3 | Complete |
 
 ## Responsive Design
 
