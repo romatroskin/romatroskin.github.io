@@ -17,7 +17,7 @@ export function AppFallback({ error, resetErrorBoundary }: FallbackProps) {
         </p>
 
         {/* Show error details in development only */}
-        {import.meta.env.DEV && error?.message && (
+        {import.meta.env.DEV && error instanceof Error && error.message && (
           <pre className={styles.errorDetails}>
             {error.message}
           </pre>
