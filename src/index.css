@@ -1,6 +1,9 @@
 /* Import design tokens and theme system */
 @import './styles/tokens.css';
 @import './styles/themes.css';
+@import './styles/typography.css';
+@import './styles/utilities.css';
+@import './styles/print.css';
 
 #root {
   max-width: 1280px;
@@ -22,20 +25,14 @@ body {
   display: flex;
   margin: 0;
 
-  font-family: var(--font-sans);
-  font-size: var(--font-size-base);
-  line-height: 1.7rem;
-  font-weight: 400;
-
   min-width: 320px;
+  overflow-x: hidden;
 
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -90,6 +87,14 @@ button,
 select,
 textarea {
   font: inherit;
+}
+
+/* Container utility for content width management */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md); /* 1rem side padding minimum */
 }
 
 .no-svg .icon-only::after {

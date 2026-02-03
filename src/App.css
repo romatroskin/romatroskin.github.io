@@ -25,8 +25,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: var(--space-md);
   max-width: 900px;
+  width: 100%;
   text-align: center;
   z-index: 1;
   transform: translateZ(0); /* GPU acceleration */
@@ -57,6 +58,8 @@
   gap: 0.5rem;
   margin-top: 3rem;
   padding: 1rem 2rem;
+  min-height: 44px;
+  min-width: 44px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 2rem;
@@ -100,8 +103,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: var(--space-md);
   max-width: 800px;
+  width: 100%;
   text-align: center;
   z-index: 1;
   transform: translateZ(0);
@@ -147,6 +151,8 @@
 
 .cta-primary {
   padding: 1rem 2.5rem;
+  min-height: 44px;
+  min-width: 44px;
   font-size: 1rem;
   font-weight: 500;
   color: #0f0f1a;
@@ -170,8 +176,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: var(--space-md);
   max-width: 900px;
+  width: 100%;
   text-align: center;
   z-index: 1;
   transform: translateZ(0);
@@ -202,40 +209,34 @@
   margin-top: 1rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Responsive adjustments - Mobile-first approach */
+@media (min-width: 768px) {
   .hero-container,
   .intro-container,
   .about-container {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 
   .logo {
-    max-width: 200px;
+    max-width: 280px;
   }
 
   .scroll-indicator {
-    margin-top: 2rem;
-    padding: 0.75rem 1.5rem;
+    margin-top: 3rem;
+    padding: 1rem 2rem;
   }
 
   .cta-primary {
-    padding: 0.875rem 2rem;
+    padding: 1rem 2.5rem;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.5rem;
-  }
-
-  .section-title {
-    font-size: 1.3rem;
-  }
-
-  .intro-text,
-  .about-text {
-    font-size: 0.95rem;
+/* 320px edge case - tighten spacing if needed */
+@media (max-width: 320px) {
+  .hero-container,
+  .intro-container,
+  .about-container {
+    padding: var(--space-sm);
   }
 }
 
