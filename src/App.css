@@ -138,6 +138,10 @@
   color: var(--color-text-secondary);
   margin-bottom: 1.5rem;
   max-width: 600px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .intro-text strong {
@@ -203,6 +207,10 @@
   line-height: 1.9;
   color: var(--color-text-secondary);
   max-width: 700px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .about-text.highlight {

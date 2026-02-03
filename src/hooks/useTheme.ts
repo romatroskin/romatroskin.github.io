@@ -1,32 +1,44 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useSyncExternalStore, useCallback } from 'react';
 
 type Theme = 'light' | 'dark';
 
-function getInitialTheme(): Theme {
-  const storedTheme = localStorage.getItem('theme') as Theme | null;
-  if (storedTheme) {
-    return storedTheme;
+function getThemeFromDOM(): Theme {
+  const attr = document.documentElement.getAttribute('data-theme');
+  if (attr === 'light' || attr === 'dark') {
+    return attr;
   }
-
-  const currentTheme = document.documentElement.getAttribute('data-theme') as Theme | null;
-  if (currentTheme) {
-    return currentTheme;
-  }
-
+  // Fallback to system preference
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
+// Subscribers for theme changes
+const subscribers = new Set<() => void>();
+
+function subscribe(callback: () => void) {
+  subscribers.add(callback);
+  return () => subscribers.delete(callback);
+}
+
+function notifySubscribers() {
+  subscribers.forEach(callback => callback());
+}
+
+function setThemeToDOM(theme: Theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  notifySubscribers();
+}
+
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  // Use useSyncExternalStore for consistent state across components
+  const theme = useSyncExternalStore(
+    subscribe,
+    getThemeFromDOM,
+    () => 'dark' as Theme // Server snapshot
+  );
 
+  // Listen for system preference changes
   useEffect(() => {
-    // Apply theme to document element
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  useEffect(() => {
-    // Listen for system preference changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     const handleChange = (e: MediaQueryListEvent) => {
@@ -34,8 +46,7 @@ export function useTheme() {
       const storedTheme = localStorage.getItem('theme');
       if (!storedTheme) {
         const newTheme = e.matches ? 'dark' : 'light';
-        setTheme(newTheme);
-        document.documentElement.setAttribute('data-theme', newTheme);
+        setThemeToDOM(newTheme);
       }
     };
 
@@ -43,9 +54,11 @@ export function useTheme() {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => prevTheme === 'light' ? 'dark' : 'light');
-  };
+  const toggleTheme = useCallback(() => {
+    const currentTheme = getThemeFromDOM();
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setThemeToDOM(newTheme);
+  }, []);
 
   return { theme, toggleTheme };
 }
