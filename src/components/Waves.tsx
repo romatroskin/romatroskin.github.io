@@ -68,32 +68,24 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
     // Stable Perlin noise instance
     const noise = usePerlinNoise();
 
-    /**
-     * Measure container dimensions.
-     * Called on mount and window resize.
-     */
-    const measureContainer = useCallback(() => {
-        if (containerRef.current) {
-            containerSize.current = {
-                width: containerRef.current.offsetWidth,
-                height: containerRef.current.offsetHeight,
-            };
-        }
-    }, []);
-
-    // Measure container on mount and resize
+    // Measure container on mount and observe size changes with ResizeObserver
     useEffect(() => {
-        measureContainer();
+        if (!containerRef.current) return;
 
-        const handleResize = () => {
-            measureContainer();
-        };
+        const observer = new ResizeObserver((entries) => {
+            const entry = entries[0];
+            if (entry) {
+                containerSize.current = {
+                    width: entry.contentRect.width,
+                    height: entry.contentRect.height,
+                };
+            }
+        });
 
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [measureContainer]);
+        observer.observe(containerRef.current);
+
+        return () => observer.disconnect();
+    }, []);
 
     /**
      * Calculate wave points using Perlin noise.
@@ -104,6 +96,9 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
             const scale = 100;
             const wavePoints: Point[] = [];
             const containerWidth = containerSize.current.width || 0;
+
+            // Guard against 0-width (initial render before ResizeObserver fires)
+            if (containerWidth <= 0) return [];
 
             // Get current animated values from refs (allows animation loop to read fresh values)
             const { speed: speedProp, height: heightProp, amplitude: amplitudeProp, points: pointsProp } = animatedPropsRef.current;
@@ -159,8 +154,9 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
             svg += cubic(point, wavePoints[i + 1]);
         }
 
-        svg += ` L ${containerWidth} ${containerHeight}`;
-        svg += ` L 0 ${containerHeight} Z`;
+        // Add buffer to ensure full coverage (no visible cutoff at edges)
+        svg += ` L ${containerWidth + 1} ${containerHeight}`;
+        svg += ` L -1 ${containerHeight} Z`;
 
         return svg;
     }, []);
