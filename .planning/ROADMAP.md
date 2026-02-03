@@ -30,10 +30,14 @@ Phases 1-6 complete with 21 plans executed.
   3. Google search results display Organization schema (name, logo, social profiles) in knowledge panel
   4. Production build assets are pre-compressed with Brotli, reducing transfer size by 30-40%
   5. Browser displays favicon across all devices (desktop, mobile, iOS home screen)
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 07-01: TBD
+
+- [ ] 07-01-PLAN.md — Meta tags & basic SEO (title, OG, Twitter, canonical)
+- [ ] 07-02-PLAN.md — Favicon & web manifest (SVG, ICO, apple-touch-icon, PWA)
+- [ ] 07-03-PLAN.md — Build plugins (sitemap, robots.txt, Brotli compression)
+- [ ] 07-04-PLAN.md — OG image & Organization schema (JSON-LD)
 
 #### Phase 8: Architecture Optimization
 **Goal**: Codebase is organized for maintainability, dependencies are lean and current, imports are clean
@@ -109,7 +113,7 @@ Phases execute in numeric order: 7 → 8 → 9 → 10 → 11
 | 4. Accessibility | v1.0 | Complete | Complete | 2026-02-03 |
 | 5. Performance | v1.0 | Complete | Complete | 2026-02-03 |
 | 6. Visual Polish | v1.0 | Complete | Complete | 2026-02-03 |
-| 7. SEO Foundation | v1.1 | 0/TBD | Not started | - |
+| 7. SEO Foundation | v1.1 | 0/4 | Not started | - |
 | 8. Architecture | v1.1 | 0/TBD | Not started | - |
 | 9. Contact Section | v1.1 | 0/TBD | Not started | - |
 | 10. Design & Performance | v1.1 | 0/TBD | Not started | - |
