@@ -24,7 +24,7 @@
   max-width: 80vw;
   height: 100vh;
   background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-  padding: 60px 24px 24px;
+  padding: 80px 24px 24px;
   z-index: 9999;
   animation: slideIn 0.3s ease-out;
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
@@ -72,6 +72,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  margin-top: 20px;
 }
 
 .navItem {
