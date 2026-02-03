@@ -29,6 +29,8 @@
   max-width: 900px;
   text-align: center;
   z-index: 1;
+  transform: translateZ(0); /* GPU acceleration */
+  backface-visibility: hidden;
 }
 
 .hero-title {
@@ -102,6 +104,8 @@
   max-width: 800px;
   text-align: center;
   z-index: 1;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .section-title {
@@ -170,6 +174,8 @@
   max-width: 900px;
   text-align: center;
   z-index: 1;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .about-content {

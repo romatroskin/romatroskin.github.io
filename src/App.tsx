@@ -17,47 +17,34 @@ function randomRange(min: number, max: number): number {
 function App() {
     const parallaxRef = useRef<IParallax>(null);
     const [currentPage, setCurrentPage] = useState(0);
-    const scrollProgressRef = useRef(0);
+    const [scrollProgress, setScrollProgress] = useState(0);
 
     const { height } = useWindowSize();
 
-    // Smooth spring for wave properties
-    const [waveSpring, waveApi] = useSpring(() => ({
-        progress: 0,
-        config: { mass: 1, tension: 280, friction: 60 },
-    }));
-
-    // Track scroll position and update spring continuously
+    // Track scroll position directly for immediate response
     useEffect(() => {
         const container = parallaxRef.current?.container?.current;
         if (!container) return;
 
-        let rafId: number;
-
-        const updateProgress = () => {
+        const handleScroll = () => {
             const scrollTop = container.scrollTop;
             const scrollHeight = container.scrollHeight - container.clientHeight;
-            const progress = scrollHeight > 0 ? Math.max(0, Math.min(1, scrollTop / scrollHeight)) : 0;
+            const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
 
-            // Only update if changed
-            if (Math.abs(progress - scrollProgressRef.current) > 0.0001) {
-                scrollProgressRef.current = progress;
-                waveApi.start({ progress });
+            setScrollProgress(progress);
 
-                // Update current page for header
-                const pageHeight = container.clientHeight;
-                const newPage = Math.round(scrollTop / pageHeight);
-                if (newPage >= 0 && newPage < TOTAL_PAGES && newPage !== currentPage) {
-                    setCurrentPage(newPage);
-                }
+            // Update current page for header
+            const pageHeight = container.clientHeight;
+            const newPage = Math.round(scrollTop / pageHeight);
+            if (newPage >= 0 && newPage < TOTAL_PAGES) {
+                setCurrentPage(newPage);
             }
-
-            rafId = requestAnimationFrame(updateProgress);
         };
 
-        rafId = requestAnimationFrame(updateProgress);
-        return () => cancelAnimationFrame(rafId);
-    }, [waveApi, currentPage]);
+        container.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll(); // Initial call
+        return () => container.removeEventListener("scroll", handleScroll);
+    }, []);
 
     // Snap to page after scroll ends
     useEffect(() => {
@@ -84,6 +71,18 @@ function App() {
             clearTimeout(snapTimeout);
         };
     }, []);
+
+    // Smooth spring animation driven by scroll progress
+    // Lower tension = more fluid, higher friction = less bounce
+    const waveSpring = useSpring({
+        progress: scrollProgress,
+        config: {
+            tension: 120,
+            friction: 26,
+            mass: 1,
+            precision: 0.0001,
+        },
+    });
 
     const waveConfigs = useTrail(numWaves, {
         from: { opacity: 0.3 },
@@ -137,36 +136,43 @@ function App() {
                             points: pointsNoise,
                         } = waveNoiseOffsets[index];
 
-                        // Each wave has different parallax depth
-                        const parallaxFactor = 1 - index * 0.15;
+                        // Each wave has different parallax depth - back waves move less
+                        const depth = (numWaves - index) / numWaves; // 1.0 for back, 0.2 for front
+                        const parallaxMultiplier = 0.4 + depth * 0.6; // 0.4 to 1.0
 
                         return (
                             <WavyBackground
                                 key={index}
                                 options={{
                                     height: waveSpring.progress.to(
-                                        (p) => height * (0.4 + p * 0.3) + index * 60 * parallaxFactor
+                                        (p) => height * (0.35 + p * 0.35) + index * 50 * parallaxMultiplier
                                     ),
                                     amplitude: waveSpring.progress.to(
-                                        (p) => 60 + p * 40 + amplitudeNoise * parallaxFactor
+                                        (p) => 50 + p * 50 * parallaxMultiplier + amplitudeNoise
                                     ),
                                     speed: waveSpring.progress.to(
-                                        (p) => 0.02 + p * 0.04 + speedNoise
+                                        (p) => 0.015 + p * 0.03 * parallaxMultiplier + speedNoise
                                     ),
                                     points: 5 + index + pointsNoise,
                                     paused: false,
                                 }}
                                 style={{
                                     transform: waveSpring.progress.to(
-                                        (p) => `translateY(${p * index * -20}px) scaleY(${1 + p * 0.1 * (index + 1)})`
+                                        (p) => {
+                                            // Back waves move more slowly (parallax effect)
+                                            const yOffset = p * (index + 1) * -25 * parallaxMultiplier;
+                                            const scale = 1 + p * 0.08 * (index + 1);
+                                            return `translateY(${yOffset}px) scaleY(${scale})`;
+                                        }
                                     ),
                                     opacity: springProps.opacity,
                                 }}
                                 fill={waveSpring.progress.to(
                                     (p) => {
-                                        const hue = 240 - index * 8 - p * 20;
-                                        const sat = 55 - index * 3;
-                                        const light = 28 - index * 3 - p * 5;
+                                        // Deeper colors as we scroll, with depth-based variation
+                                        const hue = 235 - index * 10 - p * 25;
+                                        const sat = 60 - index * 4;
+                                        const light = 30 - index * 4 - p * 8;
                                         return `hsl(${hue}, ${sat}%, ${light}%)`;
                                     }
                                 )}
@@ -180,7 +186,7 @@ function App() {
                     {/* Page 1: Hero - Logo and tagline */}
                     <ParallaxLayer
                         offset={0}
-                        speed={0.1}
+                        speed={0.2}
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -214,7 +220,7 @@ function App() {
                     {/* Page 2: Introduction */}
                     <ParallaxLayer
                         offset={1}
-                        speed={0.2}
+                        speed={0.3}
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -246,7 +252,7 @@ function App() {
                     {/* Page 3: About */}
                     <ParallaxLayer
                         offset={2}
-                        speed={0.3}
+                        speed={0.4}
                         style={{
                             display: "flex",
                             alignItems: "center",
