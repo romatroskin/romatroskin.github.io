@@ -10,6 +10,7 @@ interface WavesPropTypes {
     amplitude: number | Interpolation<number, number>;
     height: number | Interpolation<number, number>;
     paused: boolean;
+    fps?: number;
     svgId?: string;
     svgPathId?: string;
 }
@@ -48,6 +49,7 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
         amplitude = 10,
         height = 50,
         paused = false,
+        fps = 30,
         svgId = "wave",
         svgPathId = "wave-path",
         style,
@@ -111,7 +113,7 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
 
             for (let i = 0; i <= pointsProp; i++) {
                 const seed = step * i + stepFactor;
-                const noiseValue = noise.perlin2(seed / scale, 1);
+                const noiseValue = noise.cachedPerlin2(seed / scale, 1);
                 const y = noiseValue * amplitudeValue + heightValue;
                 wavePoints.push({ x: i * pointStep, y });
             }
@@ -169,7 +171,7 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
             const newPath = buildPath(wavePoints);
             setPath(newPath);
         },
-        { fps: 30, paused }
+        { fps, paused }
     );
 
     return (

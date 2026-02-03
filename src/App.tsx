@@ -9,12 +9,13 @@ import Header from "./components/Header/Header";
 import { SkipLink } from "./components/SkipLink/SkipLink";
 import { ThemeToggle } from "./components/ThemeToggle/ThemeToggle";
 import { useTheme } from "./hooks/useTheme";
+import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
+import { useAdaptiveFrameRate } from './hooks/useAdaptiveFrameRate';
 
 // Lazy load below-fold sections (pages 2-3)
 const ServicesSection = lazy(() => import('./sections/ServicesSection'));
 const AboutSection = lazy(() => import('./sections/AboutSection'));
 
-const numWaves = 5;
 const TOTAL_PAGES = 3;
 
 function randomRange(min: number, max: number): number {
@@ -36,6 +37,49 @@ function App() {
     const { theme } = useTheme();
 
     const { height } = useWindowSize();
+
+    // Accessibility and performance hooks
+    const prefersReducedMotion = usePrefersReducedMotion();
+    const qualityLevel = useAdaptiveFrameRate(60);
+
+    // Animation parameters based on performance and accessibility
+    const animationParams = useMemo(() => {
+        // Reduced motion: 10x slower animation, minimal movement
+        if (prefersReducedMotion) {
+            return {
+                fps: 3,           // Very slow update rate
+                speedMultiplier: 0.1,  // 10x slower speed
+                numWaves: 3,      // Fewer waves for simplicity
+                parallaxSpeedMultiplier: 0.1, // Almost static parallax
+            };
+        }
+
+        // Adaptive based on detected frame rate
+        switch (qualityLevel) {
+            case 'low':
+                return {
+                    fps: 15,
+                    speedMultiplier: 0.5,
+                    numWaves: 3,
+                    parallaxSpeedMultiplier: 0.5,
+                };
+            case 'medium':
+                return {
+                    fps: 24,
+                    speedMultiplier: 0.75,
+                    numWaves: 4,
+                    parallaxSpeedMultiplier: 0.75,
+                };
+            case 'high':
+            default:
+                return {
+                    fps: 30,
+                    speedMultiplier: 1,
+                    numWaves: 5,
+                    parallaxSpeedMultiplier: 1,
+                };
+        }
+    }, [prefersReducedMotion, qualityLevel]);
 
     // Track scroll position directly for immediate response
     useEffect(() => {
@@ -100,19 +144,19 @@ function App() {
         },
     });
 
-    const waveConfigs = useTrail(numWaves, {
+    const waveConfigs = useTrail(animationParams.numWaves, {
         from: { opacity: 0.3 },
         to: { opacity: 0.7 },
         config: config.gentle,
     });
 
     const waveNoiseOffsets = useMemo(() => {
-        return Array.from({ length: numWaves }, () => ({
+        return Array.from({ length: animationParams.numWaves }, () => ({
             amplitude: randomRange(-15, 15),
             speed: randomRange(-0.003, 0.003),
             points: randomRange(-0.5, 0.5),
         }));
-    }, []);
+    }, [animationParams.numWaves]);
 
     const scrollToPage = useCallback((page: number) => {
         parallaxRef.current?.scrollTo(page);
@@ -157,7 +201,7 @@ function App() {
                         } = waveNoiseOffsets[index];
 
                         // Each wave has different parallax depth - back waves move less
-                        const depth = (numWaves - index) / numWaves; // 1.0 for back, 0.2 for front
+                        const depth = (animationParams.numWaves - index) / animationParams.numWaves; // 1.0 for back, 0.2 for front
                         const parallaxMultiplier = 0.4 + depth * 0.6; // 0.4 to 1.0
 
                         return (
@@ -171,10 +215,11 @@ function App() {
                                         (p) => 50 + p * 50 * parallaxMultiplier + amplitudeNoise
                                     ),
                                     speed: waveSpring.progress.to(
-                                        (p) => 0.015 + p * 0.03 * parallaxMultiplier + speedNoise
+                                        (p) => (0.015 + p * 0.03 * parallaxMultiplier + speedNoise) * animationParams.speedMultiplier
                                     ),
                                     points: 5 + index + pointsNoise,
                                     paused: false,
+                                    fps: animationParams.fps,
                                 }}
                                 style={{
                                     transform: waveSpring.progress.to(
@@ -210,7 +255,7 @@ function App() {
                         {/* Page 1: Hero - Logo and tagline */}
                         <ParallaxLayer
                             offset={0}
-                            speed={0.2}
+                            speed={0.2 * animationParams.parallaxSpeedMultiplier}
                             style={{
                                 display: "flex",
                                 alignItems: "center",
@@ -252,7 +297,7 @@ function App() {
                         {/* Page 2: Introduction */}
                         <ParallaxLayer
                             offset={1}
-                            speed={0.3}
+                            speed={0.3 * animationParams.parallaxSpeedMultiplier}
                             style={{
                                 display: "flex",
                                 alignItems: "center",
@@ -267,7 +312,7 @@ function App() {
                         {/* Page 3: About */}
                         <ParallaxLayer
                             offset={2}
-                            speed={0.4}
+                            speed={0.4 * animationParams.parallaxSpeedMultiplier}
                             style={{
                                 display: "flex",
                                 alignItems: "center",
