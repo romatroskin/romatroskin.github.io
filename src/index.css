@@ -1,3 +1,7 @@
+/* Import design tokens and theme system */
+@import './styles/tokens.css';
+@import './styles/themes.css';
+
 #root {
   max-width: 1280px;
   text-align: center;
@@ -11,8 +15,6 @@
 
 storybook-root,
 body {
-  color-scheme: dark;
-
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
@@ -20,16 +22,15 @@ body {
   display: flex;
   margin: 0;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
   line-height: 1.7rem;
   font-weight: 400;
 
   min-width: 320px;
 
-  background-color: var(--primary-bg-color);
-  color: var(--primary-text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -40,12 +41,12 @@ body {
 
 a {
   font-weight: 500;
-  color: var(--accent-color);
+  color: var(--color-accent);
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: var(--color-accent-hover);
 }
 
 /* a[href]:not([class]) {
@@ -150,11 +151,11 @@ textarea {
   /* Smaller base size */
   font-weight: 100;
   line-height: 1.2em;
-  color: white;
-  border: 3px solid white;
-  padding: 0.5em;
-  border-radius: 5px;
-  margin-top: 1rem;
+  color: var(--color-text-primary);
+  border: 3px solid var(--color-text-primary);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
   box-sizing: border-box;
   width: 90%;
   /* Ensure it scales down on small screens */
@@ -164,11 +165,11 @@ textarea {
 
 /* Subheading responsive styling */
 .splash-subhead {
-  color: white;
-  font-size: 1rem;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
   line-height: 1.5em;
   letter-spacing: 0.05em;
-  padding: 0.5em;
+  padding: var(--space-sm);
   opacity: 0.9;
   max-width: 800px;
   text-align: center;
@@ -226,21 +227,21 @@ textarea {
 
 /* About section styles */
 .about-title {
-  font-size: 2em;
+  font-size: var(--font-size-3xl);
   /* Title size */
-  margin-bottom: 0.5em;
+  margin-bottom: var(--space-sm);
   /* Space below title */
-  color: white;
+  color: var(--color-text-primary);
 }
 
 .about-description {
-  font-size: 1.1em;
+  font-size: var(--font-size-lg);
   /* Description size */
   line-height: 1.6em;
   /* Line height for readability */
-  margin-bottom: 1em;
+  margin-bottom: var(--space-md);
   /* Space between paragraphs */
-  color: white;
+  color: var(--color-text-primary);
 }
 
 .content-wrapper {
@@ -269,12 +270,12 @@ textarea {
 
 /* This is a modifier class used when the content-head is inside a ribbon */
 .content-head-ribbon {
-  color: white;
+  color: var(--color-text-primary);
 }
 
 /* This is the class used for the content sub-headers (<h3>) */
 .content-subhead {
-  color: #1f8dd6;
+  color: var(--color-accent);
 }
 
 .content-subhead i {
@@ -316,23 +317,24 @@ h4,
 h5,
 h6,
 label {
-  color: var(--primary-text-color);
+  color: var(--color-text-primary);
 }
 
 button {
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: var(--font-size-base);
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color var(--transition-fast);
 }
 
 button:hover {
-  border-color: var(--accent-color);
+  border-color: var(--color-accent);
 }
 
 button:disabled {
@@ -356,27 +358,11 @@ select:focus,
 textarea:focus,
 button:focus-visible {
   box-shadow: none;
-  outline: 2px dotted -webkit-focus-ring-color;
+  outline: 2px solid var(--color-focus);
   outline-offset: .05em;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    /* color: #213547; */
-    --primary-bg-color: rgba(255, 255, 255, 0.0);
-    --secondary-bg-color: #222222;
-    --secondary-text-color: #f9f9f9;
-    --primary-text-color: #333333;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Legacy color scheme media query removed - theme system handles this now */
 
 @media (min-width: 48em) {
 

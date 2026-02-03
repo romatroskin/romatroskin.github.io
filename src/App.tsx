@@ -7,6 +7,7 @@ import { useWindowSize } from "usehooks-ts";
 import "./App.css";
 import Header from "./components/Header/Header";
 import { SkipLink } from "./components/SkipLink/SkipLink";
+import { ThemeToggle } from "./components/ThemeToggle/ThemeToggle";
 
 const numWaves = 5;
 const TOTAL_PAGES = 3;
@@ -106,7 +107,9 @@ function App() {
     return (
         <>
             <SkipLink href="#main-content" />
-            <Header onNavigate={scrollToPage} currentPage={currentPage} />
+            <Header onNavigate={scrollToPage} currentPage={currentPage}>
+                <ThemeToggle />
+            </Header>
             <div
                 style={{
                     position: "absolute",

@@ -6,6 +6,7 @@ import styles from "./Header.module.css";
 interface HeaderProps {
     onNavigate?: (page: number) => void;
     currentPage?: number;
+    children?: React.ReactNode;
 }
 
 interface NavItem {
@@ -22,7 +23,7 @@ export const navItems: NavItem[] = [
     { label: "Contact", page: -1, isExternal: true, href: "mailto:contact@puffpuff.dev" },
 ];
 
-function Header({ onNavigate, currentPage = 0 }: HeaderProps) {
+function Header({ onNavigate, currentPage = 0, children }: HeaderProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const handleNavClick = (e: React.MouseEvent, page: number) => {
@@ -59,6 +60,11 @@ function Header({ onNavigate, currentPage = 0 }: HeaderProps) {
                         </li>
                     ))}
                 </ul>
+                {children && (
+                    <div className={styles.headerActions}>
+                        {children}
+                    </div>
+                )}
                 <button
                     className={styles.hamburger}
                     onClick={() => setIsMobileMenuOpen(true)}

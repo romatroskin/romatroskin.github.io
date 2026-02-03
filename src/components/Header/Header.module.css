@@ -52,6 +52,12 @@
   color: #535bf2;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -87,6 +93,12 @@
 
   .navList {
     display: none;
+  }
+
+  .headerActions {
+    /* Keep theme toggle visible on mobile */
+    position: absolute;
+    right: 60px;
   }
 }
 
