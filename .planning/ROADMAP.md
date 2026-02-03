@@ -92,7 +92,7 @@ Plans:
 - [x] 04-01-PLAN.md — CSS architecture and theme system (design tokens, themes, useTheme hook, ThemeToggle, FOUC prevention)
 - [x] 04-02-PLAN.md — Responsive design (fluid typography, 44px touch targets, 320px reflow)
 - [x] 04-03-PLAN.md — Visual polish (micro-interactions, GPU transitions, reduced-motion support, print stylesheet)
-- [ ] 04-04-PLAN.md — Gap closure: Fix logo visibility and text contrast over waves
+- [x] 04-04-PLAN.md — Gap closure: Fix logo visibility and text contrast over waves
 
 ### Phase 5: Performance & Animation
 **Goal**: Achieve Core Web Vitals compliance with optimized animations across devices
@@ -136,7 +136,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-02-03 |
 | 2. Component Architecture | 4/4 | Complete | 2026-02-03 |
 | 3. Navigation & Core A11Y | 4/4 | Complete | 2026-02-03 |
-| 4. CSS & Visual Design | 3/4 | Gap closure in progress | - |
+| 4. CSS & Visual Design | 4/4 | Complete | 2026-02-03 |
 | 5. Performance & Animation | 0/3 | Not started | - |
 | 6. Testing & Error Handling | 0/2 | Not started | - |
 
