@@ -48,11 +48,12 @@ Plans:
   2. Wave component is functional with hooks (no class syntax)
   3. Animation continues smoothly during scroll interactions
   4. Component smoke tests pass for App, Header, WavyBackground
-**Plans**: TBD
+**Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 02-01: Custom hooks extraction (usePerlinNoise, useAnimationFrame)
-- [ ] 02-02: Wave functional component migration with tests
+
+- [ ] 02-01-PLAN.md — Custom hooks extraction (useAnimationFrame, usePerlinNoise) with unit tests
+- [ ] 02-02-PLAN.md — Wave functional component migration with smoke tests (visual parity checkpoint)
 
 ### Phase 3: Navigation & Core A11Y
 **Goal**: Users can navigate the site via scroll, keyboard, and mobile menu with proper accessibility support
@@ -129,7 +130,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-02-03 |
-| 2. Component Architecture | 0/2 | Not started | - |
+| 2. Component Architecture | 0/2 | Planned | - |
 | 3. Navigation & Core A11Y | 0/3 | Not started | - |
 | 4. CSS & Visual Design | 0/3 | Not started | - |
 | 5. Performance & Animation | 0/3 | Not started | - |
