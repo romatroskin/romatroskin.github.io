@@ -186,7 +186,6 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
             }}
             className={styles.hologramWave}
             style={{
-                width: "100%",
                 display: "inline-block",
                 ...style,
             }}

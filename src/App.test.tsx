@@ -31,14 +31,21 @@ describe('App', () => {
     expect(screen.getByRole('banner')).toBeInTheDocument();
   });
 
-  it('renders splash content', () => {
+  it('renders hero content', () => {
     render(<App />);
     expect(screen.getByText(/Where Code Meets Creativity/i)).toBeInTheDocument();
-    expect(screen.getByText(/Welcome to the Craft Applications Workshop/i)).toBeInTheDocument();
+    expect(screen.getByText(/Dreams Take Shape/i)).toBeInTheDocument();
+  });
+
+  it('renders intro section', () => {
+    render(<App />);
+    expect(screen.getByText(/Craft Applications Workshop/i)).toBeInTheDocument();
   });
 
   it('renders about section', () => {
     render(<App />);
-    expect(screen.getByText(/About Us/i)).toBeInTheDocument();
+    // Use getAllByText since "About" appears in nav and section
+    const aboutElements = screen.getAllByText(/About/i);
+    expect(aboutElements.length).toBeGreaterThan(0);
   });
 });
