@@ -121,11 +121,11 @@ Plans:
   1. Error in wave animation shows fallback UI instead of white screen
   2. vitest-axe accessibility tests pass for all major components
   3. Application recovers gracefully from network failures or missing assets
-**Plans**: TBD
+**Plans**: 2 plans in 1 wave
 
 Plans:
-- [ ] 06-01: Error boundaries and fallback UI
-- [ ] 06-02: Accessibility test suite with vitest-axe
+- [ ] 06-01-PLAN.md - Error boundaries and fallback UI (react-error-boundary, storage utility, wave/app fallbacks)
+- [ ] 06-02-PLAN.md - Accessibility test suite with vitest-axe (Header, App, ThemeToggle, SkipLink)
 
 ## Progress
 
