@@ -302,25 +302,7 @@ textarea {
   width: 100%;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-h2 {
-  font-size: 2em;
-}
-
-p {
-  font-size: 1em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+/* Typography handled by typography.css */
 label {
   color: var(--color-text-primary);
 }
@@ -371,10 +353,7 @@ button:focus-visible {
 
 @media (min-width: 48em) {
 
-  /* We increase the body font size */
-  body {
-    font-size: 16px;
-  }
+  /* Typography handled by typography.css */
 
   /* We can align the menu header to the left, but float the
   menu items to the right. */
