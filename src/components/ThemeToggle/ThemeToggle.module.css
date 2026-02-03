@@ -1,0 +1,48 @@
+/* Theme Toggle Component Styles */
+
+.toggle {
+  /* Touch target size */
+  min-width: 44px;
+  min-height: 44px;
+
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Styling */
+  background-color: transparent;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+
+  /* Transitions */
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.toggle:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-bg-secondary);
+}
+
+.toggle:active {
+  transform: scale(0.95);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform var(--transition-base);
+}
+
+.toggle:hover .icon {
+  transform: rotate(15deg);
+}
