@@ -105,12 +105,13 @@ Plans:
   4. CLS (Cumulative Layout Shift) under 0.1
   5. Users with prefers-reduced-motion see slow/minimal animations (not disabled)
   6. Wave animations run smoothly on mid-tier mobile devices (no frame drops)
-**Plans**: 3 plans in 2 waves
+**Plans**: 4 plans in 2 waves
 
 Plans:
-- [ ] 05-01-PLAN.md — Performance measurement infrastructure (web-vitals, usePrefersReducedMotion hook)
-- [ ] 05-02-PLAN.md — Core Web Vitals optimization (LCP preloading, CLS layout stability)
-- [ ] 05-03-PLAN.md — Adaptive animations (useAdaptiveFrameRate, reduced motion integration, PerformanceIndicator)
+- [ ] 05-01-PLAN.md — Performance measurement + Perlin memoization (web-vitals, LoAF monitoring, usePrefersReducedMotion, cachedPerlin2)
+- [ ] 05-02-PLAN.md — Core Web Vitals optimization (LCP preloading, srcset, CLS layout stability)
+- [ ] 05-03-PLAN.md — Adaptive animations (useAdaptiveFrameRate, reduced motion integration, PerformanceIndicator, fps wiring)
+- [ ] 05-04-PLAN.md — Lazy loading (React.lazy for below-fold sections, Suspense fallbacks)
 
 ### Phase 6: Testing & Error Handling
 **Goal**: Comprehensive test coverage and graceful error handling for production resilience
@@ -137,7 +138,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Component Architecture | 4/4 | Complete | 2026-02-03 |
 | 3. Navigation & Core A11Y | 4/4 | Complete | 2026-02-03 |
 | 4. CSS & Visual Design | 4/4 | Complete | 2026-02-03 |
-| 5. Performance & Animation | 0/3 | Planned | - |
+| 5. Performance & Animation | 0/4 | Planned | - |
 | 6. Testing & Error Handling | 0/2 | Not started | - |
 
 ---

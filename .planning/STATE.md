@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-02)
 
 **Core value:** Visitors experience a polished, professional site that demonstrates technical craft through smooth animations while clearly communicating Puff Puff Dev's services and value proposition.
-**Current focus:** Phase 3 - Navigation & Core A11Y (VERIFIED COMPLETE)
+**Current focus:** Phase 5 - Performance & Animation
 
 ## Current Position
 
-Phase: 4 of 6 (CSS & Visual Design) - COMPLETE
-Plan: 3 of 3 in current phase (COMPLETE)
-Status: Phase complete
-Last activity: 2026-02-03 - Completed 04-03-PLAN.md
+Phase: 5 of 6 (Performance & Animation) - IN PROGRESS
+Plan: 1 of 4 in current phase (COMPLETE)
+Status: In progress
+Last activity: 2026-02-03 - Completed 05-01-PLAN.md
 
-Progress: [███████████████     ] 75%
+Progress: [████████████████    ] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
-- Average duration: ~3.2 minutes
-- Total execution time: ~0.80 hours
+- Total plans completed: 16
+- Average duration: ~3.1 minutes
+- Total execution time: ~0.85 hours
 
 **By Phase:**
 
@@ -31,11 +31,12 @@ Progress: [███████████████     ] 75%
 | 02    | 4     | ~14min | ~3.5 min |
 | 03    | 4     | ~18min | ~4.5 min |
 | 04    | 3     | ~11min | ~3.7 min |
+| 05    | 1     | ~2min  | ~2.0 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 8min (03-04), 3min (04-01), 4min (04-02), 4min (04-03)
-- Trend: Consistent velocity ~3-4min, 03-04 spike due to FocusTrap debugging
+- Last 5 plans: 3min (04-01), 4min (04-02), 4min (04-03), 2min (05-01)
+- Trend: Increasing efficiency, 05-01 fastest plan yet
 
 *Updated after each plan completion*
 
@@ -81,6 +82,10 @@ Recent decisions affecting current work:
 | GPU-ACCEL-001        | 04-03 | All transitions use GPU-accelerated properties  | 60fps performance using transform/opacity/box-shadow only  |
 | REDUCED-MOTION-001   | 04-03 | Global prefers-reduced-motion support           | WCAG 2.1 SC 2.3.3 compliance via utilities.css             |
 | PRINT-OPT-001        | 04-03 | Print stylesheet hides interactive elements     | Clean print output with link URLs shown                    |
+| WEB-VITALS-001       | 05-01 | Use web-vitals library for field measurement    | Official Google library handles edge cases, buffering       |
+| LOAF-API-001         | 05-01 | Long Animation Frames API for INP monitoring    | Better INP diagnostics than Long Tasks API (Chrome 123+)    |
+| PERLIN-CACHE-001     | 05-01 | Perlin noise cache with 1000 entry limit        | Reduces CPU load, prevents memory bloat                     |
+| REDUCED-MOTION-002   | 05-01 | SSR-safe reduced motion hook with inverted query| Query 'no-preference' and invert for clear boolean semantics|
 
 ### Pending Todos
 
@@ -96,9 +101,9 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 04-03-PLAN.md (Phase 4 complete)
+Stopped at: Completed 05-01-PLAN.md (Performance measurement infrastructure)
 Resume file: None
 
 ---
 
-Next step: Begin Phase 5 (Deployment & CI/CD)
+Next step: Continue Phase 5 - Plan 05-02 (Core Web Vitals optimization)
