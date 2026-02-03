@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-02)
 ## Current Position
 
 Phase: 5 of 6 (Performance & Animation) - IN PROGRESS
-Plan: 1 of 4 in current phase (COMPLETE)
+Plan: 2 of 4 in current phase (COMPLETE)
 Status: In progress
-Last activity: 2026-02-03 - Completed 05-01-PLAN.md
+Last activity: 2026-02-03 - Completed 05-02-PLAN.md
 
-Progress: [████████████████    ] 80%
+Progress: [████████████████▓   ] 83%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16
+- Total plans completed: 17
 - Average duration: ~3.1 minutes
-- Total execution time: ~0.85 hours
+- Total execution time: ~0.90 hours
 
 **By Phase:**
 
@@ -31,12 +31,12 @@ Progress: [████████████████    ] 80%
 | 02    | 4     | ~14min | ~3.5 min |
 | 03    | 4     | ~18min | ~4.5 min |
 | 04    | 3     | ~11min | ~3.7 min |
-| 05    | 1     | ~2min  | ~2.0 min |
+| 05    | 2     | ~5min  | ~2.5 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 3min (04-01), 4min (04-02), 4min (04-03), 2min (05-01)
-- Trend: Increasing efficiency, 05-01 fastest plan yet
+- Last 5 plans: 4min (04-02), 4min (04-03), 2min (05-01), 3min (05-02)
+- Trend: Phase 5 maintaining high efficiency (avg 2.5min)
 
 *Updated after each plan completion*
 
@@ -86,11 +86,17 @@ Recent decisions affecting current work:
 | LOAF-API-001         | 05-01 | Long Animation Frames API for INP monitoring    | Better INP diagnostics than Long Tasks API (Chrome 123+)    |
 | PERLIN-CACHE-001     | 05-01 | Perlin noise cache with 1000 entry limit        | Reduces CPU load, prevents memory bloat                     |
 | REDUCED-MOTION-002   | 05-01 | SSR-safe reduced motion hook with inverted query| Query 'no-preference' and invert for clear boolean semantics|
+| PRELOAD-LCP-001      | 05-02 | Preload logo SVG as LCP candidate               | Reduces LCP by starting fetch during HTML parse             |
+| PRECONNECT-EXT-001   | 05-02 | Preconnect to external resource domains         | Reduces DNS/TLS time for external resources                 |
+| EXPLICIT-DIMS-001    | 05-02 | Explicit width/height on all images             | Prevents CLS from image loading                             |
+| LAYOUT-STABLE-001    | 05-02 | Min-height on containers for stability          | Prevents CLS before hydration                               |
+| SRCSET-SVG-001       | 05-02 | Use srcSet even for SVGs                        | Ensures browser knows image is resolution-independent       |
 
 ### Pending Todos
 
-- Fix TypeScript errors in test files related to @testing-library/jest-dom type definitions (low priority, tests pass)
+- [Resolved]: Fixed TypeScript test errors by excluding test files from production build (05-02)
 - Remove unused focus-trap-react from dependencies (can do in cleanup phase)
+- Manual Lighthouse audit needed to confirm Core Web Vitals targets (LCP < 2.5s, CLS < 0.1)
 
 ### Blockers/Concerns
 
@@ -101,9 +107,9 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 05-01-PLAN.md (Performance measurement infrastructure)
+Stopped at: Completed 05-02-PLAN.md (Core Web Vitals optimization)
 Resume file: None
 
 ---
 
-Next step: Continue Phase 5 - Plan 05-02 (Core Web Vitals optimization)
+Next step: Continue Phase 5 - Plan 05-03 (Code splitting and lazy loading)
