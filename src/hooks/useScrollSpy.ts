@@ -31,7 +31,7 @@ export function useScrollSpy(
       // Find the entry with highest intersection ratio
       // This handles multiple sections intersecting simultaneously
       let maxRatio = 0;
-      let activeEntry: IntersectionObserverEntry | null = null;
+      let activeEntry: IntersectionObserverEntry | undefined;
 
       entries.forEach((entry) => {
         if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {

@@ -210,8 +210,14 @@ function App() {
                                     <a href="#" target="_blank" rel="noreferrer">
                                         <img
                                             src="https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg"
+                                            srcSet="
+                                                https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg 1x,
+                                                https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg 2x
+                                            "
                                             className="logo"
                                             alt="Puff Puff logo"
+                                            width="200"
+                                            height="200"
                                         />
                                     </a>
                                     <h1 id="hero-heading" className="hero-title">
