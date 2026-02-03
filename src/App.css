@@ -238,3 +238,47 @@
     font-size: 0.95rem;
   }
 }
+
+/* ========================================
+   Focus Indicators - WCAG 2.4.7 Compliance
+   ======================================== */
+
+/*
+ * Custom focus indicators for keyboard navigation
+ * Uses :focus-visible to only show on keyboard focus, not mouse clicks
+ * Meets WCAG 2.1 SC 1.4.11 (3:1 contrast ratio requirement)
+ */
+
+/* Interactive elements - buttons, links */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #535bf2;
+  outline-offset: 2px;
+}
+
+/* Ensure high contrast against dark backgrounds */
+.hero-container button:focus-visible,
+.intro-container button:focus-visible,
+.about-container button:focus-visible {
+  outline-color: #7c83ff;
+}
+
+/* Header navigation links - ensure visibility against header */
+nav a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default outline only when we provide custom focus */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *:focus-visible {
+    transition: none;
+  }
+}
