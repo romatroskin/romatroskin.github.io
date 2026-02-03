@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState, useEffect, useCallback } from "react";
+import { useRef, useMemo, useState, useEffect, useCallback, lazy, Suspense } from "react";
 import { config, useTrail, useSpring } from "@react-spring/web";
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
 import WavyBackground from "./components/WavyBackground";
@@ -10,11 +10,23 @@ import { SkipLink } from "./components/SkipLink/SkipLink";
 import { ThemeToggle } from "./components/ThemeToggle/ThemeToggle";
 import { useTheme } from "./hooks/useTheme";
 
+// Lazy load below-fold sections (pages 2-3)
+const ServicesSection = lazy(() => import('./sections/ServicesSection'));
+const AboutSection = lazy(() => import('./sections/AboutSection'));
+
 const numWaves = 5;
 const TOTAL_PAGES = 3;
 
 function randomRange(min: number, max: number): number {
     return Math.random() * (max - min) + min;
+}
+
+function SectionLoader() {
+    return (
+        <div className="section-loader content-card" aria-busy="true" aria-label="Loading section">
+            <div className="loader-text">Loading...</div>
+        </div>
+    );
 }
 
 function App() {
@@ -247,28 +259,9 @@ function App() {
                                 justifyContent: "center",
                             }}
                         >
-                            <section id="services-section" aria-labelledby="services-heading">
-                                <div className="intro-container content-card">
-                                    <h2 id="services-heading" className="section-title">Craft Applications Workshop</h2>
-                                    <p className="intro-text">
-                                        Are you seeking to bring your mobile application idea to life
-                                        with seamless precision and stunning user experiences?
-                                    </p>
-                                    <p className="intro-text">
-                                        Look no further than <strong>Puff Puff Dev</strong>, your
-                                        dedicated partner in crafting exceptional mobile applications
-                                        using the latest Flutter technologies.
-                                    </p>
-                                    <div className="cta-buttons">
-                                        <button
-                                            className="cta-primary"
-                                            onClick={() => scrollToPage(2)}
-                                        >
-                                            Learn More About Us
-                                        </button>
-                                    </div>
-                                </div>
-                            </section>
+                            <Suspense fallback={<SectionLoader />}>
+                                <ServicesSection onNavigate={scrollToPage} />
+                            </Suspense>
                         </ParallaxLayer>
 
                         {/* Page 3: About */}
@@ -281,33 +274,9 @@ function App() {
                                 justifyContent: "center",
                             }}
                         >
-                            <section id="about-section" aria-labelledby="about-heading">
-                                <div className="about-container content-card">
-                                    <h2 id="about-heading" className="section-title">About Us</h2>
-                                    <div className="about-content">
-                                        <p className="about-text">
-                                            At Puff Puff Dev, we are dedicated to crafting exceptional
-                                            mobile applications that bring your ideas to life. With a
-                                            team of experienced developers and designers, we leverage
-                                            the latest technologies, primarily focusing on Flutter and
-                                            Dart, to deliver seamless user experiences and innovative
-                                            solutions.
-                                        </p>
-                                        <p className="about-text">
-                                            Our mission is to transform your dreams into reality
-                                            through creative coding, attention to detail, and a
-                                            commitment to quality. Whether you're a startup looking to
-                                            build your first app or an established business seeking to
-                                            enhance your digital presence, we are here to help you
-                                            every step of the way.
-                                        </p>
-                                        <p className="about-text highlight">
-                                            Join us on this exciting journey as we explore the endless
-                                            possibilities of mobile development together!
-                                        </p>
-                                    </div>
-                                </div>
-                            </section>
+                            <Suspense fallback={<SectionLoader />}>
+                                <AboutSection />
+                            </Suspense>
                         </ParallaxLayer>
                     </Parallax>
                 </main>

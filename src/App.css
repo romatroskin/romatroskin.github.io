@@ -348,3 +348,19 @@ a:focus:not(:focus-visible) {
     transition: none;
   }
 }
+
+/* ========================================
+   Section Loader - Lazy Loading Fallback
+   ======================================== */
+
+.section-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loader-text {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
