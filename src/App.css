@@ -7,8 +7,8 @@
 /* Logo styles */
 .logo {
   max-width: 280px;
-  width: 100%;
-  height: auto;
+  width: 200px;
+  height: 200px;
   padding: 1.5em 0;
   will-change: filter;
   transition: filter var(--transition-base), transform var(--transition-fast);
@@ -48,6 +48,7 @@
   padding: var(--space-md);
   max-width: 900px;
   width: 100%;
+  min-height: 500px; /* Reserve space before content loads */
   text-align: center;
   z-index: 1;
   transform: translateZ(0); /* GPU acceleration */
@@ -300,6 +301,7 @@
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-lg, 1rem);
   padding: var(--space-lg, 2rem);
+  min-height: 200px; /* Prevent collapse before hydration */
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   transition: background-color var(--transition-base),
               box-shadow var(--transition-fast);
