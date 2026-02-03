@@ -1,4 +1,5 @@
 import { useEffect, useSyncExternalStore, useCallback } from 'react';
+import { storage } from '../utils/storage';
 
 type Theme = 'light' | 'dark';
 
@@ -25,7 +26,7 @@ function notifySubscribers() {
 
 function setThemeToDOM(theme: Theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
+  storage.setItem('theme', theme);
   notifySubscribers();
 }
 
@@ -43,7 +44,7 @@ export function useTheme() {
 
     const handleChange = (e: MediaQueryListEvent) => {
       // Only update if user hasn't made an explicit choice
-      const storedTheme = localStorage.getItem('theme');
+      const storedTheme = storage.getItem('theme');
       if (!storedTheme) {
         const newTheme = e.matches ? 'dark' : 'light';
         setThemeToDOM(newTheme);

@@ -12,6 +12,7 @@ import { useTheme } from "./hooks/useTheme";
 import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
 import { useAdaptiveFrameRate } from './hooks/useAdaptiveFrameRate';
 import { PerformanceIndicator } from './components/PerformanceIndicator';
+import { ErrorBoundary, WaveAnimationFallback, AppFallback } from './components/ErrorBoundary';
 
 // Lazy load below-fold sections (pages 2-3)
 const ServicesSection = lazy(() => import('./sections/ServicesSection'));
@@ -164,7 +165,7 @@ function App() {
     }, []);
 
     return (
-        <>
+        <ErrorBoundary FallbackComponent={AppFallback}>
             <SkipLink href="#main-content" />
             <Header onNavigate={scrollToPage} currentPage={currentPage}>
                 <ThemeToggle />
@@ -182,73 +183,78 @@ function App() {
                     zIndex: 1,
                 }}
             >
-                {/* Animated waves background */}
-                <div
-                    style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        zIndex: 0,
-                        pointerEvents: "none",
-                    }}
+                {/* Animated waves background - wrapped in error boundary for graceful fallback */}
+                <ErrorBoundary
+                    FallbackComponent={WaveAnimationFallback}
+                    resetKeys={[theme, qualityLevel]}
                 >
-                    {waveConfigs.map((springProps, index) => {
-                        const {
-                            amplitude: amplitudeNoise,
-                            speed: speedNoise,
-                            points: pointsNoise,
-                        } = waveNoiseOffsets[index];
+                    <div
+                        style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            zIndex: 0,
+                            pointerEvents: "none",
+                        }}
+                    >
+                        {waveConfigs.map((springProps, index) => {
+                            const {
+                                amplitude: amplitudeNoise,
+                                speed: speedNoise,
+                                points: pointsNoise,
+                            } = waveNoiseOffsets[index];
 
-                        // Each wave has different parallax depth - back waves move less
-                        const depth = (animationParams.numWaves - index) / animationParams.numWaves; // 1.0 for back, 0.2 for front
-                        const parallaxMultiplier = 0.4 + depth * 0.6; // 0.4 to 1.0
+                            // Each wave has different parallax depth - back waves move less
+                            const depth = (animationParams.numWaves - index) / animationParams.numWaves; // 1.0 for back, 0.2 for front
+                            const parallaxMultiplier = 0.4 + depth * 0.6; // 0.4 to 1.0
 
-                        return (
-                            <WavyBackground
-                                key={index}
-                                options={{
-                                    height: waveSpring.progress.to(
-                                        (p) => height * (0.35 + p * 0.35) + index * 50 * parallaxMultiplier
-                                    ),
-                                    amplitude: waveSpring.progress.to(
-                                        (p) => 50 + p * 50 * parallaxMultiplier + amplitudeNoise
-                                    ),
-                                    speed: waveSpring.progress.to(
-                                        (p) => (0.015 + p * 0.03 * parallaxMultiplier + speedNoise) * animationParams.speedMultiplier
-                                    ),
-                                    points: 5 + index + pointsNoise,
-                                    paused: false,
-                                    fps: animationParams.fps,
-                                }}
-                                style={{
-                                    transform: waveSpring.progress.to(
+                            return (
+                                <WavyBackground
+                                    key={index}
+                                    options={{
+                                        height: waveSpring.progress.to(
+                                            (p) => height * (0.35 + p * 0.35) + index * 50 * parallaxMultiplier
+                                        ),
+                                        amplitude: waveSpring.progress.to(
+                                            (p) => 50 + p * 50 * parallaxMultiplier + amplitudeNoise
+                                        ),
+                                        speed: waveSpring.progress.to(
+                                            (p) => (0.015 + p * 0.03 * parallaxMultiplier + speedNoise) * animationParams.speedMultiplier
+                                        ),
+                                        points: 5 + index + pointsNoise,
+                                        paused: false,
+                                        fps: animationParams.fps,
+                                    }}
+                                    style={{
+                                        transform: waveSpring.progress.to(
+                                            (p) => {
+                                                // Back waves move more slowly (parallax effect)
+                                                const yOffset = p * (index + 1) * -25 * parallaxMultiplier;
+                                                const scale = 1 + p * 0.08 * (index + 1);
+                                                return `translateY(${yOffset}px) scaleY(${scale})`;
+                                            }
+                                        ),
+                                        opacity: springProps.opacity,
+                                    }}
+                                    fill={waveSpring.progress.to(
                                         (p) => {
-                                            // Back waves move more slowly (parallax effect)
-                                            const yOffset = p * (index + 1) * -25 * parallaxMultiplier;
-                                            const scale = 1 + p * 0.08 * (index + 1);
-                                            return `translateY(${yOffset}px) scaleY(${scale})`;
+                                            // Theme-aware wave colors
+                                            const hue = 235 - index * 10 - p * 25;
+                                            const sat = theme === 'light' ? 40 - index * 3 : 60 - index * 4;
+                                            // Light theme: lighter waves (70-85%), Dark theme: darker waves (20-35%)
+                                            const light = theme === 'light'
+                                                ? 85 - index * 3 - p * 5
+                                                : 30 - index * 4 - p * 8;
+                                            return `hsl(${hue}, ${sat}%, ${light}%)`;
                                         }
-                                    ),
-                                    opacity: springProps.opacity,
-                                }}
-                                fill={waveSpring.progress.to(
-                                    (p) => {
-                                        // Theme-aware wave colors
-                                        const hue = 235 - index * 10 - p * 25;
-                                        const sat = theme === 'light' ? 40 - index * 3 : 60 - index * 4;
-                                        // Light theme: lighter waves (70-85%), Dark theme: darker waves (20-35%)
-                                        const light = theme === 'light'
-                                            ? 85 - index * 3 - p * 5
-                                            : 30 - index * 4 - p * 8;
-                                        return `hsl(${hue}, ${sat}%, ${light}%)`;
-                                    }
-                                )}
-                            />
-                        );
-                    })}
-                </div>
+                                    )}
+                                />
+                            );
+                        })}
+                    </div>
+                </ErrorBoundary>
 
                 {/* Parallax content */}
                 <main id="main-content" role="main">
@@ -331,7 +337,7 @@ function App() {
                 qualityLevel={qualityLevel}
                 prefersReducedMotion={prefersReducedMotion}
             />
-        </>
+        </ErrorBoundary>
     );
 }
 
