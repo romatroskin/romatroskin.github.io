@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { axe } from 'vitest-axe';
 import Header from './Header';
 
 describe('Header', () => {
@@ -35,5 +36,18 @@ describe('Header', () => {
     const homeLink = screen.getByText('Home');
     // Check that the Home link has the active class applied
     expect(homeLink).toBeInTheDocument();
+  });
+
+  describe('Accessibility', () => {
+    it('has no accessibility violations', async () => {
+      const { container } = render(<Header />);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+
+    it('has navigation landmark', () => {
+      render(<Header />);
+      expect(screen.getByRole('navigation')).toBeInTheDocument();
+    });
   });
 });

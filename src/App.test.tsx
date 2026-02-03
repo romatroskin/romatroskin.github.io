@@ -1,6 +1,7 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
+import { axe } from 'vitest-axe';
 import App from './App';
 
 // Mock usehooks-ts to avoid window size issues in tests
@@ -50,5 +51,27 @@ describe('App', () => {
     // Use getAllByText since "About" appears in nav and section
     const aboutElements = screen.getAllByText(/About/i);
     expect(aboutElements.length).toBeGreaterThan(0);
+  });
+
+  describe('Accessibility', () => {
+    it('has no accessibility violations on initial render', async () => {
+      const { container } = render(<App />);
+      // Wait for lazy loaded components to render
+      await waitFor(() => {
+        expect(screen.getByRole('main')).toBeInTheDocument();
+      });
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+
+    it('has main landmark', () => {
+      render(<App />);
+      expect(screen.getByRole('main')).toBeInTheDocument();
+    });
+
+    it('has banner landmark (header)', () => {
+      render(<App />);
+      expect(screen.getByRole('banner')).toBeInTheDocument();
+    });
   });
 });

@@ -1,14 +1,16 @@
 import { expect, afterEach } from 'vitest'
 import { cleanup } from '@testing-library/react'
 import * as matchers from '@testing-library/jest-dom/matchers'
+import * as axeMatchers from 'vitest-axe/matchers'
 import 'vitest-axe/extend-expect'
 import { Globals } from '@react-spring/web'
 
 // Skip React Spring animations in tests to prevent timeouts and flaky tests
 Globals.assign({ skipAnimation: true })
 
-// Extend Vitest's expect with jest-dom matchers
+// Extend Vitest's expect with jest-dom matchers and vitest-axe matchers
 expect.extend(matchers)
+expect.extend(axeMatchers)
 
 // Cleanup after each test to prevent state leakage
 afterEach(() => {
