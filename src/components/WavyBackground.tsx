@@ -70,16 +70,17 @@ interface WavyBackgroundPropTypes {
 // );
 
 const WavyBackground = memo(
-    React.forwardRef<Wave, WavyBackgroundPropTypes>(
+    React.forwardRef<HTMLDivElement, WavyBackgroundPropTypes>(
         ({ options, style, fill, id }, ref) => {
             // Type assertion needed: react-spring's AnimatedProps creates complex intersection types
-            // that conflict with SVG's native 'points' attribute vs Wave's custom 'points' prop
+            // that conflict with SVG's native 'points' attribute vs Wave's custom 'points' prop.
+            // Wave is now a functional component that forwards ref to HTMLDivElement.
             const animatedProps = {
                 ...options,
                 fill,
                 style,
                 id,
-                ref: ref as React.Ref<Wave>,
+                ref: ref as React.Ref<HTMLDivElement>,
             } as React.ComponentProps<typeof AnimatedWave>;
 
             return <AnimatedWave {...animatedProps} />;
