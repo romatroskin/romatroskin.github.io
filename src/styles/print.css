@@ -1,0 +1,161 @@
+/* Print Stylesheet for Portfolio */
+
+/*
+ * Optimized print styles for clean, readable output
+ * Hides interactive elements and resets colors for ink efficiency
+ * Based on HTML5 Boilerplate print styles
+ */
+
+@media print {
+  /* ==========================================================================
+     Color Reset for Print
+     ========================================================================== */
+
+  /*
+   * Reset all colors to black on white for maximum readability
+   * and ink efficiency
+   */
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* ==========================================================================
+     Page Setup
+     ========================================================================== */
+
+  @page {
+    margin: 2cm;
+    size: A4 portrait;
+  }
+
+  /* ==========================================================================
+     Hide Interactive Elements
+     ========================================================================== */
+
+  /*
+   * Hide navigation, buttons, and other interactive elements
+   * that don't make sense in print
+   */
+  nav,
+  header,
+  .skip-link,
+  .theme-toggle,
+  .scroll-indicator,
+  .cta-buttons,
+  button:not([type="submit"]),
+  .no-print {
+    display: none !important;
+  }
+
+  /* ==========================================================================
+     Link URL Display
+     ========================================================================== */
+
+  /*
+   * Show link URLs after links for reference
+   * Exclude internal/anchor links
+   */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666 !important;
+  }
+
+  /* Don't show URLs for internal/anchor links */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  /* ==========================================================================
+     Typography for Print
+     ========================================================================== */
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 24pt;
+    page-break-after: avoid;
+  }
+
+  h2, h3 {
+    font-size: 18pt;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* ==========================================================================
+     Page Break Control
+     ========================================================================== */
+
+  /*
+   * Prevent awkward page breaks in the middle of content
+   */
+  p,
+  blockquote,
+  img,
+  section {
+    page-break-inside: avoid;
+  }
+
+  /* Control orphans and widows for better typography */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* ==========================================================================
+     Images
+     ========================================================================== */
+
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+
+  /* ==========================================================================
+     Layout Adjustments
+     ========================================================================== */
+
+  /*
+   * Make main content full width and reset positioning
+   * Remove parallax/scroll effects for print
+   */
+  main,
+  section,
+  .hero-container,
+  .intro-container,
+  .about-container {
+    display: block;
+    width: 100%;
+    padding: 1cm 0;
+    position: relative !important;
+    transform: none !important;
+  }
+
+  /* Add page breaks between major sections */
+  section {
+    page-break-before: auto;
+  }
+
+  /* ==========================================================================
+     Logo Print Optimization
+     ========================================================================== */
+
+  /*
+   * Ensure logo prints nicely
+   * Invert for visibility on white background
+   */
+  .logo {
+    filter: invert(1) !important;
+    max-width: 150px !important;
+  }
+}
