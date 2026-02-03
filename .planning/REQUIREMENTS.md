@@ -14,7 +14,7 @@
 | REQ-CQ-004 | Fix TypeScript issues (replace @ts-expect-error with proper types) | High | 1 | Complete |
 | REQ-CQ-005 | Replace lodash dependency with native Math.random() | Medium | 1 | Complete |
 | REQ-CQ-006 | Fix random values regenerated every render in App.tsx | Critical | 1 | Complete |
-| REQ-CQ-007 | Add Error Boundaries for graceful failure handling | Medium | 6 | Pending |
+| REQ-CQ-007 | Add Error Boundaries for graceful failure handling | Medium | 6 | Complete |
 | REQ-CQ-008 | Organize CSS with CSS Modules or consistent pattern | Medium | 4 | Pending |
 
 ## Navigation
@@ -59,7 +59,7 @@
 | REQ-TST-002 | Unit tests for Perlin noise algorithm | Medium | 1 | Complete |
 | REQ-TST-003 | Unit tests for Wave point calculation | Medium | 2 | Pending |
 | REQ-TST-004 | Component smoke tests for App, Header, WavyBackground | Medium | 2 | Pending |
-| REQ-TST-005 | Accessibility tests with vitest-axe | Medium | 6 | Pending |
+| REQ-TST-005 | Accessibility tests with vitest-axe | Medium | 6 | Complete |
 
 ## Performance
 
