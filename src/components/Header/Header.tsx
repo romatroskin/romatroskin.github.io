@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { animated } from "react-spring";
+import { MobileMenu } from './MobileMenu';
 import styles from "./Header.module.css";
 
 interface HeaderProps {
@@ -13,7 +15,7 @@ interface NavItem {
     href?: string;
 }
 
-const navItems: NavItem[] = [
+export const navItems: NavItem[] = [
     { label: "Home", page: 0 },
     { label: "Services", page: 1 },
     { label: "About", page: 2 },
@@ -21,6 +23,8 @@ const navItems: NavItem[] = [
 ];
 
 function Header({ onNavigate, currentPage = 0 }: HeaderProps) {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     const handleNavClick = (e: React.MouseEvent, page: number) => {
         e.preventDefault();
         onNavigate?.(page);
@@ -47,6 +51,7 @@ function Header({ onNavigate, currentPage = 0 }: HeaderProps) {
                                     href="#"
                                     className={`${styles.navLink} ${currentPage === item.page ? styles.navLinkActive : ""}`}
                                     onClick={(e) => handleNavClick(e, item.page)}
+                                    aria-current={currentPage === item.page ? 'page' : undefined}
                                 >
                                     {item.label}
                                 </a>
@@ -54,7 +59,27 @@ function Header({ onNavigate, currentPage = 0 }: HeaderProps) {
                         </li>
                     ))}
                 </ul>
+                <button
+                    className={styles.hamburger}
+                    onClick={() => setIsMobileMenuOpen(true)}
+                    aria-label="Open menu"
+                    aria-expanded={isMobileMenuOpen}
+                    aria-controls="mobile-menu"
+                >
+                    <span className={styles.hamburgerLine} aria-hidden="true" />
+                    <span className={styles.hamburgerLine} aria-hidden="true" />
+                    <span className={styles.hamburgerLine} aria-hidden="true" />
+                </button>
             </nav>
+            <MobileMenu
+                isOpen={isMobileMenuOpen}
+                onClose={() => setIsMobileMenuOpen(false)}
+                navItems={navItems}
+                onNavigate={(page) => {
+                    onNavigate?.(page);
+                }}
+                currentPage={currentPage}
+            />
         </animated.header>
     );
 }
