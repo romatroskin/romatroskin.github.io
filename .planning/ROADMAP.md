@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Component Architecture** - Wave class-to-functional refactor with custom hooks
 - [x] **Phase 3: Navigation & Core A11Y** - Scroll navigation, mobile menu, keyboard accessibility
 - [x] **Phase 4: CSS & Visual Design** - CSS modules, color contrast, responsive typography, theming
-- [ ] **Phase 5: Performance & Animation** - Web Vitals monitoring, adaptive animations, reduced motion
+- [x] **Phase 5: Performance & Animation** - Web Vitals monitoring, adaptive animations, reduced motion
 - [ ] **Phase 6: Testing & Error Handling** - Error boundaries, accessibility tests, coverage
 
 ## Phase Details
@@ -108,10 +108,10 @@ Plans:
 **Plans**: 4 plans in 2 waves
 
 Plans:
-- [ ] 05-01-PLAN.md — Performance measurement + Perlin memoization (web-vitals, LoAF monitoring, usePrefersReducedMotion, cachedPerlin2)
-- [ ] 05-02-PLAN.md — Core Web Vitals optimization (LCP preloading, srcset, CLS layout stability)
-- [ ] 05-03-PLAN.md — Adaptive animations (useAdaptiveFrameRate, reduced motion integration, PerformanceIndicator, fps wiring)
-- [ ] 05-04-PLAN.md — Lazy loading (React.lazy for below-fold sections, Suspense fallbacks)
+- [x] 05-01-PLAN.md — Performance measurement + Perlin memoization (web-vitals, LoAF monitoring, usePrefersReducedMotion, cachedPerlin2)
+- [x] 05-02-PLAN.md — Core Web Vitals optimization (LCP preloading, srcset, CLS layout stability)
+- [x] 05-03-PLAN.md — Adaptive animations (useAdaptiveFrameRate, reduced motion integration, PerformanceIndicator, fps wiring)
+- [x] 05-04-PLAN.md — Lazy loading (React.lazy for below-fold sections, Suspense fallbacks)
 
 ### Phase 6: Testing & Error Handling
 **Goal**: Comprehensive test coverage and graceful error handling for production resilience
@@ -138,7 +138,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Component Architecture | 4/4 | Complete | 2026-02-03 |
 | 3. Navigation & Core A11Y | 4/4 | Complete | 2026-02-03 |
 | 4. CSS & Visual Design | 4/4 | Complete | 2026-02-03 |
-| 5. Performance & Animation | 0/4 | Planned | - |
+| 5. Performance & Animation | 4/4 | Complete | 2026-02-03 |
 | 6. Testing & Error Handling | 0/2 | Not started | - |
 
 ---

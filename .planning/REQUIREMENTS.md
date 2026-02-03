@@ -38,7 +38,7 @@
 | REQ-A11Y-006 | Implement proper semantic HTML landmarks (nav, main, section) | High | 3 | Complete |
 | REQ-A11Y-007 | Add alt text for logo and any images | Medium | 3 | Complete |
 | REQ-A11Y-008 | Ensure proper heading hierarchy (h1 -> h2 -> h3) | Medium | 3 | Complete |
-| REQ-A11Y-009 | Add reduced motion support (@media prefers-reduced-motion) | Medium | 5 | Pending |
+| REQ-A11Y-009 | Add reduced motion support (@media prefers-reduced-motion) | Medium | 5 | Complete |
 | REQ-A11Y-010 | Add html lang attribute if missing | Low | 3 | Complete |
 
 ## Responsive Design
@@ -47,9 +47,9 @@
 |----|-------------|----------|-------|--------|
 | REQ-RD-001 | Implement mobile-first responsive typography | Medium | 4 | Pending |
 | REQ-RD-002 | Ensure touch-friendly tap targets (min 44x44px) | High | 4 | Pending |
-| REQ-RD-003 | Responsive wave animation parameters (reduce on mobile) | Medium | 5 | Pending |
+| REQ-RD-003 | Responsive wave animation parameters (reduce on mobile) | Medium | 5 | Complete |
 | REQ-RD-004 | Ensure content reflows at 320px without horizontal scroll | Medium | 4 | Pending |
-| REQ-RD-005 | Responsive images with srcset and lazy loading | Medium | 5 | Pending |
+| REQ-RD-005 | Responsive images with srcset and lazy loading | Medium | 5 | Complete |
 
 ## Testing
 
@@ -65,14 +65,14 @@
 
 | ID | Requirement | Priority | Phase | Status |
 |----|-------------|----------|-------|--------|
-| REQ-PERF-001 | Cache Perlin noise calculations (memoization) | High | 5 | Pending |
+| REQ-PERF-001 | Cache Perlin noise calculations (memoization) | High | 5 | Complete |
 | REQ-PERF-002 | Remove unused PureCSS or use fully | Medium | 1 | Complete |
 | REQ-PERF-003 | Optimize bundle size (remove lodash) | Medium | 1 | Complete |
-| REQ-PERF-004 | Add lazy loading for below-fold content | Medium | 5 | Pending |
-| REQ-PERF-005 | Achieve Lighthouse performance score 90+ | High | 5 | Pending |
-| REQ-PERF-006 | LCP < 2.5s (Largest Contentful Paint) | High | 5 | Pending |
-| REQ-PERF-007 | INP < 200ms (Interaction to Next Paint) | Medium | 5 | Pending |
-| REQ-PERF-008 | CLS < 0.1 (Cumulative Layout Shift) | Medium | 5 | Pending |
+| REQ-PERF-004 | Add lazy loading for below-fold content | Medium | 5 | Complete |
+| REQ-PERF-005 | Achieve Lighthouse performance score 90+ | High | 5 | Complete |
+| REQ-PERF-006 | LCP < 2.5s (Largest Contentful Paint) | High | 5 | Complete |
+| REQ-PERF-007 | INP < 200ms (Interaction to Next Paint) | Medium | 5 | Complete |
+| REQ-PERF-008 | CLS < 0.1 (Cumulative Layout Shift) | Medium | 5 | Complete |
 
 ## Visual Polish
 
