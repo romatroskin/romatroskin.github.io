@@ -68,12 +68,13 @@ Plans:
   4. User can Tab through all interactive elements with visible focus indicators
   5. Screen reader announces navigation landmarks and section headings correctly
   6. Skip-to-content link is first focusable element and jumps to main content
-**Plans**: TBD
+**Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 03-01: Scroll navigation implementation (smooth scroll, active state)
-- [ ] 03-02: Mobile menu (hamburger, slide-out drawer)
-- [ ] 03-03: Keyboard navigation and ARIA (focus indicators, landmarks, skip link)
+- [ ] 03-01-PLAN.md - Dependencies, useScrollSpy hook, semantic landmarks (Wave 1)
+- [ ] 03-02-PLAN.md - SkipLink component, focus indicators (Wave 1)
+- [ ] 03-03-PLAN.md - Mobile menu with focus trap and body scroll lock (Wave 2)
+- [ ] 03-04-PLAN.md - Integration and visual verification checkpoint (Wave 3)
 
 ### Phase 4: CSS & Visual Design
 **Goal**: Organized CSS architecture with proper theming, contrast compliance, and responsive design
@@ -133,7 +134,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-02-03 |
 | 2. Component Architecture | 4/4 | Complete | 2026-02-03 |
-| 3. Navigation & Core A11Y | 0/3 | Not started | - |
+| 3. Navigation & Core A11Y | 0/4 | Not started | - |
 | 4. CSS & Visual Design | 0/3 | Not started | - |
 | 5. Performance & Animation | 0/3 | Not started | - |
 | 6. Testing & Error Handling | 0/2 | Not started | - |
