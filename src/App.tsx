@@ -206,7 +206,7 @@ function App() {
                             }}
                         >
                             <section id="hero-section" aria-labelledby="hero-heading">
-                                <div className="hero-container">
+                                <div className="hero-container content-card">
                                     <a href="#" target="_blank" rel="noreferrer">
                                         <img
                                             src="https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg"
@@ -242,7 +242,7 @@ function App() {
                             }}
                         >
                             <section id="services-section" aria-labelledby="services-heading">
-                                <div className="intro-container">
+                                <div className="intro-container content-card">
                                     <h2 id="services-heading" className="section-title">Craft Applications Workshop</h2>
                                     <p className="intro-text">
                                         Are you seeking to bring your mobile application idea to life
@@ -276,7 +276,7 @@ function App() {
                             }}
                         >
                             <section id="about-section" aria-labelledby="about-heading">
-                                <div className="about-container">
+                                <div className="about-container content-card">
                                     <h2 id="about-heading" className="section-title">About Us</h2>
                                     <div className="about-content">
                                         <p className="about-text">

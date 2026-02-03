@@ -5,6 +5,8 @@
   /* Backgrounds */
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f9f9f9;
+  --color-bg-card: rgba(255, 255, 255, 0.6);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.75);
 
   /* Text */
   --color-text-primary: #1a1a1a;      /* 15.3:1 contrast on white */
@@ -24,6 +26,8 @@
   /* Backgrounds */
   --color-bg-primary: #0f0f1a;
   --color-bg-secondary: #1a1a2e;
+  --color-bg-card: rgba(15, 15, 26, 0.6);
+  --color-bg-card-hover: rgba(15, 15, 26, 0.75);
 
   /* Text */
   --color-text-primary: #ffffff;       /* 15.8:1 contrast on #0f0f1a */
@@ -44,6 +48,8 @@
     /* Backgrounds */
     --color-bg-primary: #0f0f1a;
     --color-bg-secondary: #1a1a2e;
+    --color-bg-card: rgba(15, 15, 26, 0.85);
+    --color-bg-card-hover: rgba(15, 15, 26, 0.95);
 
     /* Text */
     --color-text-primary: #ffffff;

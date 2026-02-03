@@ -23,7 +23,7 @@
   width: 280px;
   max-width: 80vw;
   height: 100vh;
-  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  background: var(--color-bg-secondary);
   padding: 80px 24px 24px;
   z-index: 9999;
   animation: slideIn 0.3s ease-out;
@@ -50,7 +50,7 @@
   height: 44px;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--color-text-primary);
   font-size: 28px;
   cursor: pointer;
   display: flex;
@@ -60,11 +60,11 @@
 }
 
 .closeButton:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-border);
 }
 
 .closeButton:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -82,7 +82,7 @@
 .navLink {
   display: block;
   padding: 16px;
-  color: #fff;
+  color: var(--color-text-primary);
   text-decoration: none;
   font-size: 18px;
   border-radius: 8px;
@@ -90,11 +90,11 @@
 }
 
 .navLink:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-border);
 }
 
 .navLink:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 

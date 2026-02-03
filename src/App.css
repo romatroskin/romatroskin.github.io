@@ -19,6 +19,26 @@
   transform: scale(1.02);
 }
 
+/* Invert white logo to dark for light theme */
+[data-theme="light"] .logo {
+  filter: invert(1) brightness(0.2);
+}
+
+[data-theme="light"] .logo:hover {
+  filter: invert(1) brightness(0.2) drop-shadow(0 0 2em rgba(167, 139, 250, 0.6));
+}
+
+/* System preference fallback for light mode */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .logo {
+    filter: invert(1) brightness(0.2);
+  }
+
+  :root:not([data-theme="dark"]) .logo:hover {
+    filter: invert(1) brightness(0.2) drop-shadow(0 0 2em rgba(167, 139, 250, 0.6));
+  }
+}
+
 /* Hero Section - Page 1 */
 .hero-container {
   display: flex;
@@ -246,6 +266,17 @@
   }
 }
 
+/* Mobile horizontal padding for sections */
+@media (max-width: 767px) {
+  #hero-section,
+  #services-section,
+  #about-section {
+    padding: 0 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 /* 320px edge case - tighten spacing if needed */
 @media (max-width: 320px) {
   .hero-container,
@@ -253,6 +284,30 @@
   .about-container {
     padding: var(--space-sm);
   }
+}
+
+/* ========================================
+   Content Card - Text Readability Over Waves
+   ======================================== */
+
+/*
+ * Semi-transparent card backgrounds with backdrop blur
+ * Ensures text is readable regardless of wave background colors
+ */
+.content-card {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg, 1rem);
+  padding: var(--space-lg, 2rem);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  transition: background-color var(--transition-base),
+              box-shadow var(--transition-fast);
+}
+
+.content-card:hover {
+  background: var(--color-bg-card-hover);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 /* ========================================
