@@ -126,9 +126,13 @@ function App() {
                 const currentScroll = container.scrollTop;
                 const nearestPage = Math.round(currentScroll / pageHeight);
                 if (nearestPage >= 0 && nearestPage < TOTAL_PAGES) {
-                    parallaxRef.current?.scrollTo(nearestPage);
+                    // Use native smooth scroll for consistency
+                    container.scrollTo({
+                        top: nearestPage * pageHeight,
+                        behavior: 'smooth'
+                    });
                 }
-            }, 100);
+            }, 150);
         };
 
         container.addEventListener("scroll", handleScrollEnd, { passive: true });
@@ -165,10 +169,20 @@ function App() {
     }, [animationParams.numWaves]);
 
     const scrollToPage = useCallback((page: number) => {
+        const container = parallaxRef.current?.container?.current;
+        if (!container) return;
+
         // Disable snap-to-page during programmatic navigation
         isNavigatingRef.current = true;
-        parallaxRef.current?.scrollTo(page);
-        // Re-enable snap after animation completes (react-spring default ~500ms)
+
+        // Use native smooth scroll for better mobile compatibility
+        const targetScroll = page * container.clientHeight;
+        container.scrollTo({
+            top: targetScroll,
+            behavior: 'smooth'
+        });
+
+        // Re-enable snap after animation completes
         setTimeout(() => {
             isNavigatingRef.current = false;
         }, 600);
