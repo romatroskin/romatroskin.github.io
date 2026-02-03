@@ -28,14 +28,19 @@
  * Reduced motion support - CRITICAL for accessibility
  * Respects user's OS/browser preference for reduced motion
  * WCAG 2.1 SC 2.3.3 Animation from Interactions
+ *
+ * Strategy: Slow animations 10x instead of disabling
+ * This maintains the aesthetic while respecting user preference
+ * Wave animations (JS-based) are handled separately in App.tsx
  */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    /* Slow animations 10x instead of disabling (per user preference) */
+    animation-duration: 3s !important;
+    transition-duration: 0.5s !important;
+    /* Keep scroll behavior instant for vestibular users */
     scroll-behavior: auto !important;
   }
 }
