@@ -10,6 +10,7 @@ interface WavyBackgroundPropTypes {
     fill?: Interpolation<number, string>;
     style?: {
         transform?: Interpolation<number, string>;
+        opacity?: Interpolation<number, number> | number;
     };
     id?: string;
 }

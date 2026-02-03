@@ -1,5 +1,5 @@
 import { useRef, useMemo, useState, useEffect, useCallback } from "react";
-import { config, useSpring, useTrail } from "@react-spring/web";
+import { config, useTrail, useSpring } from "@react-spring/web";
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
 import WavyBackground from "./components/WavyBackground";
 import { useWindowSize } from "usehooks-ts";
@@ -16,75 +16,88 @@ function randomRange(min: number, max: number): number {
 
 function App() {
     const parallaxRef = useRef<IParallax>(null);
-    const scrollProgressRef = useRef(0);
-    const rafRef = useRef<number>();
     const [currentPage, setCurrentPage] = useState(0);
+    const [scrollY, setScrollY] = useState(0);
 
     const { height } = useWindowSize();
 
-    // Animated scroll value - uses spring for smooth interpolation
-    const [{ scroll }, scrollApi] = useSpring(() => ({
-        scroll: 0,
-        config: { mass: 1, tension: 180, friction: 26 },
-    }));
-
-    // Track scroll position from Parallax container with RAF throttling
+    // Track scroll position directly (no spring delay for immediate response)
     useEffect(() => {
         const container = parallaxRef.current?.container?.current;
         if (!container) return;
 
-        let ticking = false;
-
-        const updateScroll = () => {
+        const handleScroll = () => {
             const scrollTop = container.scrollTop;
             const scrollHeight = container.scrollHeight - container.clientHeight;
             const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
 
-            // Only update if changed significantly (reduces jitter)
-            if (Math.abs(progress - scrollProgressRef.current) > 0.001) {
-                scrollProgressRef.current = progress;
-                scrollApi.start({ scroll: progress });
+            setScrollY(progress);
 
-                // Update current page for header highlighting
-                const pageHeight = container.clientHeight;
-                const newPage = Math.round(scrollTop / pageHeight);
-                if (newPage !== currentPage && newPage >= 0 && newPage < TOTAL_PAGES) {
-                    setCurrentPage(newPage);
-                }
-            }
-            ticking = false;
-        };
-
-        const handleScroll = () => {
-            if (!ticking) {
-                ticking = true;
-                rafRef.current = requestAnimationFrame(updateScroll);
+            // Update current page for header highlighting
+            const pageHeight = container.clientHeight;
+            const newPage = Math.round(scrollTop / pageHeight);
+            if (newPage >= 0 && newPage < TOTAL_PAGES) {
+                setCurrentPage(newPage);
             }
         };
+
+        // Initial measurement
+        handleScroll();
 
         container.addEventListener("scroll", handleScroll, { passive: true });
-        return () => {
-            container.removeEventListener("scroll", handleScroll);
-            if (rafRef.current) cancelAnimationFrame(rafRef.current);
-        };
-    }, [scrollApi, currentPage]);
+        return () => container.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Smooth spring for wave properties (separate from scroll tracking)
+    const waveSpring = useSpring({
+        progress: scrollY,
+        config: { mass: 0.5, tension: 120, friction: 14 },
+    });
 
     const waveConfigs = useTrail(numWaves, {
-        from: { opacity: 0.3, transform: "scale(0)" },
-        to: { opacity: 0.7, transform: "scale(1)" },
-        config: config.wobbly,
+        from: { opacity: 0.3 },
+        to: { opacity: 0.7 },
+        config: config.gentle,
     });
 
     const waveNoiseOffsets = useMemo(() => {
         return Array.from({ length: numWaves }, () => ({
-            amplitude: randomRange(-20, 20),
-            speed: randomRange(-0.005, 0.005),
-            points: randomRange(-1, 1),
+            amplitude: randomRange(-15, 15),
+            speed: randomRange(-0.003, 0.003),
+            points: randomRange(-0.5, 0.5),
         }));
     }, []);
 
     const scrollToPage = useCallback((page: number) => {
         parallaxRef.current?.scrollTo(page);
+    }, []);
+
+    // Handle scroll end for snap effect
+    useEffect(() => {
+        const container = parallaxRef.current?.container?.current;
+        if (!container) return;
+
+        let scrollTimeout: NodeJS.Timeout;
+
+        const handleScrollEnd = () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                // Snap to nearest page
+                const pageHeight = container.clientHeight;
+                const currentScroll = container.scrollTop;
+                const nearestPage = Math.round(currentScroll / pageHeight);
+
+                if (nearestPage >= 0 && nearestPage < TOTAL_PAGES) {
+                    parallaxRef.current?.scrollTo(nearestPage);
+                }
+            }, 150); // Snap after 150ms of no scrolling
+        };
+
+        container.addEventListener("scroll", handleScrollEnd, { passive: true });
+        return () => {
+            container.removeEventListener("scroll", handleScrollEnd);
+            clearTimeout(scrollTimeout);
+        };
     }, []);
 
     return (
@@ -114,54 +127,45 @@ function App() {
                         pointerEvents: "none",
                     }}
                 >
-                    {waveConfigs.map((_, index) => {
+                    {waveConfigs.map((springProps, index) => {
                         const {
                             amplitude: amplitudeNoise,
                             speed: speedNoise,
                             points: pointsNoise,
                         } = waveNoiseOffsets[index];
 
+                        // Each wave has different parallax depth
+                        const parallaxFactor = 1 - index * 0.15;
+
                         return (
                             <WavyBackground
                                 key={index}
                                 options={{
-                                    height: scroll.to(
-                                        [0, 1],
-                                        [
-                                            height / 2 + index * 80,
-                                            height - index * 20,
-                                        ]
+                                    height: waveSpring.progress.to(
+                                        (p) => height * (0.4 + p * 0.3) + index * 60 * parallaxFactor
                                     ),
-                                    amplitude: scroll.to(
-                                        [0, 1],
-                                        [
-                                            80 + index * amplitudeNoise,
-                                            150 + index * amplitudeNoise,
-                                        ]
+                                    amplitude: waveSpring.progress.to(
+                                        (p) => 60 + p * 40 + amplitudeNoise * parallaxFactor
                                     ),
-                                    speed: scroll.to(
-                                        [0, 1],
-                                        [
-                                            0.03 + index * speedNoise,
-                                            0.08 + index * speedNoise,
-                                        ]
+                                    speed: waveSpring.progress.to(
+                                        (p) => 0.02 + p * 0.04 + speedNoise
                                     ),
-                                    points: 4 + index + pointsNoise,
+                                    points: 5 + index + pointsNoise,
                                     paused: false,
                                 }}
                                 style={{
-                                    transform: scroll.to(
-                                        [0, 1],
-                                        [1, 1 + (index + 1) * 0.05]
-                                    ).to((v) => `scaleY(${v})`),
+                                    transform: waveSpring.progress.to(
+                                        (p) => `translateY(${p * index * -20}px) scaleY(${1 + p * 0.1 * (index + 1)})`
+                                    ),
+                                    opacity: springProps.opacity,
                                 }}
-                                fill={scroll.to(
-                                    [0, 0.5, 1],
-                                    [
-                                        `hsl(${240 - index * 5}, 56%, ${30 - index * 2}%)`,
-                                        `hsl(${250 - index * 5}, 50%, ${25 - index * 2}%)`,
-                                        `hsl(${260 - index * 5}, 45%, ${20 - index * 2}%)`,
-                                    ]
+                                fill={waveSpring.progress.to(
+                                    (p) => {
+                                        const hue = 240 - index * 8 - p * 20;
+                                        const sat = 55 - index * 3;
+                                        const light = 28 - index * 3 - p * 5;
+                                        return `hsl(${hue}, ${sat}%, ${light}%)`;
+                                    }
                                 )}
                             />
                         );
@@ -173,7 +177,7 @@ function App() {
                     {/* Page 1: Hero - Logo and tagline */}
                     <ParallaxLayer
                         offset={0}
-                        speed={0.2}
+                        speed={0.1}
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -207,7 +211,7 @@ function App() {
                     {/* Page 2: Introduction */}
                     <ParallaxLayer
                         offset={1}
-                        speed={0.3}
+                        speed={0.2}
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -239,7 +243,7 @@ function App() {
                     {/* Page 3: About */}
                     <ParallaxLayer
                         offset={2}
-                        speed={0.4}
+                        speed={0.3}
                         style={{
                             display: "flex",
                             alignItems: "center",
