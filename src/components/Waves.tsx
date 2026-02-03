@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Interpolation } from "@react-spring/web";
 import { useAnimationFrame } from "../hooks/useAnimationFrame";
 import { usePerlinNoise } from "../hooks/usePerlinNoise";
@@ -22,8 +22,21 @@ interface Point {
 }
 
 /**
+ * Get the current value from either a raw number or an Interpolation object.
+ * This must be called inside the animation loop to get the current animated value.
+ */
+function getAnimatedValue(value: number | Interpolation<number, number>): number {
+    return typeof value === "number" ? value : value.get();
+}
+
+/**
  * Wave component that renders animated SVG waves using Perlin noise.
  * Migrated from class component to functional component using custom hooks.
+ *
+ * Key implementation notes:
+ * - Props like speed, height, amplitude can be Interpolation objects from react-spring
+ * - These values are read via .get() inside the animation loop to get current animated values
+ * - Container is measured on mount and on window resize for responsive behavior
  */
 const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
     props,
@@ -48,11 +61,18 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
     const containerRef = useRef<HTMLDivElement>(null);
     const containerSize = useRef({ width: 0, height: 0 });
 
+    // Store animated props in refs so animation callback can access current values
+    const animatedPropsRef = useRef({ speed, height, amplitude, points });
+    animatedPropsRef.current = { speed, height, amplitude, points };
+
     // Stable Perlin noise instance
     const noise = usePerlinNoise();
 
-    // Measure container on mount
-    useEffect(() => {
+    /**
+     * Measure container dimensions.
+     * Called on mount and window resize.
+     */
+    const measureContainer = useCallback(() => {
         if (containerRef.current) {
             containerSize.current = {
                 width: containerRef.current.offsetWidth,
@@ -61,40 +81,55 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
         }
     }, []);
 
+    // Measure container on mount and resize
+    useEffect(() => {
+        measureContainer();
+
+        const handleResize = () => {
+            measureContainer();
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [measureContainer]);
+
     /**
      * Calculate wave points using Perlin noise.
-     * Handles both raw numbers and Interpolation objects from react-spring.
+     * Reads animated values via .get() to get current interpolated values.
      */
-    const calculateWavePoints = (step: number): Point[] => {
-        const scale = 100;
-        const wavePoints: Point[] = [];
-        const containerWidth = containerSize.current.width || 0;
-        const pointStep = containerWidth / points;
+    const calculateWavePoints = useCallback(
+        (step: number): Point[] => {
+            const scale = 100;
+            const wavePoints: Point[] = [];
+            const containerWidth = containerSize.current.width || 0;
 
-        // Get actual values (handling Interpolation objects)
-        const speedValue =
-            typeof speed === "number" ? speed : speed.get();
-        const heightValue =
-            typeof height === "number" ? height : height.get();
-        const amplitudeValue =
-            typeof amplitude === "number" ? amplitude : amplitude.get();
+            // Get current animated values from refs (allows animation loop to read fresh values)
+            const { speed: speedProp, height: heightProp, amplitude: amplitudeProp, points: pointsProp } = animatedPropsRef.current;
+            const speedValue = getAnimatedValue(speedProp);
+            const heightValue = getAnimatedValue(heightProp);
+            const amplitudeValue = getAnimatedValue(amplitudeProp);
 
-        const stepFactor = (speedValue / scale) * pointStep;
+            const pointStep = containerWidth / pointsProp;
+            const stepFactor = (speedValue / scale) * pointStep;
 
-        for (let i = 0; i <= points; i++) {
-            const seed = step * i + stepFactor;
-            const noiseValue = noise.perlin2(seed / scale, 1);
-            const y = noiseValue * amplitudeValue + heightValue;
-            wavePoints.push({ x: i * pointStep, y });
-        }
+            for (let i = 0; i <= pointsProp; i++) {
+                const seed = step * i + stepFactor;
+                const noiseValue = noise.perlin2(seed / scale, 1);
+                const y = noiseValue * amplitudeValue + heightValue;
+                wavePoints.push({ x: i * pointStep, y });
+            }
 
-        return wavePoints;
-    };
+            return wavePoints;
+        },
+        [noise]
+    );
 
     /**
      * Build SVG path string from wave points using cubic bezier curves.
      */
-    const buildPath = (wavePoints: Point[]): string => {
+    const buildPath = useCallback((wavePoints: Point[]): string => {
         if (wavePoints.length < 2) return "";
 
         const containerWidth = containerSize.current.width;
@@ -128,7 +163,7 @@ const Wave = React.forwardRef<HTMLDivElement, WaveProps>(function Wave(
         svg += ` L 0 ${containerHeight} Z`;
 
         return svg;
-    };
+    }, []);
 
     // Animation loop using custom hook
     useAnimationFrame(
