@@ -92,6 +92,9 @@ Recent decisions affecting current work:
 | LAYOUT-STABLE-001    | 05-02 | Min-height on containers for stability          | Prevents CLS before hydration                               |
 | SRCSET-SVG-001       | 05-02 | Use srcSet even for SVGs                        | Ensures browser knows image is resolution-independent       |
 | LAZY-LOADING-001     | 05-04 | Lazy load only below-fold sections              | Hero is LCP - must load immediately, defer pages 2-3        |
+| REDUCED-MOTION-003   | 05-03 | Slow animations 10x instead of disabling        | Maintains aesthetic while honoring user preference (3fps, 3s CSS) |
+| ADAPTIVE-FPS-001     | 05-03 | Three-tier quality system with hysteresis       | Smooth degradation without flickering (high/medium/low)     |
+| PARALLAX-REDUCE-001  | 05-03 | Scale parallax with quality level               | Reduces vestibular issues for accessibility (0.1x for reduced motion) |
 | LAZY-LOADING-002     | 05-04 | Keep hero section inline                        | Prevents LCP regression from lazy loading critical content  |
 | SUSPENSE-001         | 05-04 | Per-section Suspense boundaries                 | Sections load independently without blocking                |
 | FALLBACK-001         | 05-04 | Simple text loader                              | Minimal UI for fast load, no complex spinners               |
