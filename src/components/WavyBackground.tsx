@@ -1,5 +1,5 @@
 // import { Interpolation, animated } from 'react-spring';
-import { animated, Interpolation } from "@react-spring/web";
+import { animated, Interpolation, SpringValue } from "@react-spring/web";
 import Wave, { WavesPropTypes } from "./Waves";
 import React, { memo } from "react";
 
@@ -10,7 +10,7 @@ interface WavyBackgroundPropTypes {
     fill?: Interpolation<number, string>;
     style?: {
         transform?: Interpolation<number, string>;
-        opacity?: Interpolation<number, number> | number;
+        opacity?: Interpolation<number, number> | SpringValue<number> | number;
     };
     id?: string;
 }
