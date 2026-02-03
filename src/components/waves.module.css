@@ -1,9 +1,8 @@
 .hologramWave {
   position: absolute;
-  width: 100%;
+  width: 150%;
   height: 100%;
   left: -25%;
-  right: -25%;
   bottom: 0;
   pointer-events: none;
   mix-blend-mode: screen;

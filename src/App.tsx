@@ -1,4 +1,4 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { config, to, useScroll, useTrail } from "@react-spring/web";
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
 import WavyBackground from "./components/WavyBackground";
@@ -15,9 +15,25 @@ function randomRange(min: number, max: number): number {
 
 function App() {
     const parallaxRef = useRef<IParallax>(null);
+    const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+    const [, forceUpdate] = useState(0);
+
+    // Get scroll container from Parallax after mount
+    useEffect(() => {
+        // Use requestAnimationFrame to ensure Parallax has fully mounted
+        const raf = requestAnimationFrame(() => {
+            if (parallaxRef.current?.container?.current && !scrollContainerRef.current) {
+                scrollContainerRef.current = parallaxRef.current.container.current;
+                forceUpdate(n => n + 1); // Trigger re-render to update useScroll
+            }
+        });
+        return () => cancelAnimationFrame(raf);
+    });
 
     const { height } = useWindowSize();
-    const { scrollY } = useScroll();
+    const { scrollY } = useScroll({
+        container: scrollContainerRef.current ? { current: scrollContainerRef.current } as React.MutableRefObject<HTMLDivElement> : undefined,
+    });
     const waveConfigs = useTrail(numWaves, {
         from: { opacity: 0.3, transform: "scale(0)" },
         to: { opacity: 0.7, transform: "scale(1)" },
