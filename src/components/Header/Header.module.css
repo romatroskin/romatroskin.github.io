@@ -42,17 +42,17 @@
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 .navLink:hover,
 .navLink:focus {
-  color: #535bf2;
+  color: var(--color-accent);
   background: none;
 }
 
 .navLinkActive {
-  color: #535bf2;
+  color: var(--color-accent);
 }
 
 .headerActions {
@@ -79,7 +79,7 @@
   height: 2px;
   background: #fff;
   border-radius: 1px;
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
 }
 
 .hamburger:focus-visible {

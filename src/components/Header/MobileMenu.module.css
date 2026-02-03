@@ -86,7 +86,7 @@
   text-decoration: none;
   font-size: 18px;
   border-radius: 8px;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-fast);
 }
 
 .navLink:hover {
@@ -100,5 +100,5 @@
 
 .navLinkActive {
   background: rgba(83, 91, 242, 0.3);
-  border-left: 3px solid #535bf2;
+  border-left: 3px solid var(--color-accent);
 }
