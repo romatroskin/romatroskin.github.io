@@ -12,7 +12,7 @@ Transform the existing Puff Puff Dev portfolio site from a visually impressive b
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation & Cleanup** - Critical bug fixes, testing setup, dependency cleanup
+- [x] **Phase 1: Foundation & Cleanup** - Critical bug fixes, testing setup, dependency cleanup
 - [ ] **Phase 2: Component Architecture** - Wave class-to-functional refactor with custom hooks
 - [ ] **Phase 3: Navigation & Core A11Y** - Scroll navigation, mobile menu, keyboard accessibility
 - [ ] **Phase 4: CSS & Visual Design** - CSS modules, color contrast, responsive typography, theming
@@ -35,9 +35,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 
-- [ ] 01-01-PLAN.md — Testing infrastructure (Vitest + React Testing Library + Perlin tests)
-- [ ] 01-02-PLAN.md — Critical bug fixes (useMemo stabilization, console.log removal, TypeScript fixes)
-- [ ] 01-03-PLAN.md — Dependency cleanup (lodash/PureCSS removal, CSS Modules for Header, bundle verification)
+- [x] 01-01-PLAN.md — Testing infrastructure (Vitest + React Testing Library + Perlin tests)
+- [x] 01-02-PLAN.md — Critical bug fixes (useMemo stabilization, console.log removal, TypeScript fixes)
+- [x] 01-03-PLAN.md — Dependency cleanup (lodash/PureCSS removal, CSS Modules for Header, bundle verification)
 
 ### Phase 2: Component Architecture
 **Goal**: Migrate Wave class component to functional component with hooks for testability and react-spring integration
@@ -128,7 +128,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Cleanup | 0/3 | Not started | - |
+| 1. Foundation & Cleanup | 3/3 | Complete | 2026-02-03 |
 | 2. Component Architecture | 0/2 | Not started | - |
 | 3. Navigation & Core A11Y | 0/3 | Not started | - |
 | 4. CSS & Visual Design | 0/3 | Not started | - |

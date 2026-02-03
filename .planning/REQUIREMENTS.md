@@ -9,11 +9,11 @@
 | ID | Requirement | Priority | Phase | Status |
 |----|-------------|----------|-------|--------|
 | REQ-CQ-001 | Refactor Wave class component to functional component with hooks | High | 2 | Pending |
-| REQ-CQ-002 | Remove all console.log statements from production code | High | 1 | Pending |
-| REQ-CQ-003 | Remove dead/commented-out code throughout codebase | Medium | 1 | Pending |
-| REQ-CQ-004 | Fix TypeScript issues (replace @ts-expect-error with proper types) | High | 1 | Pending |
-| REQ-CQ-005 | Replace lodash dependency with native Math.random() | Medium | 1 | Pending |
-| REQ-CQ-006 | Fix random values regenerated every render in App.tsx | Critical | 1 | Pending |
+| REQ-CQ-002 | Remove all console.log statements from production code | High | 1 | Complete |
+| REQ-CQ-003 | Remove dead/commented-out code throughout codebase | Medium | 1 | Complete |
+| REQ-CQ-004 | Fix TypeScript issues (replace @ts-expect-error with proper types) | High | 1 | Complete |
+| REQ-CQ-005 | Replace lodash dependency with native Math.random() | Medium | 1 | Complete |
+| REQ-CQ-006 | Fix random values regenerated every render in App.tsx | Critical | 1 | Complete |
 | REQ-CQ-007 | Add Error Boundaries for graceful failure handling | Medium | 6 | Pending |
 | REQ-CQ-008 | Organize CSS with CSS Modules or consistent pattern | Medium | 4 | Pending |
 
@@ -55,8 +55,8 @@
 
 | ID | Requirement | Priority | Phase | Status |
 |----|-------------|----------|-------|--------|
-| REQ-TST-001 | Set up Vitest testing framework | High | 1 | Pending |
-| REQ-TST-002 | Unit tests for Perlin noise algorithm | Medium | 1 | Pending |
+| REQ-TST-001 | Set up Vitest testing framework | High | 1 | Complete |
+| REQ-TST-002 | Unit tests for Perlin noise algorithm | Medium | 1 | Complete |
 | REQ-TST-003 | Unit tests for Wave point calculation | Medium | 2 | Pending |
 | REQ-TST-004 | Component smoke tests for App, Header, WavyBackground | Medium | 2 | Pending |
 | REQ-TST-005 | Accessibility tests with vitest-axe | Medium | 6 | Pending |
@@ -66,8 +66,8 @@
 | ID | Requirement | Priority | Phase | Status |
 |----|-------------|----------|-------|--------|
 | REQ-PERF-001 | Cache Perlin noise calculations (memoization) | High | 5 | Pending |
-| REQ-PERF-002 | Remove unused PureCSS or use fully | Medium | 1 | Pending |
-| REQ-PERF-003 | Optimize bundle size (remove lodash) | Medium | 1 | Pending |
+| REQ-PERF-002 | Remove unused PureCSS or use fully | Medium | 1 | Complete |
+| REQ-PERF-003 | Optimize bundle size (remove lodash) | Medium | 1 | Complete |
 | REQ-PERF-004 | Add lazy loading for below-fold content | Medium | 5 | Pending |
 | REQ-PERF-005 | Achieve Lighthouse performance score 90+ | High | 5 | Pending |
 | REQ-PERF-006 | LCP < 2.5s (Largest Contentful Paint) | High | 5 | Pending |
