@@ -365,11 +365,6 @@ button:focus-visible {
     float: right;
   }
 
-  /* We increase the height of the splash-container */
-  /* .splash-container {
-  height: 500px;
-} */
-
   /* We decrease the width of the .splash, since we have more width
   to work with */
   .splash {
@@ -379,7 +374,7 @@ button:focus-visible {
   }
 
   .splash-head {
-    font-size: 250%;
+    font-size: 2.5rem;
   }
 
 
@@ -392,7 +387,7 @@ button:focus-visible {
 
 @media only screen and (max-width: 375px) {
   .splash-subhead {
-    font-size: 60%;
+    font-size: 0.75rem;
   }
 }
 
@@ -400,6 +395,6 @@ button:focus-visible {
 
   /* We increase the header font size even more */
   .splash-head {
-    font-size: 300%;
+    font-size: 3rem;
   }
 }

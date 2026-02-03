@@ -90,8 +90,13 @@
 
 /* Show hamburger on mobile, hide nav list */
 @media (max-width: 768px) {
+  .menu {
+    padding: 0 0.5rem;
+  }
+
   .hamburger {
     display: flex;
+    flex-shrink: 0;
   }
 
   .navList {
@@ -99,9 +104,9 @@
   }
 
   .headerActions {
-    /* Keep theme toggle visible on mobile */
-    position: absolute;
-    right: 60px;
+    /* Theme toggle between logo and hamburger */
+    margin-left: auto;
+    margin-right: 0.5rem;
   }
 }
 

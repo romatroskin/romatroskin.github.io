@@ -8,6 +8,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import { SkipLink } from "./components/SkipLink/SkipLink";
 import { ThemeToggle } from "./components/ThemeToggle/ThemeToggle";
+import { useTheme } from "./hooks/useTheme";
 
 const numWaves = 5;
 const TOTAL_PAGES = 3;
@@ -20,6 +21,7 @@ function App() {
     const parallaxRef = useRef<IParallax>(null);
     const [currentPage, setCurrentPage] = useState(0);
     const [scrollProgress, setScrollProgress] = useState(0);
+    const { theme } = useTheme();
 
     const { height } = useWindowSize();
 
@@ -175,10 +177,13 @@ function App() {
                                 }}
                                 fill={waveSpring.progress.to(
                                     (p) => {
-                                        // Deeper colors as we scroll, with depth-based variation
+                                        // Theme-aware wave colors
                                         const hue = 235 - index * 10 - p * 25;
-                                        const sat = 60 - index * 4;
-                                        const light = 30 - index * 4 - p * 8;
+                                        const sat = theme === 'light' ? 40 - index * 3 : 60 - index * 4;
+                                        // Light theme: lighter waves (70-85%), Dark theme: darker waves (20-35%)
+                                        const light = theme === 'light'
+                                            ? 85 - index * 3 - p * 5
+                                            : 30 - index * 4 - p * 8;
                                         return `hsl(${hue}, ${sat}%, ${light}%)`;
                                     }
                                 )}
