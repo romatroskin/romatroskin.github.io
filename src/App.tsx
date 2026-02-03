@@ -11,6 +11,7 @@ import { ThemeToggle } from "./components/ThemeToggle/ThemeToggle";
 import { useTheme } from "./hooks/useTheme";
 import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
 import { useAdaptiveFrameRate } from './hooks/useAdaptiveFrameRate';
+import { PerformanceIndicator } from './components/PerformanceIndicator';
 
 // Lazy load below-fold sections (pages 2-3)
 const ServicesSection = lazy(() => import('./sections/ServicesSection'));
@@ -326,6 +327,10 @@ function App() {
                     </Parallax>
                 </main>
             </div>
+            <PerformanceIndicator
+                qualityLevel={qualityLevel}
+                prefersReducedMotion={prefersReducedMotion}
+            />
         </>
     );
 }
