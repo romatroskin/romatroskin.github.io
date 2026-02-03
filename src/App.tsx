@@ -182,110 +182,118 @@ function App() {
                 </div>
 
                 {/* Parallax content */}
-                <Parallax pages={TOTAL_PAGES} ref={parallaxRef}>
-                    {/* Page 1: Hero - Logo and tagline */}
-                    <ParallaxLayer
-                        offset={0}
-                        speed={0.2}
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <div className="hero-container">
-                            <a href="#" target="_blank" rel="noreferrer">
-                                <img
-                                    src="https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg"
-                                    className="logo"
-                                    alt="Puff Puff logo"
-                                />
-                            </a>
-                            <h1 className="hero-title">
-                                Where Code Meets Creativity,
-                                <br />
-                                <span className="hero-highlight">Dreams Take Shape.</span>
-                            </h1>
-                            <button
-                                className="scroll-indicator"
-                                onClick={() => scrollToPage(1)}
-                                aria-label="Scroll to next section"
-                            >
-                                <span className="scroll-arrow">↓</span>
-                                <span className="scroll-text">Discover More</span>
-                            </button>
-                        </div>
-                    </ParallaxLayer>
+                <main id="main-content" role="main">
+                    <Parallax pages={TOTAL_PAGES} ref={parallaxRef}>
+                        {/* Page 1: Hero - Logo and tagline */}
+                        <ParallaxLayer
+                            offset={0}
+                            speed={0.2}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <section id="hero-section" aria-labelledby="hero-heading">
+                                <div className="hero-container">
+                                    <a href="#" target="_blank" rel="noreferrer">
+                                        <img
+                                            src="https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg"
+                                            className="logo"
+                                            alt="Puff Puff logo"
+                                        />
+                                    </a>
+                                    <h1 id="hero-heading" className="hero-title">
+                                        Where Code Meets Creativity,
+                                        <br />
+                                        <span className="hero-highlight">Dreams Take Shape.</span>
+                                    </h1>
+                                    <button
+                                        className="scroll-indicator"
+                                        onClick={() => scrollToPage(1)}
+                                        aria-label="Scroll to next section"
+                                    >
+                                        <span className="scroll-arrow">↓</span>
+                                        <span className="scroll-text">Discover More</span>
+                                    </button>
+                                </div>
+                            </section>
+                        </ParallaxLayer>
 
-                    {/* Page 2: Introduction */}
-                    <ParallaxLayer
-                        offset={1}
-                        speed={0.3}
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <div className="intro-container">
-                            <h2 className="section-title">Craft Applications Workshop</h2>
-                            <p className="intro-text">
-                                Are you seeking to bring your mobile application idea to life
-                                with seamless precision and stunning user experiences?
-                            </p>
-                            <p className="intro-text">
-                                Look no further than <strong>Puff Puff Dev</strong>, your
-                                dedicated partner in crafting exceptional mobile applications
-                                using the latest Flutter technologies.
-                            </p>
-                            <div className="cta-buttons">
-                                <button
-                                    className="cta-primary"
-                                    onClick={() => scrollToPage(2)}
-                                >
-                                    Learn More About Us
-                                </button>
-                            </div>
-                        </div>
-                    </ParallaxLayer>
+                        {/* Page 2: Introduction */}
+                        <ParallaxLayer
+                            offset={1}
+                            speed={0.3}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <section id="services-section" aria-labelledby="services-heading">
+                                <div className="intro-container">
+                                    <h2 id="services-heading" className="section-title">Craft Applications Workshop</h2>
+                                    <p className="intro-text">
+                                        Are you seeking to bring your mobile application idea to life
+                                        with seamless precision and stunning user experiences?
+                                    </p>
+                                    <p className="intro-text">
+                                        Look no further than <strong>Puff Puff Dev</strong>, your
+                                        dedicated partner in crafting exceptional mobile applications
+                                        using the latest Flutter technologies.
+                                    </p>
+                                    <div className="cta-buttons">
+                                        <button
+                                            className="cta-primary"
+                                            onClick={() => scrollToPage(2)}
+                                        >
+                                            Learn More About Us
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </ParallaxLayer>
 
-                    {/* Page 3: About */}
-                    <ParallaxLayer
-                        offset={2}
-                        speed={0.4}
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <div className="about-container">
-                            <h2 className="section-title">About Us</h2>
-                            <div className="about-content">
-                                <p className="about-text">
-                                    At Puff Puff Dev, we are dedicated to crafting exceptional
-                                    mobile applications that bring your ideas to life. With a
-                                    team of experienced developers and designers, we leverage
-                                    the latest technologies, primarily focusing on Flutter and
-                                    Dart, to deliver seamless user experiences and innovative
-                                    solutions.
-                                </p>
-                                <p className="about-text">
-                                    Our mission is to transform your dreams into reality
-                                    through creative coding, attention to detail, and a
-                                    commitment to quality. Whether you're a startup looking to
-                                    build your first app or an established business seeking to
-                                    enhance your digital presence, we are here to help you
-                                    every step of the way.
-                                </p>
-                                <p className="about-text highlight">
-                                    Join us on this exciting journey as we explore the endless
-                                    possibilities of mobile development together!
-                                </p>
-                            </div>
-                        </div>
-                    </ParallaxLayer>
-                </Parallax>
+                        {/* Page 3: About */}
+                        <ParallaxLayer
+                            offset={2}
+                            speed={0.4}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <section id="about-section" aria-labelledby="about-heading">
+                                <div className="about-container">
+                                    <h2 id="about-heading" className="section-title">About Us</h2>
+                                    <div className="about-content">
+                                        <p className="about-text">
+                                            At Puff Puff Dev, we are dedicated to crafting exceptional
+                                            mobile applications that bring your ideas to life. With a
+                                            team of experienced developers and designers, we leverage
+                                            the latest technologies, primarily focusing on Flutter and
+                                            Dart, to deliver seamless user experiences and innovative
+                                            solutions.
+                                        </p>
+                                        <p className="about-text">
+                                            Our mission is to transform your dreams into reality
+                                            through creative coding, attention to detail, and a
+                                            commitment to quality. Whether you're a startup looking to
+                                            build your first app or an established business seeking to
+                                            enhance your digital presence, we are here to help you
+                                            every step of the way.
+                                        </p>
+                                        <p className="about-text highlight">
+                                            Join us on this exciting journey as we explore the endless
+                                            possibilities of mobile development together!
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                        </ParallaxLayer>
+                    </Parallax>
+                </main>
             </div>
         </>
     );
