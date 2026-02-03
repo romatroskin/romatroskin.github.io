@@ -17,9 +17,7 @@ function App() {
     const parallaxRef = useRef<IParallax>(null);
 
     const { height } = useWindowSize();
-    const { scrollY } = useScroll({
-        container: parallaxRef?.current?.container,
-    });
+    const { scrollY } = useScroll();
     const waveConfigs = useTrail(numWaves, {
         from: { opacity: 0.3, transform: "scale(0)" },
         to: { opacity: 0.7, transform: "scale(1)" },
