@@ -18,74 +18,71 @@ function App() {
     const parallaxRef = useRef<IParallax>(null);
     const [currentPage, setCurrentPage] = useState(0);
     const scrollProgressRef = useRef(0);
-    const lastScrollTimeRef = useRef(Date.now());
 
     const { height } = useWindowSize();
 
-    // Smooth spring for wave properties - responds to scroll changes
+    // Smooth spring for wave properties
     const [waveSpring, waveApi] = useSpring(() => ({
         progress: 0,
-        config: { mass: 0.8, tension: 200, friction: 26 },
+        config: { mass: 1, tension: 280, friction: 60 },
     }));
 
-    // Track scroll position and update spring
+    // Track scroll position and update spring continuously
     useEffect(() => {
         const container = parallaxRef.current?.container?.current;
         if (!container) return;
 
-        // Add CSS scroll-snap for native smooth snapping
-        container.style.scrollSnapType = "y mandatory";
-        container.style.scrollBehavior = "smooth";
+        let rafId: number;
 
-        const handleScroll = () => {
+        const updateProgress = () => {
             const scrollTop = container.scrollTop;
             const scrollHeight = container.scrollHeight - container.clientHeight;
             const progress = scrollHeight > 0 ? Math.max(0, Math.min(1, scrollTop / scrollHeight)) : 0;
 
-            const now = Date.now();
-            const timeDelta = now - lastScrollTimeRef.current;
-            const scrollDelta = Math.abs(progress - scrollProgressRef.current);
+            // Only update if changed
+            if (Math.abs(progress - scrollProgressRef.current) > 0.0001) {
+                scrollProgressRef.current = progress;
+                waveApi.start({ progress });
 
-            // Detect fast scrolling (large change in short time)
-            const isFastScroll = timeDelta < 50 && scrollDelta > 0.1;
-
-            scrollProgressRef.current = progress;
-            lastScrollTimeRef.current = now;
-
-            // Use immediate update for very fast scrolling to prevent lag
-            waveApi.start({
-                progress,
-                immediate: isFastScroll,
-                config: isFastScroll
-                    ? { tension: 300, friction: 30 }
-                    : { mass: 0.8, tension: 200, friction: 26 },
-            });
-
-            // Update current page for header highlighting
-            const pageHeight = container.clientHeight;
-            const newPage = Math.round(scrollTop / pageHeight);
-            if (newPage >= 0 && newPage < TOTAL_PAGES && newPage !== currentPage) {
-                setCurrentPage(newPage);
+                // Update current page for header
+                const pageHeight = container.clientHeight;
+                const newPage = Math.round(scrollTop / pageHeight);
+                if (newPage >= 0 && newPage < TOTAL_PAGES && newPage !== currentPage) {
+                    setCurrentPage(newPage);
+                }
             }
+
+            rafId = requestAnimationFrame(updateProgress);
         };
 
-        // Initial measurement
-        handleScroll();
-
-        container.addEventListener("scroll", handleScroll, { passive: true });
-        return () => container.removeEventListener("scroll", handleScroll);
+        rafId = requestAnimationFrame(updateProgress);
+        return () => cancelAnimationFrame(rafId);
     }, [waveApi, currentPage]);
 
-    // Add scroll-snap-align to each page
+    // Snap to page after scroll ends
     useEffect(() => {
         const container = parallaxRef.current?.container?.current;
         if (!container) return;
 
-        // Find all parallax layer containers and add snap alignment
-        const layers = container.querySelectorAll('[style*="will-change"]');
-        layers.forEach((layer: Element) => {
-            (layer as HTMLElement).style.scrollSnapAlign = "start";
-        });
+        let snapTimeout: NodeJS.Timeout;
+
+        const handleScrollEnd = () => {
+            clearTimeout(snapTimeout);
+            snapTimeout = setTimeout(() => {
+                const pageHeight = container.clientHeight;
+                const currentScroll = container.scrollTop;
+                const nearestPage = Math.round(currentScroll / pageHeight);
+                if (nearestPage >= 0 && nearestPage < TOTAL_PAGES) {
+                    parallaxRef.current?.scrollTo(nearestPage);
+                }
+            }, 100);
+        };
+
+        container.addEventListener("scroll", handleScrollEnd, { passive: true });
+        return () => {
+            container.removeEventListener("scroll", handleScrollEnd);
+            clearTimeout(snapTimeout);
+        };
     }, []);
 
     const waveConfigs = useTrail(numWaves, {
