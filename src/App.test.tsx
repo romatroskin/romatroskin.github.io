@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
 // Mock usehooks-ts to avoid window size issues in tests
@@ -37,9 +37,12 @@ describe('App', () => {
     expect(screen.getByText(/Dreams Take Shape/i)).toBeInTheDocument();
   });
 
-  it('renders intro section', () => {
+  it('renders intro section', async () => {
     render(<App />);
-    expect(screen.getByText(/Craft Applications Workshop/i)).toBeInTheDocument();
+    // Wait for lazy loaded ServicesSection to load
+    await waitFor(() => {
+      expect(screen.getByText(/Craft Applications Workshop/i)).toBeInTheDocument();
+    });
   });
 
   it('renders about section', () => {
