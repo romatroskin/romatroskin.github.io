@@ -16,34 +16,58 @@ function randomRange(min: number, max: number): number {
 
 function App() {
     const parallaxRef = useRef<IParallax>(null);
-    const [scrollProgress, setScrollProgress] = useState(0);
+    const scrollProgressRef = useRef(0);
+    const rafRef = useRef<number>();
+    const [currentPage, setCurrentPage] = useState(0);
 
     const { height } = useWindowSize();
 
-    // Track scroll position from Parallax container
+    // Animated scroll value - uses spring for smooth interpolation
+    const [{ scroll }, scrollApi] = useSpring(() => ({
+        scroll: 0,
+        config: { mass: 1, tension: 180, friction: 26 },
+    }));
+
+    // Track scroll position from Parallax container with RAF throttling
     useEffect(() => {
         const container = parallaxRef.current?.container?.current;
         if (!container) return;
 
-        const handleScroll = () => {
+        let ticking = false;
+
+        const updateScroll = () => {
             const scrollTop = container.scrollTop;
             const scrollHeight = container.scrollHeight - container.clientHeight;
             const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
-            setScrollProgress(progress);
+
+            // Only update if changed significantly (reduces jitter)
+            if (Math.abs(progress - scrollProgressRef.current) > 0.001) {
+                scrollProgressRef.current = progress;
+                scrollApi.start({ scroll: progress });
+
+                // Update current page for header highlighting
+                const pageHeight = container.clientHeight;
+                const newPage = Math.round(scrollTop / pageHeight);
+                if (newPage !== currentPage && newPage >= 0 && newPage < TOTAL_PAGES) {
+                    setCurrentPage(newPage);
+                }
+            }
+            ticking = false;
+        };
+
+        const handleScroll = () => {
+            if (!ticking) {
+                ticking = true;
+                rafRef.current = requestAnimationFrame(updateScroll);
+            }
         };
 
         container.addEventListener("scroll", handleScroll, { passive: true });
-        return () => container.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    // Animated scroll value for wave effects
-    const [{ scroll }] = useSpring(
-        () => ({
-            scroll: scrollProgress,
-            config: { tension: 280, friction: 60 },
-        }),
-        [scrollProgress]
-    );
+        return () => {
+            container.removeEventListener("scroll", handleScroll);
+            if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        };
+    }, [scrollApi, currentPage]);
 
     const waveConfigs = useTrail(numWaves, {
         from: { opacity: 0.3, transform: "scale(0)" },
@@ -65,7 +89,7 @@ function App() {
 
     return (
         <>
-            <Header onNavigate={scrollToPage} />
+            <Header onNavigate={scrollToPage} currentPage={currentPage} />
             <div
                 style={{
                     position: "absolute",

@@ -3,9 +3,24 @@ import styles from "./Header.module.css";
 
 interface HeaderProps {
     onNavigate?: (page: number) => void;
+    currentPage?: number;
 }
 
-function Header({ onNavigate }: HeaderProps) {
+interface NavItem {
+    label: string;
+    page: number;
+    isExternal?: boolean;
+    href?: string;
+}
+
+const navItems: NavItem[] = [
+    { label: "Home", page: 0 },
+    { label: "Services", page: 1 },
+    { label: "About", page: 2 },
+    { label: "Contact", page: -1, isExternal: true, href: "mailto:contact@puffpuff.dev" },
+];
+
+function Header({ onNavigate, currentPage = 0 }: HeaderProps) {
     const handleNavClick = (e: React.MouseEvent, page: number) => {
         e.preventDefault();
         onNavigate?.(page);
@@ -21,38 +36,23 @@ function Header({ onNavigate }: HeaderProps) {
                     onClick={(e) => handleNavClick(e, 0)}
                 />
                 <ul className={styles.navList}>
-                    <li className={styles.navItem}>
-                        <a
-                            href="#"
-                            className={`${styles.navLink} ${styles.navLinkActive}`}
-                            onClick={(e) => handleNavClick(e, 0)}
-                        >
-                            Home
-                        </a>
-                    </li>
-                    <li className={styles.navItem}>
-                        <a
-                            href="#"
-                            className={styles.navLink}
-                            onClick={(e) => handleNavClick(e, 1)}
-                        >
-                            Services
-                        </a>
-                    </li>
-                    <li className={styles.navItem}>
-                        <a
-                            href="#"
-                            className={styles.navLink}
-                            onClick={(e) => handleNavClick(e, 2)}
-                        >
-                            About
-                        </a>
-                    </li>
-                    <li className={styles.navItem}>
-                        <a href="mailto:contact@puffpuff.dev" className={styles.navLink}>
-                            Contact
-                        </a>
-                    </li>
+                    {navItems.map((item) => (
+                        <li key={item.label} className={styles.navItem}>
+                            {item.isExternal ? (
+                                <a href={item.href} className={styles.navLink}>
+                                    {item.label}
+                                </a>
+                            ) : (
+                                <a
+                                    href="#"
+                                    className={`${styles.navLink} ${currentPage === item.page ? styles.navLinkActive : ""}`}
+                                    onClick={(e) => handleNavClick(e, item.page)}
+                                >
+                                    {item.label}
+                                </a>
+                            )}
+                        </li>
+                    ))}
                 </ul>
             </nav>
         </animated.header>
