@@ -15,8 +15,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation & Cleanup** - Critical bug fixes, testing setup, dependency cleanup
 - [x] **Phase 2: Component Architecture** - Wave class-to-functional refactor with custom hooks
 - [x] **Phase 3: Navigation & Core A11Y** - Scroll navigation, mobile menu, keyboard accessibility
-- [ ] **Phase 4: CSS & Visual Design** - CSS modules, color contrast, responsive typography, theming
-- [ ] **Phase 5: Performance & Animation** - Perlin caching, Core Web Vitals, lazy loading
+- [x] **Phase 4: CSS & Visual Design** - CSS modules, color contrast, responsive typography, theming
+- [ ] **Phase 5: Performance & Animation** - Web Vitals monitoring, adaptive animations, reduced motion
 - [ ] **Phase 6: Testing & Error Handling** - Error boundaries, accessibility tests, coverage
 
 ## Phase Details
@@ -103,14 +103,14 @@ Plans:
   2. LCP (Largest Contentful Paint) under 2.5 seconds
   3. INP (Interaction to Next Paint) under 200ms
   4. CLS (Cumulative Layout Shift) under 0.1
-  5. Users with prefers-reduced-motion see static/minimal animations
+  5. Users with prefers-reduced-motion see slow/minimal animations (not disabled)
   6. Wave animations run smoothly on mid-tier mobile devices (no frame drops)
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 05-01: Perlin caching and animation optimization
-- [ ] 05-02: Core Web Vitals optimization (LCP, INP, CLS)
-- [ ] 05-03: Reduced motion support and responsive animation parameters
+- [ ] 05-01-PLAN.md — Performance measurement infrastructure (web-vitals, usePrefersReducedMotion hook)
+- [ ] 05-02-PLAN.md — Core Web Vitals optimization (LCP preloading, CLS layout stability)
+- [ ] 05-03-PLAN.md — Adaptive animations (useAdaptiveFrameRate, reduced motion integration, PerformanceIndicator)
 
 ### Phase 6: Testing & Error Handling
 **Goal**: Comprehensive test coverage and graceful error handling for production resilience
@@ -137,7 +137,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Component Architecture | 4/4 | Complete | 2026-02-03 |
 | 3. Navigation & Core A11Y | 4/4 | Complete | 2026-02-03 |
 | 4. CSS & Visual Design | 4/4 | Complete | 2026-02-03 |
-| 5. Performance & Animation | 0/3 | Not started | - |
+| 5. Performance & Animation | 0/3 | Planned | - |
 | 6. Testing & Error Handling | 0/2 | Not started | - |
 
 ---
