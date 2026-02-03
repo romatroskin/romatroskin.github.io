@@ -71,12 +71,10 @@ export function MobileMenu({ isOpen, onClose, navItems, onNavigate, currentPage 
   const handleNavClick = (e: React.MouseEvent, item: NavItem) => {
     if (item.isExternal) return; // Let external links work normally
     e.preventDefault();
-    // Close menu first to unlock body scroll, then navigate
-    // Small delay ensures scroll lock is fully released before navigation
+    // Immediately release scroll lock before navigation (don't wait for React effect)
+    clearAllBodyScrollLocks();
     onClose();
-    requestAnimationFrame(() => {
-      onNavigate(item.page);
-    });
+    onNavigate(item.page);
   };
 
   return (
