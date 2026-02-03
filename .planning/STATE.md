@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-02-02)
 ## Current Position
 
 Phase: 6 of 6 (Testing & Error Handling)
-Plan: 2 of 4 in current phase
+Plan: 2 of 4 in current phase (06-01 and 06-02 complete)
 Status: In progress
-Last activity: 2026-02-03 - Completed 06-02-PLAN.md
+Last activity: 2026-02-03 - Completed 06-01-PLAN.md (Error Boundaries)
 
 Progress: [██████████████████▓ ] 95%
 
@@ -101,6 +101,10 @@ Recent decisions affecting current work:
 | FALLBACK-001         | 05-04 | Simple text loader                              | Minimal UI for fast load, no complex spinners               |
 | AXE-SETUP-001        | 06-02 | vitest-axe with manual matcher extension        | extend-expect for types only, import matchers explicitly    |
 | AXE-TEST-001         | 06-02 | Accessibility tests in describe blocks          | Organized accessibility tests within existing test files    |
+| ERROR-BOUNDARY-001   | 06-01 | Use react-error-boundary for declarative error handling | Layered error boundaries for graceful degradation |
+| STORAGE-001          | 06-01 | Abstract localStorage with in-memory fallback   | Handles private browsing/quota exceeded gracefully |
+| WAVE-FALLBACK-001    | 06-01 | Silent gradient fallback for wave animations    | Non-essential UI degrades without retry UI |
+| TEST-SPRING-001      | 06-01 | Skip React Spring animations in tests           | Prevents animation timeouts in test environment |
 
 ### Pending Todos
 
@@ -117,9 +121,9 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 06-02-PLAN.md (Accessibility Testing with vitest-axe)
+Stopped at: Completed 06-01-PLAN.md (Error Boundaries & Graceful Fallbacks)
 Resume file: None
 
 ---
 
-Next step: Continue Phase 6 with 06-03-PLAN.md
+Next step: Continue Phase 6 with 06-03-PLAN.md (if exists) or 06-04-PLAN.md
