@@ -1,4 +1,5 @@
-import { defineConfig } from 'vitest/config'
+/// <reference types="vitest" />
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -11,7 +12,7 @@ export default defineConfig({
       open: false,
       gzipSize: true,
       brotliSize: true
-    }) as any // Type assertion for vite/vitest version mismatch
+    })
   ],
   // base: '/romatroskin.github.io',
   test: {
