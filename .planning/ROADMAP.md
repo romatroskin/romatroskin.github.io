@@ -13,7 +13,7 @@ Transform the existing Puff Puff Dev portfolio site from a visually impressive b
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & Cleanup** - Critical bug fixes, testing setup, dependency cleanup
-- [ ] **Phase 2: Component Architecture** - Wave class-to-functional refactor with custom hooks
+- [x] **Phase 2: Component Architecture** - Wave class-to-functional refactor with custom hooks
 - [ ] **Phase 3: Navigation & Core A11Y** - Scroll navigation, mobile menu, keyboard accessibility
 - [ ] **Phase 4: CSS & Visual Design** - CSS modules, color contrast, responsive typography, theming
 - [ ] **Phase 5: Performance & Animation** - Perlin caching, Core Web Vitals, lazy loading
@@ -54,8 +54,8 @@ Plans:
 
 - [x] 02-01-PLAN.md — Custom hooks extraction (useAnimationFrame, usePerlinNoise) with unit tests
 - [x] 02-02-PLAN.md — Wave functional component migration with smoke tests (visual parity checkpoint)
-- [ ] 02-03-PLAN.md — Gap closure: Fix scroll responsiveness and wave cutoff issues
-- [ ] 02-04-PLAN.md — Gap closure: Visual verification checkpoint
+- [x] 02-03-PLAN.md — Gap closure: Fix scroll responsiveness and wave cutoff issues
+- [x] 02-04-PLAN.md — Gap closure: Visual verification checkpoint
 
 ### Phase 3: Navigation & Core A11Y
 **Goal**: Users can navigate the site via scroll, keyboard, and mobile menu with proper accessibility support
@@ -132,7 +132,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-02-03 |
-| 2. Component Architecture | 2/4 | In Progress (Gap Closure) | - |
+| 2. Component Architecture | 4/4 | Complete | 2026-02-03 |
 | 3. Navigation & Core A11Y | 0/3 | Not started | - |
 | 4. CSS & Visual Design | 0/3 | Not started | - |
 | 5. Performance & Animation | 0/3 | Not started | - |
