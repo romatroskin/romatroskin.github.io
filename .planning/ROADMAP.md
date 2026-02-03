@@ -86,12 +86,12 @@ Plans:
   3. All tap targets are minimum 44x44px on touch devices
   4. User can toggle between dark and light modes (persisted preference)
   5. Content reflows at 320px without horizontal scrollbar
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 04-01: CSS Modules migration and theme system
-- [ ] 04-02: Responsive design (typography, tap targets, reflow)
-- [ ] 04-03: Visual polish (loading states, transitions, micro-interactions)
+- [ ] 04-01-PLAN.md — CSS architecture and theme system (design tokens, themes, useTheme hook, ThemeToggle, FOUC prevention)
+- [ ] 04-02-PLAN.md — Responsive design (fluid typography, 44px touch targets, 320px reflow)
+- [ ] 04-03-PLAN.md — Visual polish (micro-interactions, GPU transitions, reduced-motion support, print stylesheet)
 
 ### Phase 5: Performance & Animation
 **Goal**: Achieve Core Web Vitals compliance with optimized animations across devices
