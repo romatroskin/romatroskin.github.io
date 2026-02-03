@@ -36,6 +36,7 @@ function App() {
     const parallaxRef = useRef<IParallax>(null);
     const [currentPage, setCurrentPage] = useState(0);
     const [scrollProgress, setScrollProgress] = useState(0);
+    const isNavigatingRef = useRef(false);
     const { theme } = useTheme();
 
     const { height } = useWindowSize();
@@ -108,7 +109,7 @@ function App() {
         return () => container.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Snap to page after scroll ends
+    // Snap to page after scroll ends (only for manual scrolling, not programmatic navigation)
     useEffect(() => {
         const container = parallaxRef.current?.container?.current;
         if (!container) return;
@@ -118,6 +119,9 @@ function App() {
         const handleScrollEnd = () => {
             clearTimeout(snapTimeout);
             snapTimeout = setTimeout(() => {
+                // Skip snap if we're in the middle of programmatic navigation
+                if (isNavigatingRef.current) return;
+
                 const pageHeight = container.clientHeight;
                 const currentScroll = container.scrollTop;
                 const nearestPage = Math.round(currentScroll / pageHeight);
@@ -161,7 +165,13 @@ function App() {
     }, [animationParams.numWaves]);
 
     const scrollToPage = useCallback((page: number) => {
+        // Disable snap-to-page during programmatic navigation
+        isNavigatingRef.current = true;
         parallaxRef.current?.scrollTo(page);
+        // Re-enable snap after animation completes (react-spring default ~500ms)
+        setTimeout(() => {
+            isNavigatingRef.current = false;
+        }, 600);
     }, []);
 
     return (
