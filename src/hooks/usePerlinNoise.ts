@@ -1,5 +1,5 @@
 import { useRef, useMemo } from 'react';
-import Perlin from '../components/Perlin';
+import Perlin from '@/components/animation/Perlin';
 
 /**
  * Custom hook that provides a stable Perlin noise instance across re-renders.

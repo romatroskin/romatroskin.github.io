@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Interpolation } from "@react-spring/web";
-import { useAnimationFrame } from "../hooks/useAnimationFrame";
-import { usePerlinNoise } from "../hooks/usePerlinNoise";
+import { useAnimationFrame } from "@/hooks/useAnimationFrame";
+import { usePerlinNoise } from "@/hooks/usePerlinNoise";
 import styles from "./waves.module.css";
 
 interface WavesPropTypes {
