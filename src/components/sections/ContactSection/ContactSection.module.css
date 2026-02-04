@@ -1,5 +1,8 @@
 /* Contact Section - Card-based layout */
 .contactCard {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   max-width: 800px;
   width: 100%;
   text-align: left;
@@ -11,18 +14,20 @@
   padding: 2rem 0;
 }
 
-/* Form styles (to be populated in next plan) */
+/* Form styles */
 .form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
 .formField {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
 }
 
 .formLabel {
