@@ -1,23 +1,23 @@
 import { useRef, useMemo, useState, useEffect, useCallback, lazy, Suspense } from "react";
 import { config, useTrail, useSpring } from "@react-spring/web";
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
-import WavyBackground from "./components/WavyBackground";
+import WavyBackground from "@/components/animation/WavyBackground";
 import { useWindowSize } from "usehooks-ts";
 
 import "./App.css";
-import Header from "./components/Header/Header";
-import { SkipLink } from "./components/SkipLink/SkipLink";
-import { ThemeToggle } from "./components/ThemeToggle/ThemeToggle";
-import { useTheme } from "./hooks/useTheme";
-import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
-import { useAdaptiveFrameRate } from './hooks/useAdaptiveFrameRate';
-import { PerformanceIndicator } from './components/PerformanceIndicator';
-import { ErrorBoundary, WaveAnimationFallback, AppFallback } from './components/ErrorBoundary';
-import { OrganizationSchema } from './components/StructuredData';
+import Header from "@/components/ui/Header/Header";
+import { SkipLink } from "@/components/ui/SkipLink/SkipLink";
+import { ThemeToggle } from "@/components/ui/ThemeToggle/ThemeToggle";
+import { useTheme } from "@/hooks/useTheme";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { useAdaptiveFrameRate } from "@/hooks/useAdaptiveFrameRate";
+import { PerformanceIndicator } from "@/components/common/PerformanceIndicator/PerformanceIndicator";
+import { ErrorBoundary, WaveAnimationFallback, AppFallback } from "@/components/common/ErrorBoundary";
+import { OrganizationSchema } from "@/components/common/StructuredData/StructuredData";
 
 // Lazy load below-fold sections (pages 2-3)
-const ServicesSection = lazy(() => import('./sections/ServicesSection'));
-const AboutSection = lazy(() => import('./sections/AboutSection'));
+const ServicesSection = lazy(() => import("@/components/sections/ServicesSection/ServicesSection"));
+const AboutSection = lazy(() => import("@/components/sections/AboutSection/AboutSection"));
 
 const TOTAL_PAGES = 3;
 
