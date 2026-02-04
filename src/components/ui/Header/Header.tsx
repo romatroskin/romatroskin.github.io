@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { animated } from "react-spring";
 import { MobileMenu } from './MobileMenu';
+import { navItems } from './Header.types';
 import styles from "./Header.module.css";
 
 interface HeaderProps {
@@ -8,20 +9,6 @@ interface HeaderProps {
     currentPage?: number;
     children?: React.ReactNode;
 }
-
-interface NavItem {
-    label: string;
-    page: number;
-    isExternal?: boolean;
-    href?: string;
-}
-
-export const navItems: NavItem[] = [
-    { label: "Home", page: 0 },
-    { label: "Services", page: 1 },
-    { label: "About", page: 2 },
-    { label: "Contact", page: 3 },
-];
 
 function Header({ onNavigate, currentPage = 0, children }: HeaderProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

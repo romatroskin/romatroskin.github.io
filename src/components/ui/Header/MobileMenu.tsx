@@ -1,13 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { type NavItem } from './Header.types';
 import styles from './MobileMenu.module.css';
-
-interface NavItem {
-  label: string;
-  page: number;
-  isExternal?: boolean;
-  href?: string;
-}
 
 interface MobileMenuProps {
   isOpen: boolean;
