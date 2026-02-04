@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 *.tsbuildinfo
+
+# Test coverage
+coverage/
+*.coverage
+.nyc_output/
