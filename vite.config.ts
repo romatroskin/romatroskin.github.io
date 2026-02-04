@@ -2,6 +2,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
+import Sitemap from 'vite-plugin-sitemap'
+import viteCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,6 +14,38 @@ export default defineConfig({
       open: false,
       gzipSize: true,
       brotliSize: true
+    }),
+    // Generate sitemap.xml and robots.txt
+    Sitemap({
+      hostname: 'https://puffpuff.dev',
+      dynamicRoutes: ['/'],
+      changefreq: 'monthly',
+      priority: 1.0,
+      lastmod: new Date().toISOString().split('T')[0],
+      generateRobotsTxt: true,
+      robots: [
+        {
+          userAgent: '*',
+          allow: '/',
+        }
+      ]
+    }),
+    // Brotli compression (primary)
+    viteCompression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+      threshold: 1024,
+      deleteOriginFile: false,
+      compressionOptions: {
+        level: 11
+      }
+    }),
+    // Gzip compression (fallback)
+    viteCompression({
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 1024,
+      deleteOriginFile: false
     })
   ],
   // base: '/romatroskin.github.io',
