@@ -20,7 +20,7 @@ export const navItems: NavItem[] = [
     { label: "Home", page: 0 },
     { label: "Services", page: 1 },
     { label: "About", page: 2 },
-    { label: "Contact", page: -1, isExternal: true, href: "mailto:contact@puffpuff.dev" },
+    { label: "Contact", page: 3 },
 ];
 
 function Header({ onNavigate, currentPage = 0, children }: HeaderProps) {
