@@ -89,7 +89,7 @@ Resume file: None
 
 ---
 
-Phase 8 (Architecture Optimization) complete! Ready for Phase 9 (Performance Optimization)
+Next step: `/gsd:discuss-phase 9` or `/gsd:plan-phase 9` to plan Contact Section
 
 *State initialized: 2026-02-03*
 *Last updated: 2026-02-04*

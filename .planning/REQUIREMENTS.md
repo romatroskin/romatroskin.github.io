@@ -29,12 +29,12 @@ Requirements for v1.1 Optimization & Polish milestone. Continues from v1.0 (phas
 
 ### Architecture
 
-- [ ] **ARCH-01**: Source reorganized into components/, hooks/, utils/, features/
-- [ ] **ARCH-02**: TypeScript path aliases configured (@/components, etc.)
+- [x] **ARCH-01**: Source reorganized into components/, hooks/, utils/, features/
+- [x] **ARCH-02**: TypeScript path aliases configured (@/components, etc.)
 - [ ] **ARCH-03**: Code splitting applied to contact section (React.lazy)
 - [x] **ARCH-04**: Brotli pre-compression configured for production build
-- [ ] **ARCH-05**: Unused dependencies removed (focus-trap-react, etc.)
-- [ ] **ARCH-06**: Outdated dependencies updated
+- [x] **ARCH-05**: Unused dependencies removed (focus-trap-react, etc.)
+- [x] **ARCH-06**: Outdated dependencies updated
 
 ### Performance
 
@@ -102,10 +102,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SEO-07 | Phase 7 | Complete |
 | SEO-08 | Phase 7 | Complete |
 | ARCH-04 | Phase 7 | Complete |
-| ARCH-01 | Phase 8 | Pending |
-| ARCH-02 | Phase 8 | Pending |
-| ARCH-05 | Phase 8 | Pending |
-| ARCH-06 | Phase 8 | Pending |
+| ARCH-01 | Phase 8 | Complete |
+| ARCH-02 | Phase 8 | Complete |
+| ARCH-05 | Phase 8 | Complete |
+| ARCH-06 | Phase 8 | Complete |
 | CONT-01 | Phase 9 | Pending |
 | CONT-02 | Phase 9 | Pending |
 | CONT-03 | Phase 9 | Pending |

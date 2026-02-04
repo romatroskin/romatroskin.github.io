@@ -52,10 +52,10 @@ Plans:
 
 Plans:
 
-- [ ] 08-01-PLAN.md — Path alias configuration (vite-tsconfig-paths, tsconfig paths)
-- [ ] 08-02-PLAN.md — Folder restructuring (components/animation, ui, sections, common)
-- [ ] 08-03-PLAN.md — Import updates (convert relative to @/ aliases)
-- [ ] 08-04-PLAN.md — Dependency audit & cleanup (depcheck, remove unused, update outdated)
+- [x] 08-01-PLAN.md — Path alias configuration (vite-tsconfig-paths, tsconfig paths)
+- [x] 08-02-PLAN.md — Folder restructuring (components/animation, ui, sections, common)
+- [x] 08-03-PLAN.md — Import updates (convert relative to @/ aliases)
+- [x] 08-04-PLAN.md — Dependency audit & cleanup (depcheck, remove unused, update outdated)
 
 #### Phase 9: Contact Section
 **Goal**: Visitors can contact Puff Puff Dev via email, find social profiles, and submit contact form
@@ -118,11 +118,11 @@ Phases execute in numeric order: 7 → 8 → 9 → 10 → 11
 | 5. Performance | v1.0 | Complete | Complete | 2026-02-03 |
 | 6. Visual Polish | v1.0 | Complete | Complete | 2026-02-03 |
 | 7. SEO Foundation | v1.1 | 4/4 | Complete | 2026-02-04 |
-| 8. Architecture | v1.1 | 0/TBD | Not started | - |
+| 8. Architecture | v1.1 | 4/4 | Complete | 2026-02-04 |
 | 9. Contact Section | v1.1 | 0/TBD | Not started | - |
 | 10. Design & Performance | v1.1 | 0/TBD | Not started | - |
 | 11. Documentation | v1.1 | 0/TBD | Not started | - |
 
 ---
 *Roadmap created: 2026-02-04*
-*Last updated: 2026-02-04 (Phase 7 complete)*
+*Last updated: 2026-02-04 (Phase 8 complete)*
