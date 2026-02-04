@@ -14,9 +14,11 @@
   transition: filter var(--transition-base), transform var(--transition-fast);
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em rgba(167, 139, 250, 0.6));
-  transform: scale(1.02);
+@media (hover: hover) and (pointer: fine) {
+  .logo:hover {
+    filter: drop-shadow(0 0 2em rgba(167, 139, 250, 0.6));
+    transform: scale(1.02);
+  }
 }
 
 /* Invert white logo to dark for light theme */
@@ -24,8 +26,10 @@
   filter: invert(1) brightness(0.2);
 }
 
-[data-theme="light"] .logo:hover {
-  filter: invert(1) brightness(0.2) drop-shadow(0 0 2em rgba(167, 139, 250, 0.6));
+@media (hover: hover) and (pointer: fine) {
+  [data-theme="light"] .logo:hover {
+    filter: invert(1) brightness(0.2) drop-shadow(0 0 2em rgba(167, 139, 250, 0.6));
+  }
 }
 
 /* System preference fallback for light mode */
@@ -34,8 +38,10 @@
     filter: invert(1) brightness(0.2);
   }
 
-  :root:not([data-theme="dark"]) .logo:hover {
-    filter: invert(1) brightness(0.2) drop-shadow(0 0 2em rgba(167, 139, 250, 0.6));
+  @media (hover: hover) and (pointer: fine) {
+    :root:not([data-theme="dark"]) .logo:hover {
+      filter: invert(1) brightness(0.2) drop-shadow(0 0 2em rgba(167, 139, 250, 0.6));
+    }
   }
 }
 
@@ -91,10 +97,13 @@
               transform var(--transition-fast);
 }
 
-.scroll-indicator:hover {
-  border-color: var(--color-accent);
-  color: var(--color-text-primary);
-  transform: translateY(4px);
+/* Hover states - pointer devices only */
+@media (hover: hover) and (pointer: fine) {
+  .scroll-indicator:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text-primary);
+    transform: translateY(4px);
+  }
 }
 
 .scroll-arrow {
@@ -193,13 +202,22 @@
   letter-spacing: 0.05em;
 }
 
-.cta-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
+@media (hover: hover) and (pointer: fine) {
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
+  }
 }
 
 .cta-primary:active {
   transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Active state for all buttons */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* About Section - Page 3 */
@@ -418,9 +436,11 @@
               box-shadow var(--transition-fast);
 }
 
-.content-card:hover {
-  background: var(--color-bg-card-hover);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+@media (hover: hover) and (pointer: fine) {
+  .content-card:hover {
+    background: var(--color-bg-card-hover);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
 }
 
 /* ========================================
@@ -433,11 +453,15 @@
  * Meets WCAG 2.1 SC 1.4.11 (3:1 contrast ratio requirement)
  */
 
-/* Interactive elements - buttons, links */
+/* Interactive elements - buttons, links, inputs, textareas, selects */
 button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* Header navigation links - ensure visibility against header */
