@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-03)
 ## Current Position
 
 Phase: 7 of 11 (SEO Foundation & Build Infrastructure)
-Plan: 2 of 4 in current phase
+Plan: 4 of 4 in current phase
 Status: In progress
-Last activity: 2026-02-04 - Completed 07-02-PLAN.md (Favicon & Web Manifest)
+Last activity: 2026-02-04 - Completed 07-04-PLAN.md (OG Image & Organization Schema)
 
-Progress: [█████████████░░░░░░░] 60% (v1.0 complete + 2 plans complete in Phase 7)
+Progress: [█████████████░░░░░░░] 61% (v1.0 complete + 4 plans complete in Phase 7)
 
 ## Milestone History
 
@@ -43,12 +43,14 @@ Full v1.0 decision history archived in `.planning/milestones/v1.0-ROADMAP.md`
 - Theme-adaptive SVG favicon (07-02): prefers-color-scheme media query for light/dark adaptation
 - PWA web manifest (07-02): icon-192.png and icon-512.png for Add to Home Screen
 - Cascading favicon strategy (07-02): ICO fallback → SVG modern → apple-touch-icon → manifest
+- Organization schema JSON-LD (07-04): Schema.org Organization entity with GitHub sameAs link
+- OG image (07-04): 1200x630 custom social preview image in public/og-image.png
+- Self-hosted logo (07-04): 1024x1024 logo.png for Organization schema reference
 
 ### Pending Todos
 
 - Contact section social links (GitHub, LinkedIn, Twitter/X)
 - Formspree account setup for contact form
-- OG image creation (1200x630px)
 - Vite 5.4.1 → 6.0+ upgrade decision
 - Remove unused focus-trap-react from dependencies
 
@@ -56,11 +58,9 @@ Full v1.0 decision history archived in `.planning/milestones/v1.0-ROADMAP.md`
 
 **Content readiness:**
 - Social media profile URLs needed for contact section
-- OG image design/creation needed for SEO
 
 **Technical decisions:**
 - react-helmet-async value limited on GitHub Pages (test with crawlers in Phase 7)
-- Self-host logo vs GitHub link (performance vs simplicity tradeoff)
 
 **Deployment verification needed (07-03):**
 - GitHub Pages must serve pre-compressed .br/.gz files with correct Content-Encoding headers
@@ -70,12 +70,12 @@ Full v1.0 decision history archived in `.planning/milestones/v1.0-ROADMAP.md`
 ## Session Continuity
 
 Last session: 2026-02-04
-Stopped at: Completed 07-02-PLAN.md (Favicon & Web Manifest)
+Stopped at: Completed 07-04-PLAN.md (OG Image & Organization Schema)
 Resume file: None
 
 ---
 
-Next step: Continue with 07-03-PLAN.md (Build Infrastructure)
+Next step: Phase 7 complete - proceed to Phase 8 (Architecture Optimization)
 
 *State initialized: 2026-02-03*
 *Last updated: 2026-02-04*
