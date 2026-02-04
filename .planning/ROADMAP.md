@@ -58,20 +58,22 @@ Plans:
 - [x] 08-04-PLAN.md — Dependency audit & cleanup (depcheck, remove unused, update outdated)
 
 #### Phase 9: Contact Section
-**Goal**: Visitors can contact Puff Puff Dev via email, find social profiles, and submit contact form
+**Goal**: Visitors can contact Puff Puff Dev via contact form, find social profiles (GitHub, LinkedIn)
 **Depends on**: Phase 8
 **Requirements**: CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06, ARCH-03
 **Success Criteria** (what must be TRUE):
   1. Contact section appears in main navigation and scrolls smoothly when clicked
-  2. Visitor can click email link to open mail client OR copy email to clipboard with one click
-  3. Visitor can click social links (LinkedIn, GitHub, Twitter/X) to open profiles in new tab
-  4. Visitor can submit contact form with name, email, message; form validates required fields and email format
-  5. Visitor receives clear success message after form submission OR clear error message if submission fails
-  6. Contact section matches dark/light theme and is keyboard accessible (Tab, Enter, Escape work)
-**Plans**: TBD
+  2. Visitor can submit contact form with name, email, message; form validates required fields and email format
+  3. Visitor can click social links (LinkedIn, GitHub) to open profiles in new tab
+  4. Visitor receives clear success message after form submission OR clear error message if submission fails
+  5. Contact section matches dark/light theme and is keyboard accessible (Tab, Enter, Escape work)
+**Plans**: 3 plans
 
 Plans:
-- [ ] 09-01: TBD
+
+- [ ] 09-01-PLAN.md — Foundation: install dependencies (@formspree/react, react-social-icons) and create component skeleton
+- [ ] 09-02-PLAN.md — Implementation: contact form with Formspree, social links, navigation integration
+- [ ] 09-03-PLAN.md — Testing: accessibility tests, visual verification checkpoint
 
 #### Phase 10: Design Polish & Performance
 **Goal**: Visual consistency across sections, Lighthouse scores maintain 90+/100/100/100, Core Web Vitals green
@@ -119,7 +121,7 @@ Phases execute in numeric order: 7 → 8 → 9 → 10 → 11
 | 6. Visual Polish | v1.0 | Complete | Complete | 2026-02-03 |
 | 7. SEO Foundation | v1.1 | 4/4 | Complete | 2026-02-04 |
 | 8. Architecture | v1.1 | 4/4 | Complete | 2026-02-04 |
-| 9. Contact Section | v1.1 | 0/TBD | Not started | - |
+| 9. Contact Section | v1.1 | 0/3 | Planned | - |
 | 10. Design & Performance | v1.1 | 0/TBD | Not started | - |
 | 11. Documentation | v1.1 | 0/TBD | Not started | - |
 
