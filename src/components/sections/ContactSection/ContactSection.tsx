@@ -196,7 +196,6 @@ export default function ContactSection() {
             disabled={state.submitting}
             aria-busy={state.submitting}
             className="cta-primary"
-            style={{ alignSelf: 'flex-start' }}
           >
             {state.submitting ? 'Sending...' : 'Send Message'}
           </button>
