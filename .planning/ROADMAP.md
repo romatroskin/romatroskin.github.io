@@ -3,7 +3,7 @@
 ## Milestones
 
 - **v1.0 MVP** - Phases 1-6 (shipped 2026-02-03)
-- **v1.1 Optimization & Polish** - Phases 7-11 (in progress)
+- **v1.1 Optimization & Polish** - Phases 7-12 (in progress)
 
 ## Phases
 
@@ -108,10 +108,29 @@ Plans:
 Plans:
 - [x] 11-01-PLAN.md — README.md and LICENSE (project overview, badges, quick start, build commands, MIT license)
 
+#### Phase 12: Final Cleanup & Publish Prep
+**Goal**: Codebase is clean, refactored, and ready for public launch with no dead code or unused files
+**Depends on**: Phase 11
+**Requirements**: Derived from user feedback
+**Success Criteria** (what must be TRUE):
+  1. Contact section submit button is visually centered or appropriately sized
+  2. No unused source files, dead code, or orphaned imports in the codebase
+  3. Home section extracted from App.tsx into dedicated component following established patterns
+  4. All lint errors resolved (currently 17 errors, 2 warnings)
+  5. Build passes without warnings, tests pass, site deploys successfully
+**Plans**: 4 plans
+
+Plans:
+
+- [ ] 12-01-PLAN.md — Fix all lint errors and warnings (ESLint config, unused vars, any types)
+- [ ] 12-02-PLAN.md — Extract HeroSection from App.tsx into dedicated component
+- [ ] 12-03-PLAN.md — Fix contact button styling, add coverage/ to .gitignore
+- [ ] 12-04-PLAN.md — Final verification and deployment
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11
+Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -126,7 +145,8 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11
 | 9. Contact Section | v1.1 | 3/3 | Complete | 2026-02-04 |
 | 10. Design & Performance | v1.1 | 3/3 | Complete | 2026-02-04 |
 | 11. Documentation | v1.1 | 1/1 | Complete | 2026-02-04 |
+| 12. Cleanup & Publish | v1.1 | 0/4 | Not Started | - |
 
 ---
 *Roadmap created: 2026-02-04*
-*Last updated: 2026-02-04 (Phase 11 complete - v1.1 milestone complete)*
+*Last updated: 2026-02-04 (Phase 12 planned - 4 plans in 2 waves)*
