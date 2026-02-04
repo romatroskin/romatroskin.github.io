@@ -1,0 +1,107 @@
+/* Contact Section - Card-based layout */
+.contactCard {
+  max-width: 600px;
+  width: 100%;
+  text-align: left;
+}
+
+.placeholder {
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Form styles (to be populated in next plan) */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formLabel {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.formInput,
+.formTextarea {
+  padding: 0.75rem;
+  min-height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color: var(--color-accent);
+}
+
+.formInput[aria-invalid="true"],
+.formTextarea[aria-invalid="true"] {
+  border-color: #ef4444;
+}
+
+.formTextarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.errorMessage {
+  color: #ef4444;
+  font-size: 0.875rem;
+}
+
+.submitButton {
+  align-self: flex-start;
+}
+
+/* Social links */
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  transition: transform var(--transition-fast);
+}
+
+.socialLink:hover {
+  transform: scale(1.1);
+}
+
+/* Success message */
+.successMessage {
+  text-align: center;
+  padding: 2rem;
+}
+
+.successMessage h3 {
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.successMessage p {
+  color: var(--color-text-secondary);
+}
