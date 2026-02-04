@@ -48,10 +48,14 @@ Plans:
   2. Imports use TypeScript path aliases (@/components, @/hooks, @/utils, @/features) instead of relative paths
   3. No unused dependencies in package.json (verified via depcheck)
   4. All dependencies are on current stable versions (no critical security warnings)
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 08-01: TBD
+
+- [ ] 08-01-PLAN.md — Path alias configuration (vite-tsconfig-paths, tsconfig paths)
+- [ ] 08-02-PLAN.md — Folder restructuring (components/animation, ui, sections, common)
+- [ ] 08-03-PLAN.md — Import updates (convert relative to @/ aliases)
+- [ ] 08-04-PLAN.md — Dependency audit & cleanup (depcheck, remove unused, update outdated)
 
 #### Phase 9: Contact Section
 **Goal**: Visitors can contact Puff Puff Dev via email, find social profiles, and submit contact form

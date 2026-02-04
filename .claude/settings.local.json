@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git check-ignore:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\ndocs: complete project research synthesis\n\nResearch files:\n- STACK.md: Testing infrastructure \\(Vitest\\), bundle optimization, dependency cleanup\n- FEATURES.md: Table stakes \\(accessibility, navigation, mobile\\), differentiators, anti-features\n- ARCHITECTURE.md: Component refactor patterns, hooks extraction, CSS organization\n- PITFALLS.md: Critical bugs \\(random values, package conflicts, RAF mixing\\)\n- SUMMARY.md: Executive summary with 7-phase roadmap implications\n\nKey findings:\n- Stack: Add Vitest + RTL, remove lodash/duplicate packages, defer major version upgrades\n- Architecture: Migrate Wave class to hooks \\(usePerlinNoise, useWaveAnimation, useAnimationFrame\\)\n- Critical pitfall: Random values regenerated every render causing animation glitches + memory leaks\n\nRecommended phase sequence:\n1. Foundation & Cleanup \\(testing setup, critical bug fixes\\)\n2. Component Architecture Refactor \\(class to hooks migration\\)\n3. Navigation & Accessibility \\(scroll-to-section, mobile menu, WCAG 2.1 AA\\)\n4. CSS Organization \\(CSS Modules, theme system\\)\n5. Performance Optimization \\(bundle analysis, Core Web Vitals\\)\n6. Testing Coverage \\(80%+ target, error boundaries\\)\n7. Dependency Updates \\(React 19, Vite 7 - future\\)\n\nOverall confidence: MEDIUM \\(code analysis HIGH, version verification needed\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\ndocs: research portfolio refactoring ecosystem\n\n- STACK.md - Vitest, accessibility testing, bundle analysis\n- FEATURES.md - WCAG 2.1 AA, Core Web Vitals, responsive patterns\n- ARCHITECTURE.md - Hooks migration, CSS organization, testing strategy\n- PITFALLS.md - Animation gotchas, React 19 migration risks\n- SUMMARY.md - Synthesized findings and phase implications\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd v1 requirements with REQ-IDs and phase traceability\n\n- 45 requirements across 7 categories \\(Code Quality, Navigation, A11Y, Responsive, Testing, Performance, Visual Polish\\)\n- All 12 table stakes features scoped for v1\n- Core differentiators + dark/light toggle + print stylesheet\n- 6-phase traceability matrix for roadmap generation\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx tsc:*)",
+      "Bash(curl:*)",
+      "Bash(npm ls:*)",
+      "Bash(npx vite build:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
