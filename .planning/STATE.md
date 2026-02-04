@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-03)
 ## Current Position
 
 Phase: 12 of 12 (Final Cleanup & Publish Prep)
-Plan: 2 of 4 in current phase
+Plan: 3 of 4 in current phase
 Status: In progress
-Last activity: 2026-02-04 - Completed 12-02-PLAN.md (Extract Hero Section)
+Last activity: 2026-02-04 - Completed 12-01-PLAN.md (Fix ESLint Errors)
 
-Progress: [████████████████████] ~100% (38/40 plans complete)
+Progress: [████████████████████] ~100% (39/40 plans complete)
 
 ## Milestone History
 
@@ -81,10 +81,12 @@ Full v1.0 decision history archived in `.planning/milestones/v1.0-ROADMAP.md`
 - Test coverage gitignore (12-03): coverage/, *.coverage, .nyc_output/ excluded from git tracking
 - Hero section extraction (12-02): HeroSection component not lazy-loaded (above fold, critical for LCP)
 - Section component pattern (12-02): Above-fold sections imported directly, below-fold sections lazy-loaded
+- ESLint console allowlist (12-01): console.warn and console.error allowed for monitoring/logging
+- Underscore prefix pattern (12-01): ESLint argsIgnorePattern/varsIgnorePattern for intentionally unused vars
+- React-refresh file organization (12-01): Non-component exports in separate files (Header.types.ts, errorLogging.ts)
 
 ### Pending Todos
 
-- Pre-existing lint errors (17 errors, 2 warnings) - address in code quality pass
 - Major dependency updates for v1.2: React 19, Vite 7, @react-spring v10
 
 ### Blockers/Concerns
@@ -107,8 +109,8 @@ Full v1.0 decision history archived in `.planning/milestones/v1.0-ROADMAP.md`
 
 ## Session Continuity
 
-Last session: 2026-02-04T13:26:18Z
-Stopped at: Completed 12-02-PLAN.md - Extract Hero Section
+Last session: 2026-02-04T13:27:44Z
+Stopped at: Completed 12-01-PLAN.md - Fix ESLint Errors
 Resume file: None
 
 ---
