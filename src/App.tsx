@@ -15,11 +15,12 @@ import { PerformanceIndicator } from "@/components/common/PerformanceIndicator/P
 import { ErrorBoundary, WaveAnimationFallback, AppFallback } from "@/components/common/ErrorBoundary";
 import { OrganizationSchema } from "@/components/common/StructuredData/StructuredData";
 
-// Lazy load below-fold sections (pages 2-3)
+// Lazy load below-fold sections (pages 2-4)
 const ServicesSection = lazy(() => import("@/components/sections/ServicesSection/ServicesSection"));
 const AboutSection = lazy(() => import("@/components/sections/AboutSection/AboutSection"));
+const ContactSection = lazy(() => import("@/components/sections/ContactSection/ContactSection"));
 
-const TOTAL_PAGES = 3;
+const TOTAL_PAGES = 4;
 
 function randomRange(min: number, max: number): number {
     return Math.random() * (max - min) + min;
@@ -354,6 +355,21 @@ function App() {
                         >
                             <Suspense fallback={<SectionLoader />}>
                                 <AboutSection />
+                            </Suspense>
+                        </ParallaxLayer>
+
+                        {/* Page 4: Contact */}
+                        <ParallaxLayer
+                            offset={3}
+                            speed={0.5 * animationParams.parallaxSpeedMultiplier}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <Suspense fallback={<SectionLoader />}>
+                                <ContactSection />
                             </Suspense>
                         </ParallaxLayer>
                     </Parallax>
