@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { axe } from 'vitest-axe';
-import App from './App';
+import App from '@/App';
 
 // Mock usehooks-ts to avoid window size issues in tests
 vi.mock('usehooks-ts', () => ({
