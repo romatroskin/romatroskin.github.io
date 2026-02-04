@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-03)
 ## Current Position
 
 Phase: 12 of 12 (Final Cleanup & Publish Prep)
-Plan: 1 of 4 in current phase
+Plan: 2 of 4 in current phase
 Status: In progress
-Last activity: 2026-02-04 - Completed 12-03-PLAN.md (Contact Button & Coverage Cleanup)
+Last activity: 2026-02-04 - Completed 12-02-PLAN.md (Extract Hero Section)
 
-Progress: [████████████████████] ~100% (37/40 plans complete)
+Progress: [████████████████████] ~100% (38/40 plans complete)
 
 ## Milestone History
 
@@ -79,6 +79,8 @@ Full v1.0 decision history archived in `.planning/milestones/v1.0-ROADMAP.md`
 - MIT license (11-01): Standard permissive license for portfolio projects
 - Contact button alignment (12-03): Removed inline alignSelf: flex-start for natural flex container flow
 - Test coverage gitignore (12-03): coverage/, *.coverage, .nyc_output/ excluded from git tracking
+- Hero section extraction (12-02): HeroSection component not lazy-loaded (above fold, critical for LCP)
+- Section component pattern (12-02): Above-fold sections imported directly, below-fold sections lazy-loaded
 
 ### Pending Todos
 
@@ -105,8 +107,8 @@ Full v1.0 decision history archived in `.planning/milestones/v1.0-ROADMAP.md`
 
 ## Session Continuity
 
-Last session: 2026-02-04T13:24:27Z
-Stopped at: Completed 12-03-PLAN.md - Contact Button & Coverage Cleanup
+Last session: 2026-02-04T13:26:18Z
+Stopped at: Completed 12-02-PLAN.md - Extract Hero Section
 Resume file: None
 
 ---
