@@ -5,6 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import { visualizer } from 'rollup-plugin-visualizer'
 import Sitemap from 'vite-plugin-sitemap'
 import viteCompression from 'vite-plugin-compression'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -48,6 +49,20 @@ export default defineConfig({
       ext: '.gz',
       threshold: 1024,
       deleteOriginFile: false
+    }),
+    // Image optimization - runs before compression
+    ViteImageOptimizer({
+      png: {
+        quality: 80,
+      },
+      jpeg: {
+        quality: 75,
+      },
+      webp: {
+        quality: 80,
+      },
+      // Skip SVG optimization (already optimized)
+      svg: false,
     })
   ],
   // base: '/romatroskin.github.io',
