@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { useAnimationFrame } from './useAnimationFrame';
 
 describe('useAnimationFrame', () => {
@@ -17,7 +17,7 @@ describe('useAnimationFrame', () => {
       return ++rafId;
     });
 
-    vi.spyOn(window, 'cancelAnimationFrame').mockImplementation((id) => {
+    vi.spyOn(window, 'cancelAnimationFrame').mockImplementation((_id) => {
       // In a real implementation this would remove the callback
     });
   });

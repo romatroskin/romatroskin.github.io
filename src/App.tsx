@@ -15,6 +15,9 @@ import { PerformanceIndicator } from "@/components/common/PerformanceIndicator/P
 import { ErrorBoundary, WaveAnimationFallback, AppFallback } from "@/components/common/ErrorBoundary";
 import { OrganizationSchema } from "@/components/common/StructuredData/StructuredData";
 
+// Import above-fold hero section (not lazy - critical for LCP)
+import HeroSection from "@/components/sections/HeroSection";
+
 // Lazy load below-fold sections (pages 2-4)
 const ServicesSection = lazy(() => import("@/components/sections/ServicesSection/ServicesSection"));
 const AboutSection = lazy(() => import("@/components/sections/AboutSection/AboutSection"));
@@ -296,36 +299,7 @@ function App() {
                                 justifyContent: "center",
                             }}
                         >
-                            <section id="hero-section" aria-labelledby="hero-heading">
-                                <div className="hero-container content-card">
-                                    <a href="#" target="_blank" rel="noreferrer">
-                                        <img
-                                            src="https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg"
-                                            srcSet="
-                                                https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg 1x,
-                                                https://raw.githubusercontent.com/PuffPuffDev/puff_puff_brand/main/logos/logo_white.svg 2x
-                                            "
-                                            className="logo"
-                                            alt="Puff Puff logo"
-                                            width="200"
-                                            height="200"
-                                        />
-                                    </a>
-                                    <h1 id="hero-heading" className="hero-title">
-                                        Where Code Meets Creativity,
-                                        <br />
-                                        <span className="hero-highlight">Dreams Take Shape.</span>
-                                    </h1>
-                                    <button
-                                        className="scroll-indicator"
-                                        onClick={() => scrollToPage(1)}
-                                        aria-label="Scroll to next section"
-                                    >
-                                        <span className="scroll-arrow">↓</span>
-                                        <span className="scroll-text">Discover More</span>
-                                    </button>
-                                </div>
-                            </section>
+                            <HeroSection onNavigate={scrollToPage} />
                         </ParallaxLayer>
 
                         {/* Page 2: Introduction */}

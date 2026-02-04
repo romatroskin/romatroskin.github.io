@@ -4,7 +4,7 @@ export function initWebVitals() {
   function sendToAnalytics({ name, value, rating, delta, id }: Metric) {
     // Log in development, send to analytics in production
     if (import.meta.env.DEV) {
-      console.log(`[Web Vitals] ${name}:`, {
+      console.warn(`[Web Vitals] ${name}:`, {
         value: `${Math.round(value)}ms`,
         rating,
         delta: `${Math.round(delta)}ms`,
@@ -12,8 +12,8 @@ export function initWebVitals() {
       });
     } else {
       const body = JSON.stringify({ name, value, rating, delta, id });
-      navigator.sendBeacon?.('/analytics', body) ||
-        fetch('/analytics', { body, method: 'POST', keepalive: true });
+      void (navigator.sendBeacon?.('/analytics', body) ||
+        fetch('/analytics', { body, method: 'POST', keepalive: true }));
     }
   }
 

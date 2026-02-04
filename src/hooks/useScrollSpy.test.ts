@@ -2,12 +2,23 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useScrollSpy } from './useScrollSpy';
 
+interface MockIntersectionObserverInstance {
+  observe: ReturnType<typeof vi.fn>;
+  unobserve: ReturnType<typeof vi.fn>;
+  disconnect: ReturnType<typeof vi.fn>;
+}
+
+type MockIntersectionObserverConstructor = new (
+  callback: IntersectionObserverCallback,
+  options?: IntersectionObserverInit
+) => MockIntersectionObserverInstance;
+
 describe('useScrollSpy', () => {
   let mockObserve: ReturnType<typeof vi.fn>;
   let mockUnobserve: ReturnType<typeof vi.fn>;
   let mockDisconnect: ReturnType<typeof vi.fn>;
   let observerCallback: IntersectionObserverCallback;
-  let mockIntersectionObserver: any;
+  let mockIntersectionObserver: MockIntersectionObserverConstructor;
 
   beforeEach(() => {
     // Create mock functions
@@ -17,7 +28,7 @@ describe('useScrollSpy', () => {
 
     // Mock IntersectionObserver
     mockIntersectionObserver = vi.fn(function (
-      this: any,
+      this: MockIntersectionObserverInstance,
       callback: IntersectionObserverCallback
     ) {
       observerCallback = callback;
@@ -26,7 +37,7 @@ describe('useScrollSpy', () => {
       this.disconnect = mockDisconnect;
     });
 
-    global.IntersectionObserver = mockIntersectionObserver as any;
+    global.IntersectionObserver = mockIntersectionObserver as unknown as typeof IntersectionObserver;
 
     // Create test section elements
     document.body.innerHTML = `

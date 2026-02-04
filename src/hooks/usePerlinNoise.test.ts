@@ -74,13 +74,6 @@ describe('usePerlinNoise', () => {
 
       // Different instances (different random seeds)
       expect(result1.current).not.toBe(result2.current);
-
-      // Values might differ (very small chance they match by coincidence)
-      const value1 = result1.current.perlin2(5, 5);
-      const value2 = result2.current.perlin2(5, 5);
-
-      // At least the instances are different
-      expect(result1.current).not.toBe(result2.current);
     });
   });
 
