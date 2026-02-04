@@ -9,14 +9,14 @@ Requirements for v1.1 Optimization & Polish milestone. Continues from v1.0 (phas
 
 ### SEO
 
-- [ ] **SEO-01**: Page has proper meta title and description tags
-- [ ] **SEO-02**: Open Graph tags present (og:title, og:description, og:image, og:url)
-- [ ] **SEO-03**: Twitter Card tags present for social sharing
-- [ ] **SEO-04**: Canonical URL configured
-- [ ] **SEO-05**: sitemap.xml generated at build time
-- [ ] **SEO-06**: robots.txt configured correctly
-- [ ] **SEO-07**: JSON-LD structured data for Organization schema
-- [ ] **SEO-08**: Complete favicon set (all sizes, apple-touch-icon)
+- [x] **SEO-01**: Page has proper meta title and description tags
+- [x] **SEO-02**: Open Graph tags present (og:title, og:description, og:image, og:url)
+- [x] **SEO-03**: Twitter Card tags present for social sharing
+- [x] **SEO-04**: Canonical URL configured
+- [x] **SEO-05**: sitemap.xml generated at build time
+- [x] **SEO-06**: robots.txt configured correctly
+- [x] **SEO-07**: JSON-LD structured data for Organization schema
+- [x] **SEO-08**: Complete favicon set (all sizes, apple-touch-icon)
 
 ### Contact
 
@@ -32,7 +32,7 @@ Requirements for v1.1 Optimization & Polish milestone. Continues from v1.0 (phas
 - [ ] **ARCH-01**: Source reorganized into components/, hooks/, utils/, features/
 - [ ] **ARCH-02**: TypeScript path aliases configured (@/components, etc.)
 - [ ] **ARCH-03**: Code splitting applied to contact section (React.lazy)
-- [ ] **ARCH-04**: Brotli pre-compression configured for production build
+- [x] **ARCH-04**: Brotli pre-compression configured for production build
 - [ ] **ARCH-05**: Unused dependencies removed (focus-trap-react, etc.)
 - [ ] **ARCH-06**: Outdated dependencies updated
 
@@ -93,15 +93,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SEO-01 | Phase 7 | Pending |
-| SEO-02 | Phase 7 | Pending |
-| SEO-03 | Phase 7 | Pending |
-| SEO-04 | Phase 7 | Pending |
-| SEO-05 | Phase 7 | Pending |
-| SEO-06 | Phase 7 | Pending |
-| SEO-07 | Phase 7 | Pending |
-| SEO-08 | Phase 7 | Pending |
-| ARCH-04 | Phase 7 | Pending |
+| SEO-01 | Phase 7 | Complete |
+| SEO-02 | Phase 7 | Complete |
+| SEO-03 | Phase 7 | Complete |
+| SEO-04 | Phase 7 | Complete |
+| SEO-05 | Phase 7 | Complete |
+| SEO-06 | Phase 7 | Complete |
+| SEO-07 | Phase 7 | Complete |
+| SEO-08 | Phase 7 | Complete |
+| ARCH-04 | Phase 7 | Complete |
 | ARCH-01 | Phase 8 | Pending |
 | ARCH-02 | Phase 8 | Pending |
 | ARCH-05 | Phase 8 | Pending |
