@@ -271,7 +271,8 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: var(--space-md);
+  padding: var(--space-lg) var(--space-md);
+  margin-top: 4rem; /* Clear fixed header on large screens */
   max-width: 900px;
   width: 100%;
   z-index: 1;
@@ -367,9 +368,14 @@ button:active {
 @media (min-width: 768px) {
   .hero-container,
   .intro-container,
-  .about-container,
+  .about-container {
+    padding: 2rem;
+  }
+
   .contact-container {
     padding: 2rem;
+    margin-top: 5rem; /* Extra spacing to clear fixed header on desktop */
+    margin-bottom: 2rem;
   }
 
   .logo {
@@ -389,8 +395,7 @@ button:active {
 /* Section layout - ensure sections fill ParallaxLayer and center content */
 #hero-section,
 #services-section,
-#about-section,
-#contact-section {
+#about-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -399,13 +404,30 @@ button:active {
   padding: 0 2rem;
 }
 
+/* Contact section needs flex-start to prevent overlap with header on tall screens */
+#contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4rem 2rem 2rem;
+}
+
 /* Mobile - tighter horizontal padding */
 @media (max-width: 767px) {
   #hero-section,
   #services-section,
-  #about-section,
-  #contact-section {
+  #about-section {
     padding: 0 1rem;
+  }
+
+  #contact-section {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .contact-container {
+    margin-top: 2rem;
   }
 }
 
