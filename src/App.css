@@ -366,11 +366,14 @@
   }
 }
 
-/* Section layout - ensure sections fill ParallaxLayer with margins */
+/* Section layout - ensure sections fill ParallaxLayer and center content */
 #hero-section,
 #services-section,
 #about-section,
 #contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
   padding: 0 2rem;
