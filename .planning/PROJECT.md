@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A production-ready portfolio/landing page for Puff Puff Dev, a Flutter mobile development consultancy. The site showcases the brand through animated wave backgrounds using Perlin noise and parallax scrolling, with full accessibility support, dark/light theming, and optimized performance. Built with React 18, TypeScript, and Vite.
+A production-ready portfolio/landing page for Puff Puff Dev, a Flutter mobile development consultancy. The site showcases the brand through animated wave backgrounds using Perlin noise and parallax scrolling, with full accessibility support, dark/light theming, SEO optimization, contact form integration, and optimized performance. Built with React 18, TypeScript, and Vite.
 
 ## Core Value
 
@@ -12,11 +12,14 @@ Visitors experience a polished, professional site that demonstrates technical cr
 
 ### Validated
 
+**Pre-v1.0 (Existing):**
 - ✓ Animated wave background with Perlin noise — existing
 - ✓ Parallax scrolling with multiple layers — existing
 - ✓ Hero section with brand logo and tagline — existing
 - ✓ About section with company description — existing
 - ✓ GitHub Pages deployment pipeline — existing
+
+**v1.0 MVP:**
 - ✓ Wave class component refactored to functional with hooks — v1.0
 - ✓ Console.log statements removed from production code — v1.0
 - ✓ Dead/commented-out code removed — v1.0
@@ -60,64 +63,86 @@ Visitors experience a polished, professional site that demonstrates technical cr
 - ✓ Dark/Light mode toggle with prefers-color-scheme — v1.0
 - ✓ Print stylesheet — v1.0
 
+**v1.1 Optimization & Polish:**
+- ✓ Meta tags (title, description, Open Graph, Twitter Card) — v1.1
+- ✓ Structured data (JSON-LD Organization schema) — v1.1
+- ✓ Sitemap generation (vite-plugin-sitemap) — v1.1
+- ✓ robots.txt configuration — v1.1
+- ✓ Complete favicon set (ICO, SVG, apple-touch-icon, PWA icons) — v1.1
+- ✓ Brotli pre-compression (70% size reduction) — v1.1
+- ✓ Directory reorganization (components/, hooks/, utils/) — v1.1
+- ✓ TypeScript path aliases (@/components, @/hooks, etc.) — v1.1
+- ✓ Dependency cleanup (focus-trap-react removed, packages updated) — v1.1
+- ✓ Contact section with Formspree integration — v1.1
+- ✓ Social links (GitHub, LinkedIn) — v1.1
+- ✓ Form validation with accessible error messages — v1.1
+- ✓ Fluid typography tokens with clamp() — v1.1
+- ✓ Enhanced :focus-visible states — v1.1
+- ✓ Image optimization (vite-plugin-image-optimizer, 78% savings) — v1.1
+- ✓ Lighthouse 100/100/96/100 (Perf/A11y/BP/SEO) — v1.1
+- ✓ Professional README with badges and Quick Start — v1.1
+- ✓ MIT license — v1.1
+- ✓ HeroSection component extracted from App.tsx — v1.1
+- ✓ All lint errors resolved (17→0) — v1.1
+
 ### Active
 
-**v1.1 — Optimization & Polish**
-
-SEO:
-- [ ] Meta tags (title, description, keywords)
-- [ ] Open Graph images for social sharing
-- [ ] Structured data (JSON-LD schema)
-- [ ] Sitemap generation
-- [ ] robots.txt configuration
-
-Architecture:
-- [ ] Directory reorganization (components/, hooks/, utils/)
-- [ ] Code splitting optimization
-- [ ] Dependency cleanup (remove unused, update outdated)
-
-Performance:
-- [ ] Lighthouse 100 across all categories
+**v1.2 — Portfolio Case Studies** (Proposed)
 
 Content:
-- [ ] Portfolio/Case studies section
-- [ ] Contact section (static, no backend form)
-- [ ] Copy polish and refinements
+- [ ] Portfolio section with 2-3 case study cards
+- [ ] Problem → Solution → Results narrative
+- [ ] App Store / Play Store links for projects
+- [ ] Technology tags on project cards
+- [ ] Project screenshots or mockups
 
-Design:
-- [ ] Visual refinements (spacing, typography)
-- [ ] Design polish and consistency
+**v2.0 — Tech Stack Upgrade** (Future)
+
+Infrastructure:
+- [ ] React 19 migration
+- [ ] Vite 7 upgrade
+- [ ] @react-spring v10 migration
+- [ ] Node.js LTS upgrade
 
 ### Out of Scope
 
 - Multi-page routing with React Router — single-page scroll is sufficient for portfolio
 - Backend/CMS integration — static content is appropriate for this use case
-- Contact form with email backend — v1.1 adds static contact section, form integration deferred
-- Blog/content section — not needed for initial launch
+- Blog/content section — not needed for portfolio
 - Quote rotation feature — removed rather than fixed
 - Advanced animations beyond waves — current parallax sufficient
-- React 19 / Vite 7 migration — future tech upgrade phase
-- Scroll progress indicator (REQ-NAV-004) — deferred, low priority
-- CSS Modules migration completion (REQ-CQ-008) — partially complete, global CSS remains intentionally
+- Scroll progress indicator — deferred, low priority
+- Client testimonials — requires content gathering
+- Booking/Calendly widget — adds complexity, not needed for v1.x
 
 ## Context
 
-**Current State (v1.0 shipped):**
-- 3,274 lines of TypeScript
-- 99 tests passing
-- React 18 + TypeScript + Vite build
+**Current State (v1.1 shipped):**
+- 5,889 lines of TypeScript/CSS
+- 116 tests passing
+- React 18 + TypeScript + Vite 5 build
 - react-spring for animations (parallax, interpolations)
 - Custom Perlin noise with memoization (1000-entry cache)
-- CSS Modules for component styling
+- CSS Modules + design tokens for styling
 - Deployed to GitHub Pages via gh-pages package
 
 **Architecture Highlights:**
+- Hybrid component structure (animation/, ui/, sections/, common/)
+- TypeScript path aliases (@/components, @/hooks, @/utils)
 - Functional Wave component with useAnimationFrame and usePerlinNoise hooks
 - Web Vitals monitoring (LCP, INP, CLS, FCP, TTFB)
 - Long Animation Frames API monitoring for INP debugging
 - Adaptive frame rate (15/24/30 fps based on device capability)
 - Layered error boundaries with gradient fallback for wave errors
 - localStorage abstraction with in-memory fallback
+- Code splitting with React.lazy for below-fold sections (About, Services, Contact)
+
+**SEO & Social:**
+- Complete Open Graph and Twitter Card meta tags
+- Organization schema (JSON-LD) for search engine knowledge panels
+- Sitemap.xml and robots.txt auto-generated at build
+- Brotli pre-compression for 70% transfer size reduction
+- Complete favicon set with PWA manifest
 
 **Brand Context:**
 - Puff Puff Dev is a Flutter mobile development consultancy
@@ -126,17 +151,18 @@ Design:
 
 ## Constraints
 
-- **Tech stack**: React + TypeScript + Vite (no migration)
+- **Tech stack**: React 18 + TypeScript + Vite 5 (v2.0 upgrade planned)
 - **Hosting**: GitHub Pages (static only)
 - **Browser support**: Modern browsers (ES2020+, no polyfills)
 - **Accessibility**: WCAG 2.1 AA compliance achieved
+- **Form backend**: Formspree (no custom backend)
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | Scroll-to-section vs routing | Portfolio is single-page by nature, routing adds complexity | ✓ Good - works well with Parallax |
-| Vitest over Jest | Vite-native, faster, better DX | ✓ Good - 99 tests run in <2s |
+| Vitest over Jest | Vite-native, faster, better DX | ✓ Good - 116 tests run in <3s |
 | Remove lodash entirely | Only used for random(), native Math.random() sufficient | ✓ Good - reduced bundle |
 | Remove vs fix Quotes component | Feature is disabled and not core to portfolio value | ✓ Good - removed dead code |
 | CSS Modules for component styling | Scoped styles, better maintainability | ✓ Good - no style conflicts |
@@ -148,6 +174,13 @@ Design:
 | Inline blocking script for FOUC | Runs before CSS loads | ✓ Good - no theme flash |
 | web-vitals library for monitoring | Official Google library handles edge cases | ✓ Good - reliable metrics |
 | React.lazy for below-fold only | Hero is LCP - must load immediately | ✓ Good - no LCP regression |
+| Hybrid component structure | Balance between category-based (animation/, ui/) and feature-based | ✓ Good - clear organization |
+| TypeScript path aliases (@/) | Clean imports, no deep relative paths | ✓ Good - easier refactoring |
+| Formspree for contact form | No backend needed, handles spam, GDPR compliant | ✓ Good - works immediately |
+| Fluid typography with clamp() | No media query breakpoints, smooth scaling | ✓ Good - responsive without jumps |
+| ViteImageOptimizer for build | Automated PNG/JPEG optimization during build | ✓ Good - 78% size savings |
+| Static coverage badge vs dynamic | Portfolio doesn't need CI integration for badge | ✓ Good - simpler setup |
+| Defer React 19/Vite 7 upgrade | Breaking changes, v1.1 focus is polish not migration | ✓ Good - shipped without risk |
 
 ---
-*Last updated: 2026-02-03 after v1.1 milestone started*
+*Last updated: 2026-02-04 after v1.1 milestone complete*
