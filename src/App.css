@@ -366,16 +366,17 @@
   }
 }
 
-/* Section width - ensure sections fill ParallaxLayer on all screens */
+/* Section layout - ensure sections fill ParallaxLayer with margins */
 #hero-section,
 #services-section,
 #about-section,
 #contact-section {
   width: 100%;
   box-sizing: border-box;
+  padding: 0 2rem;
 }
 
-/* Mobile horizontal padding for sections */
+/* Mobile - tighter horizontal padding */
 @media (max-width: 767px) {
   #hero-section,
   #services-section,
