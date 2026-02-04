@@ -20,18 +20,18 @@ Requirements for v1.1 Optimization & Polish milestone. Continues from v1.0 (phas
 
 ### Contact
 
-- [ ] **CONT-01**: Contact section visible in main navigation
-- [ ] **CONT-02**: Email link (mailto:) with clear CTA
-- [ ] **CONT-03**: Social links (LinkedIn, GitHub, Twitter/X)
-- [ ] **CONT-04**: Contact form with Formspree integration
-- [ ] **CONT-05**: Form validation with accessible error messages
-- [ ] **CONT-06**: Form submission success/error feedback
+- [x] **CONT-01**: Contact section visible in main navigation
+- [x] **CONT-02**: Contact form with clear CTA (Send Message button)
+- [x] **CONT-03**: Social links (LinkedIn, GitHub)
+- [x] **CONT-04**: Contact form with Formspree integration
+- [x] **CONT-05**: Form validation with accessible error messages
+- [x] **CONT-06**: Form submission success/error feedback
 
 ### Architecture
 
 - [x] **ARCH-01**: Source reorganized into components/, hooks/, utils/, features/
 - [x] **ARCH-02**: TypeScript path aliases configured (@/components, etc.)
-- [ ] **ARCH-03**: Code splitting applied to contact section (React.lazy)
+- [x] **ARCH-03**: Code splitting applied to contact section (React.lazy)
 - [x] **ARCH-04**: Brotli pre-compression configured for production build
 - [x] **ARCH-05**: Unused dependencies removed (focus-trap-react, etc.)
 - [x] **ARCH-06**: Outdated dependencies updated
@@ -106,13 +106,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ARCH-02 | Phase 8 | Complete |
 | ARCH-05 | Phase 8 | Complete |
 | ARCH-06 | Phase 8 | Complete |
-| CONT-01 | Phase 9 | Pending |
-| CONT-02 | Phase 9 | Pending |
-| CONT-03 | Phase 9 | Pending |
-| CONT-04 | Phase 9 | Pending |
-| CONT-05 | Phase 9 | Pending |
-| CONT-06 | Phase 9 | Pending |
-| ARCH-03 | Phase 9 | Pending |
+| CONT-01 | Phase 9 | Complete |
+| CONT-02 | Phase 9 | Complete |
+| CONT-03 | Phase 9 | Complete |
+| CONT-04 | Phase 9 | Complete |
+| CONT-05 | Phase 9 | Complete |
+| CONT-06 | Phase 9 | Complete |
+| ARCH-03 | Phase 9 | Complete |
 | DSGN-01 | Phase 10 | Pending |
 | DSGN-02 | Phase 10 | Pending |
 | DSGN-03 | Phase 10 | Pending |
