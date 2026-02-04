@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { SocialIcon } from 'react-social-icons';
-import styles from './ContactSection.module.css';
 
 interface FormData {
   name: string;
@@ -97,8 +96,8 @@ export default function ContactSection() {
   if (state.succeeded) {
     return (
       <section id="contact-section" aria-labelledby="contact-heading">
-        <div className={`${styles.contactCard} content-card`}>
-          <div className={styles.successMessage} role="status" aria-live="polite">
+        <div className="contact-container content-card">
+          <div className="success-message" role="status" aria-live="polite">
             <h3>Thank you for reaching out!</h3>
             <p>We have received your message and will get back to you soon.</p>
           </div>
@@ -110,13 +109,13 @@ export default function ContactSection() {
 
   return (
     <section id="contact-section" aria-labelledby="contact-heading">
-      <div className={`${styles.contactCard} content-card`}>
+      <div className="contact-container content-card">
         <h2 id="contact-heading" className="section-title">Get In Touch</h2>
 
-        <form onSubmit={onSubmit} className={styles.form} noValidate>
+        <form onSubmit={onSubmit} className="contact-form" noValidate>
           {/* Name field */}
-          <div className={styles.formField}>
-            <label htmlFor="contact-name" className={styles.formLabel}>
+          <div className="form-field">
+            <label htmlFor="contact-name" className="form-label">
               Name <span aria-label="required">*</span>
             </label>
             <input
@@ -129,11 +128,11 @@ export default function ContactSection() {
               aria-invalid={touched.name && !!errors.name}
               aria-describedby={errors.name ? 'name-error' : undefined}
               aria-required="true"
-              className={styles.formInput}
+              className="form-input"
               autoComplete="name"
             />
             {touched.name && errors.name && (
-              <span id="name-error" className={styles.errorMessage} role="alert">
+              <span id="name-error" className="form-error" role="alert">
                 {errors.name}
               </span>
             )}
@@ -141,8 +140,8 @@ export default function ContactSection() {
           </div>
 
           {/* Email field */}
-          <div className={styles.formField}>
-            <label htmlFor="contact-email" className={styles.formLabel}>
+          <div className="form-field">
+            <label htmlFor="contact-email" className="form-label">
               Email <span aria-label="required">*</span>
             </label>
             <input
@@ -155,11 +154,11 @@ export default function ContactSection() {
               aria-invalid={touched.email && !!errors.email}
               aria-describedby={errors.email ? 'email-error' : undefined}
               aria-required="true"
-              className={styles.formInput}
+              className="form-input"
               autoComplete="email"
             />
             {touched.email && errors.email && (
-              <span id="email-error" className={styles.errorMessage} role="alert">
+              <span id="email-error" className="form-error" role="alert">
                 {errors.email}
               </span>
             )}
@@ -167,8 +166,8 @@ export default function ContactSection() {
           </div>
 
           {/* Message field */}
-          <div className={styles.formField}>
-            <label htmlFor="contact-message" className={styles.formLabel}>
+          <div className="form-field">
+            <label htmlFor="contact-message" className="form-label">
               Message <span aria-label="required">*</span>
             </label>
             <textarea
@@ -180,11 +179,11 @@ export default function ContactSection() {
               aria-invalid={touched.message && !!errors.message}
               aria-describedby={errors.message ? 'message-error' : undefined}
               aria-required="true"
-              className={styles.formTextarea}
+              className="form-textarea"
               rows={5}
             />
             {touched.message && errors.message && (
-              <span id="message-error" className={styles.errorMessage} role="alert">
+              <span id="message-error" className="form-error" role="alert">
                 {errors.message}
               </span>
             )}
@@ -196,7 +195,8 @@ export default function ContactSection() {
             type="submit"
             disabled={state.submitting}
             aria-busy={state.submitting}
-            className={`cta-primary ${styles.submitButton}`}
+            className="cta-primary"
+            style={{ alignSelf: 'flex-start' }}
           >
             {state.submitting ? 'Sending...' : 'Send Message'}
           </button>
@@ -211,14 +211,13 @@ export default function ContactSection() {
 // Social links component
 function SocialLinks() {
   return (
-    <div className={styles.socialLinks} aria-label="Social media profiles">
+    <div className="social-links" aria-label="Social media profiles">
       <SocialIcon
         url="https://github.com/puffpuffdev"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub profile (opens in new tab)"
         style={{ height: 44, width: 44 }}
-        className={styles.socialLink}
       />
       <SocialIcon
         url="https://linkedin.com/company/puffpuffdev"
@@ -226,7 +225,6 @@ function SocialLinks() {
         rel="noopener noreferrer"
         aria-label="LinkedIn profile (opens in new tab)"
         style={{ height: 44, width: 44 }}
-        className={styles.socialLink}
       />
     </div>
   );
