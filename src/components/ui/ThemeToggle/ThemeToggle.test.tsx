@@ -5,7 +5,7 @@ import { axe } from 'vitest-axe';
 import { ThemeToggle } from './ThemeToggle';
 
 // Mock the useTheme hook
-vi.mock('../../hooks/useTheme', () => ({
+vi.mock('@/hooks/useTheme', () => ({
   useTheme: vi.fn(() => ({
     theme: 'light',
     toggleTheme: vi.fn(),
@@ -13,7 +13,7 @@ vi.mock('../../hooks/useTheme', () => ({
 }));
 
 // Import the mock so we can control it in tests
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '@/hooks/useTheme';
 const mockUseTheme = vi.mocked(useTheme);
 
 describe('ThemeToggle', () => {
