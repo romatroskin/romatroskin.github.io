@@ -20,8 +20,8 @@ interface TouchedFields {
   message: boolean;
 }
 
-// Placeholder - replace with actual Formspree form ID
-const FORMSPREE_FORM_ID = 'YOUR_FORM_ID';
+// Formspree form ID for contact submissions
+const FORMSPREE_FORM_ID = 'xwvqgrdl';
 
 export default function ContactSection() {
   const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID);
