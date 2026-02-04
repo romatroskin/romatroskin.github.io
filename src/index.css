@@ -1,3 +1,6 @@
+/* CSS reset */
+@import 'modern-normalize';
+
 /* Import design tokens and theme system */
 @import './styles/tokens.css';
 @import './styles/themes.css';
