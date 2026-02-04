@@ -13,6 +13,7 @@ import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
 import { useAdaptiveFrameRate } from './hooks/useAdaptiveFrameRate';
 import { PerformanceIndicator } from './components/PerformanceIndicator';
 import { ErrorBoundary, WaveAnimationFallback, AppFallback } from './components/ErrorBoundary';
+import { OrganizationSchema } from './components/StructuredData';
 
 // Lazy load below-fold sections (pages 2-3)
 const ServicesSection = lazy(() => import('./sections/ServicesSection'));
@@ -190,6 +191,7 @@ function App() {
 
     return (
         <ErrorBoundary FallbackComponent={AppFallback}>
+            <OrganizationSchema />
             <SkipLink href="#main-content" />
             <Header onNavigate={scrollToPage} currentPage={currentPage}>
                 <ThemeToggle />
