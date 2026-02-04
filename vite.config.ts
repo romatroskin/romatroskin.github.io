@@ -60,6 +60,10 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       exclude: ['node_modules/', 'src/setupTests.ts', 'vite.config.ts']
+    },
+    // Ensure test files can use path aliases from tsconfig.test.json
+    alias: {
+      '@': '/src'
     }
   }
 })
